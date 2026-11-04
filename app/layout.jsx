@@ -10,6 +10,9 @@ export const metadata = {
   title: { default: 'UnfollowX Pro — A clearer view of your X following', template: '%s | UnfollowX Pro' },
   description: 'Review your X following list with UnfollowX Pro. Find non-followers, track follower changes and choose who stays with a free Chrome extension.',
   applicationName: 'UnfollowX Pro',
+  category: 'software',
+  referrer: 'strict-origin-when-cross-origin',
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 } },
   openGraph: {
     type: 'website', siteName: 'UnfollowX Pro', url: 'https://www.unfollowx.com',
     title: 'UnfollowX Pro — A clearer view of your X following',
@@ -21,6 +24,27 @@ export const metadata = {
   alternates: { canonical: '/' }
 };
 
+const siteStructuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': 'https://www.unfollowx.com/#organization',
+    name: 'UnfollowX Pro',
+    url: 'https://www.unfollowx.com/',
+    logo: { '@type': 'ImageObject', url: 'https://www.unfollowx.com/assets/icon128.png' },
+    email: 'shahriar.bmb@gmail.com'
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': 'https://www.unfollowx.com/#website',
+    name: 'UnfollowX Pro',
+    url: 'https://www.unfollowx.com/',
+    publisher: { '@id': 'https://www.unfollowx.com/#organization' },
+    inLanguage: 'en'
+  }
+];
+
 export default function RootLayout({ children }) {
-  return <html lang="en" data-theme="light"><body><SiteHeader /><main>{children}</main><SiteFooter /><RevealOnView /></body></html>;
+  return <html lang="en" data-theme="light"><body><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteStructuredData).replace(/</g, '\\u003c') }} /><SiteHeader /><main>{children}</main><SiteFooter /><RevealOnView /></body></html>;
 }
