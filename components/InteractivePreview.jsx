@@ -15,13 +15,22 @@ export default function InteractivePreview() {
   const [scanning,setScanning] = useState(false);
   const [updated,setUpdated] = useState(false);
   const timer = useRef();
+  const visualRef = useRef(null);
+  function tilt(event) {
+    if (!visualRef.current || !matchMedia('(pointer:fine)').matches) return;
+    const rect = visualRef.current.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width - .5;
+    const y = (event.clientY - rect.top) / rect.height - .5;
+    event.currentTarget.style.transform = `rotateY(${-5 + x * 5}deg) rotateX(${2 - y * 4}deg) translateY(-3px)`;
+  }
+  function resetTilt(event) { event.currentTarget.style.transform = ''; }
   function refresh() {
     if(scanning) return;
     setScanning(true); setUpdated(false);
     clearTimeout(timer.current);
     timer.current = setTimeout(() => { setScanning(false); setUpdated(true); },850);
   }
-  return <div className="hero-visual"><div className="visual-halo halo-one"/><div className="visual-halo halo-two"/><div className="orbit orbit-one"/><div className="orbit orbit-two"/><div className="product-window" id="productWindow">
+  return <div className="hero-visual" ref={visualRef}><svg className="connection-constellation" viewBox="0 0 720 500" aria-hidden="true"><defs><linearGradient id="constellationLine" x1="0" x2="1"><stop stopColor="#3b82f6" stopOpacity=".05"/><stop offset=".5" stopColor="#7050e9" stopOpacity=".5"/><stop offset="1" stopColor="#ba67ce" stopOpacity=".08"/></linearGradient><radialGradient id="constellationGlow"><stop stopColor="#7b66f0" stopOpacity=".45"/><stop offset="1" stopColor="#7b66f0" stopOpacity="0"/></radialGradient></defs><ellipse cx="363" cy="251" rx="230" ry="152" fill="url(#constellationGlow)"/><g className="constellation-lines"><path d="M90 130 202 176 286 95 381 178 510 116 613 204 520 319 389 279 293 365 175 307 90 130M202 176 175 307M286 95 293 365M381 178 389 279M510 116 520 319M202 176 389 279 613 204M90 130 293 365M286 95 520 319"/><path d="M40 244 175 307 389 279 675 360M202 176 382 48 510 116"/></g><g className="constellation-nodes"><circle cx="90" cy="130" r="5"/><circle cx="202" cy="176" r="8"/><circle cx="286" cy="95" r="5"/><circle cx="381" cy="178" r="11"/><circle cx="510" cy="116" r="6"/><circle cx="613" cy="204" r="8"/><circle cx="520" cy="319" r="5"/><circle cx="389" cy="279" r="7"/><circle cx="293" cy="365" r="6"/><circle cx="175" cy="307" r="9"/><circle cx="382" cy="48" r="4"/><circle cx="675" cy="360" r="4"/></g><circle className="constellation-pulse" cx="381" cy="178" r="18"/></svg><div className="visual-halo halo-one"/><div className="visual-halo halo-two"/><div className="orbit orbit-one"/><div className="orbit orbit-two"/><div className="product-window" id="productWindow" onPointerMove={tilt} onPointerLeave={resetTilt}>
     <div className="window-chrome"><div className="window-dots"><i/><i/><i/></div><div className="window-url"><span>◈</span> UnfollowX Pro <span className="url-muted">/ overview</span></div><div className="window-account"><span className="account-dot"/> X connected</div></div>
     <div className="product-app"><aside className="product-sidebar"><div className="product-logo"><img src="/assets/logo.svg" alt=""/><span>UnfollowX<small>Pro</small></span></div><div className="side-link active"><span>▦</span> Overview</div><div className="side-link"><span>◎</span> Following</div><div className="side-link"><span>♧</span> Followers</div><div className="side-link"><span>♡</span> Whitelist</div><div className="side-link"><span>◷</span> History</div><div className="side-divider"/><div className="side-link"><span>⚙</span> Settings</div><div className="sidebar-bottom"><span className="mini-avatar">U</span><span><b>Your account</b><small>Connected on X</small></span><span className="dots-more">···</span></div></aside>
       <div className="product-content"><div className="app-welcome"><div><span className="app-kicker">YOUR X ACCOUNT</span><h2>Your connections, at a glance.</h2><p>A little clarity goes a long way.</p></div><button className={`scan-button ${scanning?'scanning':''}`} onClick={refresh}><span>{updated?'✓':'↻'}</span> <b>{scanning?'Refreshing preview…':updated?'Preview refreshed':'Preview scan'}</b></button></div>
