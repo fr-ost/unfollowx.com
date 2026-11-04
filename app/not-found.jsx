@@ -1,0 +1,2 @@
+import Link from 'next/link';
+export default function NotFound(){return <section className="page-hero" style={{minHeight:'60vh',display:'grid',alignContent:'center'}}><div className="eyebrow" style={{justifyContent:'center'}}>404 · THAT PAGE WANDERED OFF</div><h1>Nothing to see <em>over here.</em></h1><p>That page may have moved. Let’s get you back to your following list.</p><p style={{marginTop:22}}><Link className="button button-primary" href="/">Back to UnfollowX Pro ↗</Link></p></section>}
