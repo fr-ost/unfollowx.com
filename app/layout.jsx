@@ -2,6 +2,7 @@ import './globals.css';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 import RevealOnView from '@/components/RevealOnView';
+import { Analytics } from '@vercel/analytics/next';
 
 export const dynamic = 'force-dynamic';
 
@@ -22,5 +23,5 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  return <html lang="en" data-theme="light"><body><SiteHeader /><main>{children}</main><SiteFooter /><RevealOnView /></body></html>;
+  return <html lang="en" data-theme="light"><body><SiteHeader /><main>{children}</main><SiteFooter /><RevealOnView /><Analytics /></body></html>;
 }
