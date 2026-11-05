@@ -1,41 +1,20 @@
-'use client';
-
-import { useState } from 'react';
+import Link from 'next/link';
 
 const features = [
-  'Find non-followers',
-  'Compare follower snapshots',
-  'Filter your following',
-  'Protect people with Keep rules',
-  'Export lists to CSV',
-  'Review action history'
+  ['Find non-followers', '/features#scan'],
+  ['Compare follower snapshots', '/features#changes'],
+  ['Filter your following', '/features#filters'],
+  ['Protect people with Keep rules', '/features#keep'],
+  ['Export lists to CSV', '/features#import'],
+  ['Review action history', '/features#history']
 ];
 
-function FeatureItems({ decorative = false }) {
-  return <div className="motion-ribbon-track" aria-hidden={decorative || undefined}>
-    {features.map((feature) => <span key={feature}><i aria-hidden="true">✳</i>{feature}</span>)}
-  </div>;
-}
-
 export default function FeatureRibbon() {
-  const [paused, setPaused] = useState(false);
-
-  return <div className="motion-ribbon" data-paused={paused} role="region" aria-label="UnfollowX Pro tools">
-    <div className="motion-ribbon-viewport">
-      <div className="motion-ribbon-marquee">
-        <FeatureItems />
-        <FeatureItems decorative />
-      </div>
+  return <nav className="motion-ribbon" aria-label="Explore UnfollowX Pro features">
+    <div className="motion-ribbon-track">
+      {features.map(([label, href]) => <Link className="motion-ribbon-item" href={href} key={label}>
+        <span aria-hidden="true">✳</span>{label}<b aria-hidden="true">↗</b>
+      </Link>)}
     </div>
-    <button
-      className="motion-ribbon-toggle"
-      type="button"
-      aria-label={paused ? 'Resume feature ticker' : 'Pause feature ticker'}
-      aria-pressed={paused}
-      onClick={() => setPaused((value) => !value)}
-    >
-      <span aria-hidden="true">{paused ? '▶' : 'Ⅱ'}</span>
-      <span>{paused ? 'Play' : 'Pause'}</span>
-    </button>
-  </div>;
+  </nav>;
 }

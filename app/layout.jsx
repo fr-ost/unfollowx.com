@@ -1,9 +1,8 @@
 import './globals.css';
+import './performance.css';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 import RevealOnView from '@/components/RevealOnView';
-
-export const dynamic = 'force-dynamic';
 
 export const metadata = {
   metadataBase: new URL('https://www.unfollowx.com'),

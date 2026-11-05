@@ -4,6 +4,10 @@ import { articles, getRelatedArticles } from '@/lib/blog';
 
 export const dynamicParams = true;
 
+export function generateStaticParams() {
+  return articles.map(({ slug }) => ({ slug }));
+}
+
 function dateLabel(date) {
   return new Date(date + 'T12:00:00Z').toLocaleDateString('en-US', {
     year: 'numeric',

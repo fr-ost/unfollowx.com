@@ -11,10 +11,15 @@ export default function SiteHeader() {
   const progressBar = useRef(null);
   const themePreference = useRef('system');
   useEffect(() => {
+    let progressFrame = 0;
     const updateProgress = () => {
-      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = scrollable > 0 ? window.scrollY / scrollable : 0;
-      progressBar.current?.style.setProperty('transform', `scaleX(${progress})`);
+      if (progressFrame) return;
+      progressFrame = window.requestAnimationFrame(() => {
+        progressFrame = 0;
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = scrollable > 0 ? window.scrollY / scrollable : 0;
+        progressBar.current?.style.setProperty('transform', `scaleX(${progress})`);
+      });
     };
     updateProgress(); window.addEventListener('scroll', updateProgress, { passive: true });
     try { themePreference.current = localStorage.getItem('unfollowx-theme') || 'system'; } catch { themePreference.current = 'system'; }
@@ -30,6 +35,7 @@ export default function SiteHeader() {
     systemPreference.addEventListener?.('change', onSystemThemeChange);
     return () => {
       window.removeEventListener('scroll', updateProgress);
+      if (progressFrame) window.cancelAnimationFrame(progressFrame);
       systemPreference.removeEventListener?.('change', onSystemThemeChange);
     };
   }, []);

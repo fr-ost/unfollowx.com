@@ -1,0 +1,595 @@
+/* Lightweight motion and clearer product preview */
+.topbar {
+  background: var(--surface);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+.hero:before {
+  animation: none;
+  filter: none;
+  opacity: .52;
+  transform: none;
+}
+
+.hero-visual {
+  height: auto;
+  min-height: 0;
+  animation: none;
+  perspective: none;
+}
+
+.connection-constellation,
+.visual-halo,
+.orbit,
+.float-chip,
+.visual-caption,
+.card-glow,
+.closing-orb {
+  display: none !important;
+}
+
+.product-window {
+  width: min(100%, 680px);
+  transform: none !important;
+  transform-style: flat;
+  will-change: auto;
+  border-radius: 22px;
+  box-shadow: 0 24px 56px rgba(20, 30, 62, .16), 0 4px 12px rgba(20, 30, 62, .06);
+  transition: box-shadow .2s ease;
+}
+
+.product-window:hover {
+  box-shadow: 0 28px 64px rgba(20, 30, 62, .2), 0 6px 16px rgba(20, 30, 62, .08);
+}
+
+.product-window:after {
+  display: none;
+}
+
+.window-chrome {
+  height: 43px;
+  padding: 0 16px;
+}
+
+.window-url {
+  font-size: 10px;
+  padding: 5px 16px;
+}
+
+.product-app {
+  grid-template-columns: minmax(0, 1fr);
+  min-height: 0;
+}
+
+.product-sidebar {
+  display: none;
+}
+
+.product-content {
+  min-width: 0;
+  padding: 20px;
+}
+
+.app-welcome {
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 17px;
+}
+
+.app-kicker {
+  font-size: 9px;
+  letter-spacing: .1em;
+}
+
+.app-welcome h2 {
+  margin: 5px 0 2px;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -.04em;
+}
+
+.app-welcome p {
+  margin: 0;
+  font-size: 11px;
+}
+
+.scan-button {
+  flex: none;
+  min-height: 38px;
+  padding: 9px 12px;
+  border-radius: 9px;
+  font-size: 11px;
+}
+
+.metric-row {
+  gap: 10px;
+}
+
+.metric-card {
+  padding: 12px 13px;
+  border-radius: 12px;
+}
+
+.metric-label {
+  gap: 6px;
+  font-size: 8px;
+  letter-spacing: .07em;
+}
+
+.metric-icon {
+  width: 23px;
+  height: 23px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+.metric-value {
+  align-items: baseline;
+  gap: 5px;
+  margin-top: 8px;
+}
+
+.metric-value b {
+  font-size: clamp(22px, 2vw, 28px);
+  line-height: 1;
+}
+
+.metric-value span {
+  font-size: 10px;
+}
+
+.metric-foot {
+  margin-top: 7px;
+  font-size: 9px;
+}
+
+.activity-panel {
+  margin-top: 13px;
+  border-radius: 13px;
+  overflow: hidden;
+}
+
+.panel-heading {
+  padding: 13px 14px 9px;
+}
+
+.panel-heading h3 {
+  font-size: 13px;
+}
+
+.panel-heading p {
+  font-size: 10px;
+}
+
+.filter-button {
+  font-size: 9px;
+  padding: 6px 9px;
+}
+
+.account-tabs {
+  gap: 4px;
+  padding: 0 10px;
+}
+
+.account-tab {
+  padding: 7px 9px;
+  font-size: 9px;
+}
+
+.account-tab span {
+  font-size: 9px;
+}
+
+.account-row {
+  grid-template-columns: 30px minmax(0, 1fr) auto 22px;
+  gap: 9px;
+  padding: 8px 12px;
+}
+
+.user-avatar {
+  width: 28px;
+  height: 28px;
+  font-size: 10px;
+}
+
+.user-info b {
+  font-size: 11px;
+}
+
+.user-info small {
+  font-size: 9px;
+}
+
+.row-status {
+  font-size: 8px;
+}
+
+.row-keep {
+  font-size: 18px;
+}
+
+.panel-bottom,
+.app-foot {
+  font-size: 9px;
+}
+
+.panel-bottom {
+  padding: 10px 13px;
+}
+
+.app-foot {
+  margin-top: 9px;
+}
+
+.hero-meta > span:not(.chrome-mark) {
+  white-space: nowrap;
+}
+
+.motion-ribbon {
+  overflow: hidden;
+}
+
+.motion-ribbon:before,
+.motion-ribbon:after {
+  display: none;
+}
+
+.motion-ribbon-track {
+  width: min(100%, var(--max));
+  margin: 0 auto;
+  display: flex;
+  gap: 9px;
+  padding: 14px 0;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  scroll-snap-type: x proximity;
+}
+
+.motion-ribbon-track::-webkit-scrollbar {
+  display: none;
+}
+
+.motion-ribbon-item {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 13px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text-2);
+  font-size: 11px;
+  font-weight: 600;
+  scroll-snap-align: start;
+  transition: color .18s ease, border-color .18s ease, background-color .18s ease;
+}
+
+.motion-ribbon-item>span {
+  color: var(--accent-text);
+  font-size: 13px;
+}
+
+.motion-ribbon-item>b {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.motion-ribbon-item:hover {
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+  background: var(--accent-soft);
+  color: var(--accent-text);
+}
+
+.motion-ribbon-toggle {
+  display: none !important;
+}
+
+.journey-card,
+.insight-card,
+.blog-card,
+.setup-step,
+.setup-aside-card {
+  background: var(--surface);
+}
+
+.journey-card:hover,
+.blog-card:hover,
+.setup-step:hover {
+  transform: translateY(-3px);
+}
+
+.privacy-orbit {
+  animation: none;
+}
+
+.reveal:not(.visible) {
+  opacity: 0;
+  transform: translate3d(0, 16px, 0);
+  filter: none;
+}
+
+.reveal {
+  filter: none;
+  transition: opacity .45s ease, transform .45s ease;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal.visible {
+  opacity: 1;
+  filter: none;
+}
+
+.reveal.visible:not(:hover) {
+  transform: none;
+}
+
+@keyframes hero-word-arrive {
+  from { opacity: 0; transform: translateY(9px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 800px) {
+  .motion-ribbon-track {
+    width: 100%;
+    padding: 12px 22px;
+  }
+
+  .hero-visual {
+    width: 100%;
+  }
+}
+
+@media (min-width: 801px) and (max-width: 980px) {
+  .topbar {
+    gap: 20px;
+    padding-right: 22px;
+    padding-left: 22px;
+  }
+
+  .nav {
+    gap: 16px;
+  }
+
+  .nav a {
+    font-size: 12px;
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    max-width: 700px;
+    min-height: 0;
+    padding-top: 58px;
+    padding-bottom: 45px;
+  }
+
+  .hero-copy {
+    text-align: center;
+  }
+
+  .hero-copy .eyebrow,
+  .hero-actions,
+  .hero-meta {
+    justify-content: center;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.5rem, 7vw, 4rem);
+  }
+
+  .hero-lede {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .product-window {
+    border-radius: 16px;
+  }
+
+  .window-chrome {
+    height: 34px;
+    padding: 0 10px;
+  }
+
+  .window-account {
+    display: none;
+  }
+
+  .window-url {
+    font-size: 8px;
+    padding: 4px 9px;
+  }
+
+  .product-content {
+    padding: 12px 10px 10px;
+  }
+
+  .app-welcome {
+    gap: 7px;
+    margin-bottom: 10px;
+  }
+
+  .app-kicker {
+    font-size: 7px;
+  }
+
+  .app-welcome h2 {
+    font-size: 14px;
+  }
+
+  .app-welcome p {
+    font-size: 8px;
+  }
+
+  .scan-button {
+    min-height: 30px;
+    gap: 4px;
+    padding: 6px 7px;
+    font-size: 8px;
+  }
+
+  .metric-row {
+    gap: 5px;
+  }
+
+  .metric-card {
+    padding: 8px 7px;
+    border-radius: 9px;
+  }
+
+  .metric-label {
+    gap: 4px;
+    font-size: 6px;
+  }
+
+  .metric-icon {
+    width: 17px;
+    height: 17px;
+    border-radius: 6px;
+    font-size: 9px;
+  }
+
+  .metric-value {
+    gap: 3px;
+    margin-top: 5px;
+  }
+
+  .metric-value b {
+    font-size: 18px;
+  }
+
+  .metric-value span {
+    font-size: 7px;
+  }
+
+  .metric-foot {
+    margin-top: 5px;
+    font-size: 7px;
+  }
+
+  .activity-panel {
+    margin-top: 8px;
+  }
+
+  .panel-heading {
+    padding: 9px 9px 6px;
+  }
+
+  .panel-heading h3 {
+    font-size: 10px;
+  }
+
+  .panel-heading p {
+    font-size: 7px;
+  }
+
+  .filter-button {
+    padding: 4px 6px;
+    font-size: 7px;
+  }
+
+  .account-tabs {
+    gap: 0;
+    padding: 0 4px;
+  }
+
+  .account-tab {
+    padding: 6px 5px;
+    font-size: 6px;
+  }
+
+  .account-tab span {
+    margin-left: 2px;
+    padding: 1px 3px;
+    font-size: 6px;
+  }
+
+  .account-row {
+    grid-template-columns: 22px minmax(0, 1fr) 19px;
+    gap: 5px;
+    padding: 6px 7px;
+  }
+
+  .user-avatar {
+    width: 22px;
+    height: 22px;
+    border-radius: 7px;
+    font-size: 8px;
+  }
+
+  .user-info b {
+    font-size: 8px;
+  }
+
+  .user-info small {
+    font-size: 7px;
+  }
+
+  .row-status {
+    display: none;
+  }
+
+  .row-keep {
+    font-size: 15px;
+  }
+
+  .panel-bottom {
+    padding: 7px 8px;
+    font-size: 6px;
+  }
+
+  .app-foot {
+    font-size: 7px;
+  }
+
+  .motion-ribbon-track {
+    gap: 7px;
+    padding: 11px 17px;
+  }
+
+  .motion-ribbon-item {
+    gap: 7px;
+    padding: 8px 10px;
+    font-size: 10px;
+  }
+
+  .app-kicker { font-size: 8px; }
+  .app-welcome h2 { font-size: 16px; }
+  .app-welcome p { font-size: 9px; }
+  .scan-button { font-size: 9px; }
+  .metric-label { font-size: 8px; }
+  .metric-icon { width: 19px; height: 19px; font-size: 10px; }
+  .metric-value b { font-size: 20px; }
+  .metric-value span { font-size: 8px; }
+  .metric-foot { font-size: 8px; }
+  .panel-heading { padding: 10px 10px 7px; }
+  .panel-heading h3 { font-size: 12px; }
+  .panel-heading p { font-size: 9px; }
+  .filter-button { padding: 5px 7px; font-size: 8px; }
+  .account-tab { padding: 7px 6px; font-size: 8px; }
+  .account-tab span { font-size: 7px; }
+  .account-row { padding: 7px 8px; }
+  .user-avatar { width: 24px; height: 24px; font-size: 9px; }
+  .user-info b { font-size: 9px; }
+  .user-info small { font-size: 8px; }
+  .row-keep { width: 30px; height: 30px; font-size: 17px; }
+  .panel-bottom { padding: 8px; font-size: 8px; }
+  .app-foot { font-size: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
