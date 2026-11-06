@@ -25,7 +25,7 @@
 - [ ] Decline → `window['ga-disable-G-DEEP3H3Q83']` is `true` in the console and no further `collect` requests appear (DevTools → Network).
 - [ ] GA4 Admin → Events → mark `chrome_install_click` as a **key event**.
 - [ ] GA4 Admin → Data streams → Enhanced measurement: “Page changes based on browser history events” is **on** (the app relies on it for client-side page views).
-- [ ] GTM container GTM-M4QHPXQV: contains **no** Google tag / GA4 tags for G-DEEP3H3Q83 (the site already sends GA4 directly), or switch `GA4_DELIVERY` to `'gtm'`.
+- [ ] **GTM container GTM-M4QHPXQV: import `docs/gtm/unfollowx-ga4-container.json` (Merge) and publish.** GA4 runs only through GTM (`GA4_DELIVERY = 'gtm'`); without this, GA4 receives nothing. Remove any older duplicate GA4 tags for G-DEEP3H3Q83.
 - [ ] GA4 Admin → Data retention set to the period stated in the privacy policy (2 or 14 months).
 
 ## Social previews

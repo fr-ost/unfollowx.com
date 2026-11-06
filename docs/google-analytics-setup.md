@@ -4,7 +4,7 @@
 | --- | --- |
 | GA4 measurement ID | **G-DEEP3H3Q83** |
 | GTM container ID | **GTM-M4QHPXQV** |
-| Integration | Official Google tag snippet (gtag + gtm.js, plus gtag.js for GA4) rendered into **every page’s `<head>`** with **Google Consent Mode v2** defaults |
+| Integration | Official Google tag snippet (`gtag('js')` + `gtm.js`) rendered into **every page’s `<head>`** with **Google Consent Mode v2** defaults. **GA4 runs inside GTM** (`GA4_DELIVERY = 'gtm'`). |
 | Consent UI | `components/Analytics.jsx` (banner + footer “Analytics settings”) |
 | Code | `lib/analytics-config.js` (IDs + head snippet), `app/layout.jsx` (renders it), `lib/analytics.js` (consent updates + events), `components/Analytics.jsx`, `components/InstallLink.jsx` |
 
@@ -22,8 +22,8 @@ The Google tag is in the server-rendered HTML of every page (so Google’s “Te
    | Declined, or GPC with no choice | denied | denied | **switched off** via `window['ga-disable-G-DEEP3H3Q83'] = true` — sends nothing |
 
    `gtag('set', 'ads_data_redaction', true)` is also set.
-3. `gtag('js', new Date())`, then (GA4 delivery `'gtag'`) `gtag('config', 'G-DEEP3H3Q83', { send_page_view: true, allow_google_signals: false, allow_ad_personalization_signals: false })`.
-4. The standard GTM bootstrap event `{ 'gtm.start', event: 'gtm.js' }`, then `gtm.js?id=GTM-M4QHPXQV` and `gtag/js?id=G-DEEP3H3Q83` are injected as async scripts from the same inline script — so the consent defaults are guaranteed to be queued before either library runs.
+3. `gtag('js', new Date())`.
+4. The standard GTM bootstrap event `{ 'gtm.start', event: 'gtm.js' }`, then `gtm.js?id=GTM-M4QHPXQV` is injected as an async script from the same inline script — so the consent defaults are guaranteed to be queued before GTM runs. (Only in `'gtag'` mode would `gtag('config', …)` and `gtag/js?id=G-DEEP3H3Q83` also be added.)
 
 **Accept** → `gtag('consent', 'update', { analytics_storage: 'granted' })`. **Decline** → `ga-disable` on, `consent update` denied, `_ga`/`_ga_*` cookies deleted, custom events stop. Choices are stored in `localStorage`; “Analytics settings” in the footer reopens the banner. Custom events (below) are sent in the “no choice” and “accepted” states, never after Decline or with GPC.
 
@@ -31,27 +31,35 @@ The `<noscript>` GTM iframe is intentionally not used: it would load GTM for vis
 
 > **History:** the first version loaded nothing until the visitor clicked Accept. Google’s tag detection never saw the tag, so on 2026-11-06 the site moved to the standard Consent Mode setup above (owner’s decision). Stricter readings of EU ePrivacy law consider even cookieless pre-consent pings to need consent; revisit with legal advice if you target EU users heavily.
 
-## One GA4 path only (avoid double counting)
+## GA4 runs through GTM (one path only)
 
-`lib/analytics.js` → `GA4_DELIVERY`:
+`lib/analytics-config.js` → `GA4_DELIVERY = 'gtm'`: the site does **not** load gtag.js. GA4 must be configured in container **GTM-M4QHPXQV**, or GA4 receives no data.
 
-| Value | GA4 sent by | GTM container must… |
-| --- | --- | --- |
-| `'gtag'` **(default)** | gtag.js directly (page views + all custom events) | **not** contain a Google tag or GA4 event tags for G-DEEP3H3Q83. Use GTM for other tags only (e.g. a Google Ads conversion on the `chrome_install_click` custom event). |
-| `'gtm'` | Your GTM container | contain a Google tag for G-DEEP3H3Q83 (Initialization – All Pages) and a GA4 Event tag (see below). gtag.js is not loaded. |
+### Set up the container (2 minutes, import file provided)
 
-> The container could not be inspected from the build environment (Google domains were blocked). **Open GTM-M4QHPXQV and check which case applies before going live.** If it already has a Google tag for G-DEEP3H3Q83, either remove it or set `GA4_DELIVERY = 'gtm'`.
+1. Open [Tag Manager](https://tagmanager.google.com) → container GTM-M4QHPXQV → **Admin → Import container**.
+2. Choose `docs/gtm/unfollowx-ga4-container.json` from this repository.
+3. Workspace: **Existing** (Default Workspace). Import option: **Merge** → **Rename conflicting tags, triggers and variables**. Confirm.
+4. Check the preview, then **Submit → Publish**.
+5. If the container already had its own Google tag or GA4 tags for G-DEEP3H3Q83, pause or delete the duplicates so each hit is sent once.
 
-### If you choose `'gtm'`
+The import adds:
 
-In GTM:
+| Item | Configuration |
+| --- | --- |
+| Tag: Google tag – G-DEEP3H3Q83 | Tag ID `G-DEEP3H3Q83`, trigger **All Pages**, config `allow_google_signals = false`, `allow_ad_personalization_signals = false`. Sends the first `page_view`; SPA page views come from GA4 Enhanced measurement. |
+| Tag: GA4 event – UnfollowX site events | Measurement ID `G-DEEP3H3Q83`, event name `{{Event}}`, 18 event parameters mapped to data layer variables |
+| Trigger: CE – UnfollowX site events | Custom Event, regex `^(chrome_install_click|cta_click|blog_article_view|feature_page_view|faq_expand|navigation_click|theme_change|outbound_link_click|demo_interaction)$` |
+| Variables: DLV – `<param>` | Data Layer Variable v2 for each of `page_location`, `page_path`, `button_location`, `button_text`, `cta_name`, `cta_location`, `article_title`, `article_category`, `article_slug`, `feature_name`, `faq_question`, `navigation_item`, `navigation_location`, `selected_theme`, `link_url`, `link_text`, `interaction_type`, `demo_section` |
+| Built-in variable | Event |
 
-1. **Variables → New → Data Layer Variable** for each parameter: `page_location`, `page_path`, `button_location`, `button_text`, `cta_name`, `cta_location`, `article_title`, `article_category`, `article_slug`, `feature_name`, `faq_question`, `navigation_item`, `navigation_location`, `selected_theme`, `link_url`, `link_text`, `interaction_type`, `demo_section`.
-2. **Triggers → Custom Event**, “Use regex matching”, event name:
-   `^(chrome_install_click|cta_click|blog_article_view|feature_page_view|faq_expand|navigation_click|theme_change|outbound_link_click|demo_interaction)$`
-3. **Tags → Google tag** with tag ID `G-DEEP3H3Q83`, trigger *Initialization – All Pages*; configuration parameters `allow_google_signals = false`, `allow_ad_personalization_signals = false`.
-4. **Tags → Google Analytics: GA4 Event**, measurement ID `G-DEEP3H3Q83`, event name `{{Event}}`, add the parameters from step 1, trigger from step 2.
-5. Publish, then set `GA4_DELIVERY = 'gtm'` and deploy.
+The import file was generated from the site’s event list but could not be test-imported from the build environment (Google domains blocked). If GTM rejects it, create the same items by hand from the table above.
+
+Each site event is pushed as `dataLayer.push({ event: '<name>', …params })`, with every other known parameter set to `undefined` so values don’t carry over between events in GTM’s data model.
+
+### Switching back
+
+Set `GA4_DELIVERY = 'gtag'` and remove or pause both imported tags in GTM. The site then loads gtag.js and sends GA4 directly.
 
 ## Page views and client-side navigation
 
@@ -61,7 +69,7 @@ In GTM:
 
 ## Events
 
-Lowercase snake_case, consistent parameter names. Each event is sent through gtag (gtag mode) **and** mirrored once as a dataLayer event (`{ event: name, …params }`) so GTM triggers can use it.
+Lowercase snake_case, consistent parameter names. Each event is pushed once to the dataLayer as `{ event: name, …params }` (GTM mode). In gtag mode it is also sent with `gtag('event', …)`.
 
 | Event | Parameters | Fired when | Where |
 | --- | --- | --- | --- |
@@ -108,8 +116,8 @@ GA4 → Reports → **Realtime**: after accepting, your visit appears within ~30
 
 ### Browser DevTools (no Google account needed)
 
-- View source on any page: the inline Google tag script contains `gtm.js?id=GTM-M4QHPXQV` and `gtag/js?id=G-DEEP3H3Q83`.
-- On load: exactly one `gtm.js` and one `gtag/js` request; `dataLayer` begins with `consent default` (all denied for a new visitor) → `set ads_data_redaction` → `js` → `config` → `{event: 'gtm.js'}`; no `_ga` cookies.
+- View source on any page: the inline Google tag script contains `gtm.js?id=GTM-M4QHPXQV`.
+- On load: exactly one `gtm.js` request (gtag.js is then loaded by GTM’s Google tag); `dataLayer` begins with `consent default` (all denied for a new visitor) → `set ads_data_redaction` → `js` → `{event: 'gtm.js'}`; no `_ga` cookies.
 - Click Accept: a `consent update` with `analytics_storage: 'granted'`; `_ga` cookies appear after the next hit.
 - Click Decline: `window['ga-disable-G-DEEP3H3Q83'] === true`; no further hits.
 - Navigate between pages: no new script requests.
