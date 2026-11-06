@@ -113,3 +113,11 @@ Google reported “Your Google tag wasn’t detected” because the tag only loa
 - Accessibility + functional: **60/60** with Google’s domains stubbed (without stubs, the only failures are console errors from this sandbox blocking `googletagmanager.com`).
 - Technical SEO checks: ✅.
 - Not verifiable here: Google’s own detection and real hits (Google’s domains are blocked in this environment). Lighthouse in this sandbox can’t include the cost of the real Google scripts, which now load on every page (roughly 100–150 KB of third-party JavaScript); expect a small drop in mobile performance on the live site.
+
+## Round 4 — GA4 through GTM (2026-11-06)
+
+`GA4_DELIVERY = 'gtm'`: the site loads only the GTM snippet; GA4 runs from the container (`docs/gtm/unfollowx-ga4-container.json`).
+
+- Consent-mode suite (stubbed Google scripts): **27/27**, including no gtag.js from the site, consent defaults before the GTM bootstrap, and no stale parameters between dataLayer events.
+- Accessibility + functional: **60/60**. Technical SEO checks: ✅.
+- **Live verification (site owner):** container imported and published; GA4 confirmed working on www.unfollowx.com.

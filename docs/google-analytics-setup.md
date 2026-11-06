@@ -53,7 +53,7 @@ The import adds:
 | Variables: DLV – `<param>` | Data Layer Variable v2 for each of `page_location`, `page_path`, `button_location`, `button_text`, `cta_name`, `cta_location`, `article_title`, `article_category`, `article_slug`, `feature_name`, `faq_question`, `navigation_item`, `navigation_location`, `selected_theme`, `link_url`, `link_text`, `interaction_type`, `demo_section` |
 | Built-in variable | Event |
 
-The import file was generated from the site’s event list but could not be test-imported from the build environment (Google domains blocked). If GTM rejects it, create the same items by hand from the table above.
+**Status:** imported into GTM-M4QHPXQV and published on 2026-11-06; the site owner confirmed GA4 is receiving data. If you ever rebuild the container, re-import the same file (Merge), or create the items by hand from the table above.
 
 Each site event is pushed as `dataLayer.push({ event: '<name>', …params })`, with every other known parameter set to `undefined` so values don’t carry over between events in GTM’s data model.
 
