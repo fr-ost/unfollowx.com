@@ -32,7 +32,8 @@ function handleClick(event) {
   if (url.protocol !== 'http:' && url.protocol !== 'https:') return; // skip mailto:, tel: (no emails in events)
 
   // One event per interaction: install clicks are never also counted as outbound/nav.
-  if (url.hostname === STORE_HOST || el.dataset.install !== undefined) {
+  const isStoreListing = url.hostname === STORE_HOST && !url.pathname.endsWith('/reviews');
+  if (el.dataset.install !== undefined || isStoreListing) {
     track('chrome_install_click', {
       page_location: window.location.href,
       page_path: path,

@@ -6,6 +6,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import Icon from '@/components/Icon';
 import InstallLink from '@/components/InstallLink';
 import JsonLd from '@/components/JsonLd';
+import SupportBox from '@/components/SupportBox';
 import { TrackEvent } from '@/components/Analytics';
 import { articleSlugs, getArticle, getRelated } from '@/lib/blog';
 import { renderBlocks } from '@/lib/markdown';
@@ -93,6 +94,7 @@ export default async function ArticlePage({ params }) {
 
         <div className="container article-layout">
           <aside className="article-aside" aria-label="On this page">
+            <div className="article-aside-inner">
             <div className="toc">
               <b>On this page</b>
               <ol>
@@ -103,6 +105,7 @@ export default async function ArticlePage({ params }) {
               <b>UnfollowX Pro</b>
               <span>Free forever. No subscription, no premium plan.</span>
               <InstallLink location="blog_sidebar" size="sm">Add to Chrome — Free</InstallLink>
+            </div>
             </div>
           </aside>
 
@@ -129,6 +132,10 @@ export default async function ArticlePage({ params }) {
           {related.map((r) => <ArticleCard key={r.slug} article={r} location="blog_related" />)}
         </div>
       </section>
+
+      <div className="container lp-section">
+        <SupportBox id="support" />
+      </div>
 
       <section className="container section-tight">
         <div className="article-cta" data-reveal="scale">

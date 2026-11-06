@@ -29,8 +29,9 @@ const columns = [
     title: 'Company',
     links: [
       ['Privacy policy', '/privacy'],
-      ['Contact', `mailto:${CONTACT_EMAIL}`],
-      ['Telegram support', TELEGRAM_URL]
+      ['Contact & support', '/faq#support'],
+      ['Telegram support', TELEGRAM_URL],
+      ['Email support', `mailto:${CONTACT_EMAIL}`]
     ]
   }
 ];

@@ -75,3 +75,31 @@ Targets: Accessibility, SEO and Best Practices met (one page at 96 BP: 1× scree
 - Tests against the live production domain (www/apex redirects, Vercel headers) — the domain was unreachable from the environment.
 - Real-device testing (iOS Safari, Android Chrome) and non-Chromium browsers.
 - GA4 DebugView/Realtime and GTM Preview.
+
+## Round 2 — smoothness, screenshots, sidebar, support box (2026-11-06)
+
+### Rendering performance (Playwright, Chromium with 4× CPU throttling, software rendering)
+
+Scroll = mouse-wheel scroll through the whole page; idle = 4 s with no input at the top of the page.
+
+| Page | Before: scroll | Before: idle main-thread / layouts | After: scroll | After: idle main-thread / layouts |
+| --- | --- | --- | --- | --- |
+| `/` desktop 1440 | 44 fps, 6% janky frames | **2,172 ms / 172** | 49–50 fps, 4% | **~120 ms / 4** |
+| `/` mobile 390 | 42 fps, 5% | **2,295 ms / 170** | 50–53 fps, 2–4% | **~5 ms / 0** |
+| article desktop | 56 fps, 2% | 6 ms / 0 | 55–57 fps, 1–2% | 2–4 ms / 0 |
+| `/features` desktop | 50 fps, 3% | 5 ms / 0 | 51–55 fps, 2–4% | 4–6 ms / 0 |
+
+Root causes fixed: a `width` animation (layout every frame) and a `box-shadow` pulse running forever, the hero re-rendering every second, blurred sticky header/feature nav, a blurred drifting background, full-page `<ViewTransition>` snapshots on navigation, per-card reveal layers in large grids, and startup layout reads that defeated `content-visibility`. A/B tests showed masks, shadows, images and gradients had no measurable effect. Numbers vary ±3 fps between runs in this shared, GPU-less sandbox; real devices with GPU rasterisation should do better.
+
+Lighthouse (mobile, homepage, 2 runs): **93–95 / 100 / 100 / 100**, TBT 150–160 ms, CLS 0. Desktop: 100 on `/`, `/features`, the checker page and an article. The low-resolution image warning is gone.
+
+### Screenshots
+
+Replaced with 2× captures of the real extension UI (2720 px dashboards, 760 px popups) rendered by the extension’s own offline capture tool against its mock x.com with fictional accounts. Verified: the optimizer serves the 2720 px original for a 1198 px slot on a 2× display and 1200 px (32 KB AVIF) on 1× screens.
+
+### Other checks
+
+- Blog sidebar: contents list and CTA are one sticky column; at a 1,400 px scroll position the list ends at 454 px and the CTA starts at 478 px (no overlap).
+- Support box: review link counted as `cta_click` (not an install), Telegram and copy-email tracked without the copied value, “Copied” state shown.
+- No-JS: a `<Suspense>` experiment hid homepage content without JavaScript and was reverted; the no-JS test passes.
+- Suites on the final build: technical SEO ✅, accessibility + functional 60/60 ✅, analytics 60/60 ✅, horizontal overflow (12 routes × 6 widths) ✅, reveal behaviour ✅.

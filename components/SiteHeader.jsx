@@ -28,10 +28,12 @@ export default function SiteHeader() {
   // Scroll state + reading progress on articles (one rAF-throttled listener).
   useEffect(() => {
     let frame = 0;
+    let wasScrolled = null;
     const update = () => {
       frame = 0;
       const y = window.scrollY;
-      setScrolled(y > 8);
+      const isScrolled = y > 8;
+      if (isScrolled !== wasScrolled) { wasScrolled = isScrolled; setScrolled(isScrolled); }
       if (isArticle && headerRef.current) {
         const max = document.documentElement.scrollHeight - window.innerHeight;
         headerRef.current.style.setProperty('--progress', max > 0 ? Math.min(1, y / max).toFixed(4) : '0');

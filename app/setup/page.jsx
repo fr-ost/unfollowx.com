@@ -7,8 +7,9 @@ import Icon from '@/components/Icon';
 import InstallLink from '@/components/InstallLink';
 import JsonLd from '@/components/JsonLd';
 import Screenshot from '@/components/Screenshot';
+import SupportBox from '@/components/SupportBox';
 import { pageMetadata } from '@/lib/seo';
-import { CONTACT_EMAIL, STORE_URL, TELEGRAM_URL, absoluteUrl } from '@/lib/site';
+import { STORE_URL, absoluteUrl } from '@/lib/site';
 
 export const metadata = pageMetadata({
   title: 'How to Set Up UnfollowX Pro in Chrome (Step-by-Step)',
@@ -41,12 +42,14 @@ const steps = [
   {
     title: 'Protect the accounts you want to keep',
     body: <>Tap the shield next to anyone you never want unfollowed to add them to your whitelist. In <strong>Settings</strong>, Keep rules can protect verified accounts, private accounts, accounts above a follower count, keyword matches and accounts you followed recently. Check the <strong>Kept</strong> tab to confirm. Guide: <Link href="/blog/how-to-whitelist-accounts-before-unfollowing-on-x">whitelisting before unfollowing</Link>.</>,
-    note: 'Whitelisted accounts are never unfollowed, in any mode — including “Unfollow all”.'
+    note: 'Whitelisted accounts are never unfollowed, in any mode — including “Unfollow all”.',
+    shot: 'settingsKeep', wide: true
   },
   {
     title: 'Choose a pace',
     body: <>In <strong>Settings</strong>, pick <strong>Safe</strong> (15–35 s between actions, 10-minute break every 30, 250 a day), <strong>Balanced</strong> (8–20 s, 6 minutes every 50, 400 a day — the default) or <strong>Fast</strong> (4–10 s, 5 minutes every 80, 1,000 a day), or set your own numbers. New to bulk actions? Start with Safe.</>,
-    note: 'X applies its own limits and rules to every account. Pacing helps, but no tool can guarantee X will allow every action.'
+    note: 'X applies its own limits and rules to every account. Pacing helps, but no tool can guarantee X will allow every action.',
+    shot: 'settingsSpeed', wide: true
   },
   {
     title: 'Start, then pause or stop whenever you like',
@@ -105,7 +108,7 @@ export default function SetupPage() {
                   <h2><span className="visually-hidden">Step {index + 1}: </span>{step.title}</h2>
                   <p>{step.body}</p>
                   <div className="setup-note"><Icon name="info" /><span>{step.note}</span></div>
-                  {step.shot ? <Screenshot shot={step.shot} className="shot-sm" caption="Real extension interface · sample account" sizes="360px" /> : null}
+                  {step.shot ? <Screenshot shot={step.shot} className={`shot-sm${step.wide ? ' shot-wide-step' : ''}`} caption="Real extension interface · sample account" sizes={step.wide ? '(max-width: 960px) 90vw, 720px' : '360px'} /> : null}
                 </div>
               </li>
             ))}
@@ -149,10 +152,13 @@ export default function SetupPage() {
         <div className="section-head" data-reveal="">
           <div className="eyebrow">Setup questions</div>
           <h2 id="setup-faq-title">Quick answers</h2>
-          <p>Still stuck? <a className="text-link" href={TELEGRAM_URL} target="_blank" rel="noopener">Message support on Telegram</a> or <a className="text-link" href={`mailto:${CONTACT_EMAIL}`}>email us</a>, with your extension and Chrome versions.</p>
         </div>
         <FaqAccordion items={setupFaqs} idPrefix="setup-faq" />
       </section>
+
+      <div className="container lp-section">
+        <SupportBox id="support" />
+      </div>
 
       <CtaBand location="setup_cta" title="Ready when you are." text="Install UnfollowX Pro and run a read-only scan. Nothing changes on X until you choose." secondary={{ label: 'Browse how-to guides', href: '/guides' }} />
     </>

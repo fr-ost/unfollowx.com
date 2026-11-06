@@ -47,7 +47,7 @@ export default function FollowerTrackerPage() {
             <li><Icon name="check" />Snapshots stay in Chrome extension storage</li>
           </ul>
         </div>
-        <Screenshot shot="storeTracker" priority caption="Chrome Web Store screenshot of the Followers page (sample accounts)" sizes="(max-width: 960px) 100vw, 580px" />
+        <Screenshot shot="followers" preload caption="Followers page: Unfollowed you, New followers, You don’t follow back (sample accounts)" sizes="(max-width: 960px) 100vw, 580px" />
       </section>
 
       <section className="container lp-section" aria-labelledby="how-tracker">
@@ -92,7 +92,7 @@ export default function FollowerTrackerPage() {
               <p>Want an alert instead of checking? Turn on optional desktop notifications for new unfollowers.</p>
             </div>
           </div>
-          <Screenshot shot="followers" caption="Followers page, light mode (real interface, sample accounts)" sizes="(max-width: 960px) 100vw, 580px" />
+          <Screenshot shot="popupDark" caption="The popup tells you when people unfollow you (dark mode, sample account)" sizes="(max-width: 960px) 340px, 380px" className="shot-narrow" />
         </div>
       </section>
 

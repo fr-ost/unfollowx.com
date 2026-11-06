@@ -9,6 +9,7 @@ import Icon from '@/components/Icon';
 import InstallLink from '@/components/InstallLink';
 import JsonLd from '@/components/JsonLd';
 import Screenshot from '@/components/Screenshot';
+import SupportBox from '@/components/SupportBox';
 import { features } from '@/lib/features';
 import { homeFaqs } from '@/lib/faq';
 import { getArticle } from '@/lib/blog';
@@ -287,9 +288,9 @@ export default function HomePage() {
             <p>Screenshots of the actual popup and dashboard, shown with fictional sample accounts.</p>
           </div>
           <div className="shots-grid" data-stagger="90">
-            <Screenshot shot="popup" className="shot-popup" caption="Popup after a scan" sizes="(max-width: 768px) 80vw, 300px" />
-            <Screenshot shot="followers" className="shot-wide" caption="Followers: who unfollowed you, new followers" sizes="(max-width: 768px) 100vw, 760px" />
-            <Screenshot shot="inactive" className="shot-wide2" caption="Following → Inactive, in dark mode" sizes="(max-width: 768px) 100vw, 760px" />
+            <Screenshot shot="popup" className="shot-popup" caption="Popup after a scan" sizes="(max-width: 860px) 340px, 340px" />
+            <Screenshot shot="overview" className="shot-wide" caption="Dashboard overview with a paced run in progress" sizes="(max-width: 860px) 100vw, 780px" />
+            <Screenshot shot="inactive" className="shot-wide2" caption="Following → Inactive, in dark mode" sizes="(max-width: 860px) 100vw, 780px" />
           </div>
         </div>
       </section>
@@ -369,6 +370,10 @@ export default function HomePage() {
           <FaqAccordion items={homeFaqs} idPrefix="home-faq" />
         </div>
       </section>
+
+      <div className="container section-tight">
+        <SupportBox id="support" />
+      </div>
 
       <CtaBand
         location="final_cta"

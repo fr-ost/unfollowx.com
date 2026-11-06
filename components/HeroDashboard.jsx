@@ -26,29 +26,13 @@ const QUEUE = ['atlas_archive', 'bluehour_notes', 'westward_jrnl', 'pixel_harbor
 
 const fmt = (n) => n.toLocaleString('en-US');
 
-function useCountUp(target, run, duration = 1100) {
-  const [value, setValue] = useState(run ? 0 : target);
-  useEffect(() => {
-    if (!run) { setValue(target); return undefined; }
-    let frame;
-    const start = performance.now();
-    const tick = (now) => {
-      const t = Math.min(1, (now - start) / duration);
-      setValue(Math.round(target * (1 - Math.pow(1 - t, 3))));
-      if (t < 1) frame = requestAnimationFrame(tick);
-    };
-    frame = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frame);
-  }, [target, run, duration]);
-  return value;
-}
-
-function Stat({ stat, animate }) {
-  const value = useCountUp(stat.value, animate);
+// Static number in the HTML; count-up animation (if motion is allowed) writes
+// textContent directly, so React never re-renders the dashboard for it.
+function Stat({ stat }) {
   return (
     <div className={`hd-stat tone-${stat.tone}`}>
       <span className="hd-stat-label"><Icon name={stat.icon} />{stat.label}</span>
-      <b className="tabular">{fmt(value)}</b>
+      <b className="tabular" data-count={stat.value}>{fmt(stat.value)}</b>
     </div>
   );
 }
@@ -79,26 +63,78 @@ function runReducer(state, action) {
   };
 }
 
+// Only this small component updates over time (once per second, and only
+// while the hero is on screen and the tab is visible).
+function LiveRun({ active }) {
+  const [{ done, countdown, history }, dispatch] = useReducer(runReducer, initialRun);
+  useEffect(() => {
+    if (!active) return undefined;
+    const timer = window.setInterval(() => {
+      if (!document.hidden) dispatch({ type: 'tick', nextDelay: 6 + Math.floor(Math.random() * 7) });
+    }, 1000);
+    return () => window.clearInterval(timer);
+  }, [active]);
+  const pct = Math.round((done / 408) * 100);
+  return (
+    <>
+      <div className="hd-float hd-run" aria-hidden="true">
+        <div className="hd-run-top"><span className="hd-live"><i />Running</span><span className="tabular">{pct}%</span></div>
+        <div className="hd-run-count"><b className="tabular">{done}</b> / 408 unfollowed</div>
+        <div className="hd-progress"><span style={{ transform: `scaleX(${done / 408})` }} /></div>
+        <div className="hd-run-next"><span>Next account in</span><b className="tabular">{countdown}s</b></div>
+        <div className="hd-run-actions"><span><Icon name="pause" />Pause</span><span className="stop"><Icon name="stop" />Stop</span></div>
+      </div>
+
+      <div className="hd-float hd-history" aria-hidden="true">
+        <div className="hd-history-head"><Icon name="history" />History</div>
+        {history.map((item) => (
+          <div className={`hd-history-row${item.fresh ? ' fresh' : ''}`} key={item.id}>
+            <span className={`dot ${item.r}`} />
+            <span className="txt">{item.r === 'ok' ? 'Unfollowed' : 'Skipped'} <b>@{item.h}</b>{item.r === 'skip' ? <em> · whitelisted</em> : null}</span>
+            <span className="time">{item.t}</span>
+          </div>
+        ))}
+      </div>
+    </>
+  );
+}
+
 export default function HeroDashboard() {
   const ref = useRef(null);
-  const [animate, setAnimate] = useState(false);
-  const [{ done, countdown, history }, dispatch] = useReducer(runReducer, initialRun);
+  const [active, setActive] = useState(false);
 
   useEffect(() => {
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce) return undefined;
-    setAnimate(true);
-    let visible = true;
-    const observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; }, { threshold: 0.15 });
-    if (ref.current) observer.observe(ref.current);
-    const timer = window.setInterval(() => {
-      if (!visible || document.hidden) return;
-      dispatch({ type: 'tick', nextDelay: 6 + Math.floor(Math.random() * 7) });
-    }, 1000);
-    return () => { window.clearInterval(timer); observer.disconnect(); };
+    const el = ref.current;
+    if (!el || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
+    // Count-up once, writing text directly — started only when the browser
+    // is idle after load, so it never competes with hydration.
+    const nodes = Array.from(el.querySelectorAll('[data-count]'));
+    let frame = 0;
+    let idle = 0;
+    const run = () => {
+      const start = performance.now();
+      frame = requestAnimationFrame(function tick(now) {
+        const t = Math.min(1, (now - start) / 900);
+        const e = 1 - Math.pow(1 - t, 3);
+        nodes.forEach((n) => { n.textContent = fmt(Math.round(Number(n.dataset.count) * e)); });
+        if (t < 1) frame = requestAnimationFrame(tick);
+      });
+    };
+    const schedule = () => { idle = 'requestIdleCallback' in window ? window.requestIdleCallback(run, { timeout: 1500 }) : window.setTimeout(run, 300); };
+    if (document.readyState === 'complete') schedule(); else window.addEventListener('load', schedule, { once: true });
+    // Live simulation + floating cards only run while the hero is visible.
+    const observer = new IntersectionObserver(([entry]) => {
+      setActive(entry.isIntersecting);
+      el.classList.toggle('is-paused', !entry.isIntersecting);
+    }, { threshold: 0.05 });
+    observer.observe(el);
+    return () => {
+      cancelAnimationFrame(frame);
+      if ('cancelIdleCallback' in window) window.cancelIdleCallback(idle); else window.clearTimeout(idle);
+      window.removeEventListener('load', schedule);
+      observer.disconnect();
+    };
   }, []);
-
-  const pct = Math.round((done / 408) * 100);
 
   return (
     <div
@@ -124,7 +160,7 @@ export default function HeroDashboard() {
             <span className="hd-nav"><Icon name="sliders" />Settings</span>
           </div>
           <div className="hd-main">
-            <div className="hd-stats">{STATS.map((stat) => <Stat key={stat.key} stat={stat} animate={animate} />)}</div>
+            <div className="hd-stats">{STATS.map((stat) => <Stat key={stat.key} stat={stat} />)}</div>
             <div className="hd-toolbar">
               <span className="hd-search"><Icon name="search" />Search name, @handle or bio</span>
               <span className="hd-tabs">
@@ -154,24 +190,7 @@ export default function HeroDashboard() {
         </div>
       </div>
 
-      <div className="hd-float hd-run" aria-hidden="true">
-        <div className="hd-run-top"><span className="hd-live"><i />Running</span><span className="tabular">{pct}%</span></div>
-        <div className="hd-run-count"><b className="tabular">{done}</b> / 408 unfollowed</div>
-        <div className="hd-progress"><span style={{ transform: `scaleX(${done / 408})` }} /></div>
-        <div className="hd-run-next"><span>Next account in</span><b className="tabular">{countdown}s</b></div>
-        <div className="hd-run-actions"><span><Icon name="pause" />Pause</span><span className="stop"><Icon name="stop" />Stop</span></div>
-      </div>
-
-      <div className="hd-float hd-history" aria-hidden="true">
-        <div className="hd-history-head"><Icon name="history" />History</div>
-        {history.map((item) => (
-          <div className={`hd-history-row${item.fresh ? ' fresh' : ''}`} key={item.id}>
-            <span className={`dot ${item.r}`} />
-            <span className="txt">{item.r === 'ok' ? 'Unfollowed' : 'Skipped'} <b>@{item.h}</b>{item.r === 'skip' ? <em> · whitelisted</em> : null}</span>
-            <span className="time">{item.t}</span>
-          </div>
-        ))}
-      </div>
+      <LiveRun active={active} />
     </div>
   );
 }

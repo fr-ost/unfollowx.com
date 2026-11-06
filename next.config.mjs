@@ -12,7 +12,7 @@ const nextConfig = {
   turbopack: { root: process.cwd() },
   images: {
     formats: ['image/avif', 'image/webp'],
-    qualities: [75, 80],
+    qualities: [75, 90],
     minimumCacheTTL: 2678400
   },
   // Article Markdown and OG fonts are read with fs at build time; include

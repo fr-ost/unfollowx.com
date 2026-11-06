@@ -4,38 +4,45 @@ import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
 
 // Progressive scroll reveals + pointer spotlight for [data-spotlight] cards.
-// Content is visible by default; html.js-reveal (added here, only when motion
-// is allowed) hides not-yet-seen [data-reveal] elements until they enter view.
+// Content is visible by default (no JS, reduced motion). When motion is
+// allowed, elements that start off-screen get .reveal-pending and fade in
+// (.is-visible) as they enter the viewport.
 export default function RevealOnView() {
   const pathname = usePathname();
 
   useEffect(() => {
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduce || !('IntersectionObserver' in window)) return undefined;
-    const root = document.documentElement;
 
     document.querySelectorAll('[data-stagger]').forEach((group) => {
       const step = Number(group.dataset.stagger) || 70;
-      Array.from(group.children).forEach((child, index) => {
+      const children = Array.from(group.children);
+      // Large grids reveal as one unit: one compositing layer instead of a
+      // dozen, which keeps scrolling smooth on mid-range devices.
+      if (children.length > 6) { group.setAttribute('data-reveal', ''); return; }
+      children.forEach((child, index) => {
         if (!child.hasAttribute('data-reveal')) child.setAttribute('data-reveal', '');
         child.style.setProperty('--reveal-delay', `${Math.min(index * step, 420)}ms`);
       });
     });
 
-    const targets = Array.from(document.querySelectorAll('[data-reveal]:not(.is-visible)'));
-    // Anything already in (or above) the viewport is shown immediately: no flash, no delayed LCP.
-    const fold = window.innerHeight * 0.92;
-    targets.forEach((el) => { if (el.getBoundingClientRect().top < fold) el.classList.add('is-visible'); });
-    root.classList.add('js-reveal');
-
+    // No layout reads here (getBoundingClientRect would force layout of
+    // sections the browser skips via content-visibility). The observer's
+    // first report decides: on-screen elements are left alone; off-screen
+    // ones are hidden ("reveal-pending") and fade in when they arrive.
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
+        const el = entry.target;
+        if (entry.isIntersecting) {
+          if (el.classList.contains('reveal-pending')) el.classList.add('is-visible');
+          observer.unobserve(el);
+        } else if (!el.dataset.revealSeen) {
+          el.classList.add('reveal-pending');
+        }
+        el.dataset.revealSeen = '1';
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
-    targets.forEach((el) => { if (!el.classList.contains('is-visible')) observer.observe(el); });
+    document.querySelectorAll('[data-reveal]').forEach((el) => { if (!el.dataset.revealSeen) observer.observe(el); });
     return () => observer.disconnect();
   }, [pathname]);
 

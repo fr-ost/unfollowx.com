@@ -23,7 +23,6 @@ body {
   font-feature-settings: 'cv11', 'ss01';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
   overflow-x: clip;
 }
 img, svg, video { display: block; max-width: 100%; }
@@ -120,20 +119,19 @@ html.theme-reveal::view-transition-new(root) {
   to { clip-path: circle(var(--reveal-r, 150%) at var(--reveal-x, 90%) var(--reveal-y, 0%)); }
 }
 
-/* ---- Route transitions (React <ViewTransition update="page-swap">) ---- */
-::view-transition-old(.page-swap) { animation: page-out 150ms var(--ease-in) both; }
-::view-transition-new(.page-swap) { animation: page-in 320ms var(--ease-out) both; }
-@keyframes page-out { to { opacity: 0; transform: translateY(-4px); } }
-@keyframes page-in { from { opacity: 0; transform: translateY(10px); } }
+/* ---- Route transitions: a short compositor-only fade on client navigation
+   (app/template.jsx). Never on the first page load, so LCP is unaffected. ---- */
+.route-enter { animation: route-in 260ms var(--ease-out) both; }
+@keyframes route-in { from { opacity: .4; transform: translate3d(0, 8px, 0); } }
 
-/* ---- Scroll reveal: progressive enhancement. Content is visible without JS;
-   html.js-reveal is added by RevealOnView only when motion is allowed. ---- */
-html.js-reveal [data-reveal]:not(.is-visible) { opacity: 0; transform: translateY(18px); }
-html.js-reveal [data-reveal] {
-  transition: opacity var(--dur-4) var(--ease-out), transform var(--dur-4) var(--ease-out);
+/* ---- Scroll reveal: progressive enhancement. Content is visible without JS
+   and with reduced motion; RevealOnView adds .reveal-pending only to elements
+   that start off-screen, then .is-visible when they scroll in. ---- */
+[data-reveal].reveal-pending:not(.is-visible) { opacity: 0; transform: translate3d(0, 14px, 0); }
+[data-reveal].reveal-pending.is-visible {
+  transition: opacity 480ms var(--ease-out), transform 480ms var(--ease-out);
   transition-delay: var(--reveal-delay, 0ms);
 }
-html.js-reveal [data-reveal='scale']:not(.is-visible) { transform: translateY(14px) scale(.985); }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

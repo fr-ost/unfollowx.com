@@ -1,5 +1,4 @@
 import localFont from 'next/font/local';
-import { ViewTransition } from 'react';
 import './styles/tokens.css';
 import './styles/base.css';
 import './styles/components.css';
@@ -67,9 +66,7 @@ export default function RootLayout({ children }) {
         <a className="skip-link" href="#main">Skip to content</a>
         <JsonLd data={siteGraph} />
         <SiteHeader />
-        <ViewTransition update="page-swap" default="none">
-          <main id="main" tabIndex={-1}>{children}</main>
-        </ViewTransition>
+        <main id="main" tabIndex={-1}>{children}</main>
         <SiteFooter />
         <RevealOnView />
         <Analytics />

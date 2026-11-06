@@ -19,9 +19,11 @@ export const metadata = pageMetadata({
 });
 
 const groupShots = {
-  find: <div className="feature-shot pair"><Screenshot shot="popup" caption="Popup after a scan" sizes="(max-width: 860px) 80vw, 340px" /><Screenshot shot="followers" caption="Followers page: who unfollowed you and who’s new" sizes="(max-width: 860px) 100vw, 720px" /></div>,
-  review: <div className="feature-shot"><Screenshot shot="inactive" caption="Following → Inactive with filters, in dark mode" sizes="(max-width: 1200px) 100vw, 1100px" /></div>,
-  control: <div className="feature-shot pair"><Screenshot shot="run" caption="A paced run: progress, next account, Pause and Stop" sizes="(max-width: 860px) 80vw, 340px" /><Screenshot shot="storePacing" caption="Chrome Web Store screenshot: pacing that runs in the background" sizes="(max-width: 860px) 100vw, 720px" /></div>
+  find: <div className="feature-shot pair"><Screenshot shot="popup" caption="Popup after a scan" sizes="(max-width: 860px) 340px, 360px" /><Screenshot shot="followers" caption="Followers page: who unfollowed you and who’s new" sizes="(max-width: 860px) 100vw, 740px" /></div>,
+  review: <div className="feature-shot"><Screenshot shot="following" caption="Following page: tabs, quick filters, selection, Save group, Keep, Export" sizes="(max-width: 1240px) 100vw, 1150px" /></div>,
+  protect: <div className="feature-shot"><Screenshot shot="settingsKeep" caption="Settings → Keep rules" sizes="(max-width: 1240px) 100vw, 1150px" /></div>,
+  control: <div className="feature-shot pair"><Screenshot shot="run" caption="A paced run: progress, next account, Pause and Stop" sizes="(max-width: 860px) 340px, 360px" /><Screenshot shot="settingsSpeed" caption="Settings → Speed presets, breaks and daily limit" sizes="(max-width: 860px) 100vw, 740px" /></div>,
+  comfort: <div className="feature-shot"><Screenshot shot="inactive" caption="Dark mode: Following → Inactive with last-active filters" sizes="(max-width: 1240px) 100vw, 1150px" /></div>
 };
 
 export default function FeaturesPage() {

@@ -4,10 +4,10 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import CtaBand from '@/components/CtaBand';
 import FaqAccordion from '@/components/FaqAccordion';
 import Icon from '@/components/Icon';
+import SupportBox from '@/components/SupportBox';
 import JsonLd from '@/components/JsonLd';
 import { faqCategories, faqs, plainAnswer } from '@/lib/faq';
 import { pageMetadata } from '@/lib/seo';
-import { CONTACT_EMAIL, TELEGRAM_URL } from '@/lib/site';
 
 export const metadata = pageMetadata({
   title: 'FAQ — Free Forever, X Limits, Privacy & Features',
@@ -41,14 +41,6 @@ export default function FaqPage() {
           <FaqAccordion items={faqs} categories={faqCategories} idPrefix="faq" />
           <aside className="faq-side" aria-label="Help">
             <div className="card">
-              <h2>Still have a question?</h2>
-              <p>For support or bug reports, include your extension version, Chrome version and what you were doing.</p>
-              <div className="contact-links">
-                <a className="btn btn-secondary btn-sm" href={TELEGRAM_URL} target="_blank" rel="noopener"><Icon name="send" />Telegram support</a>
-                <a className="btn btn-secondary btn-sm" href={`mailto:${CONTACT_EMAIL}`}><Icon name="mail" />Email support</a>
-              </div>
-            </div>
-            <div className="card">
               <h2>New here?</h2>
               <p>The setup guide walks through installation and your first scan in about five minutes.</p>
               <Link className="text-link" href="/setup" data-cta="Setup guide" data-cta-location="faq_aside" style={{ marginTop: 12 }}>Read the setup guide <Icon name="arrowRight" className="arrow" size={15} /></Link>
@@ -56,6 +48,10 @@ export default function FaqPage() {
           </aside>
         </div>
       </section>
+
+      <div className="container section-tight">
+        <SupportBox id="support" />
+      </div>
 
       <CtaBand location="faq_cta" />
     </>

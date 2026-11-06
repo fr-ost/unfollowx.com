@@ -93,6 +93,6 @@ Simulated throttling (Moto G Power / Slow 4G for mobile). These are lab numbers 
 
 1. Confirm in Vercel → Domains that `unfollowx.com` redirects to `www.unfollowx.com` (and **not** the reverse — the code-level redirect would loop).
 2. Submit the sitemap in Google Search Console and Bing Webmaster Tools.
-3. Replace 1× screenshots with 2× captures.
+3. ~~Replace 1× screenshots with 2× captures~~ — done (2× real UI captures).
 4. Re-validate X help-center quotes (help.x.com was unreachable from the build environment).
 5. Consider hreflang + localised pages for the extension’s 7 languages.

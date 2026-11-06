@@ -85,12 +85,25 @@ Styles: `.eyebrow` (uppercase label with gradient dash), `.lead`, `.gradient-tex
 
 What moves, and how:
 
-- **Route transitions:** React `<ViewTransition update="page-swap">` around `<main>` (Next.js 16) — 150 ms fade-out, 320 ms fade/slide-in.
+- **Route transitions:** `app/template.jsx` adds a 260 ms opacity/transform fade to the new page on client-side navigation only (never on first load). React `<ViewTransition>` was removed: its full-page snapshots made navigation stutter.
 - **Theme switch:** View Transitions API circular reveal from the toggle; falls back to a 320 ms colour transition.
-- **Scroll reveals:** `[data-reveal]` and staggered `[data-stagger]` children (`components/RevealOnView.jsx`). Content is visible by default; hiding only happens after JS confirms motion is allowed, and anything already on screen is shown immediately (no LCP delay).
+- **Scroll reveals:** `[data-reveal]` and staggered `[data-stagger]` children (`components/RevealOnView.jsx`). Content is visible by default; IntersectionObserver’s first report adds `.reveal-pending` only to elements that start off-screen (no layout reads), and `.is-visible` fades them in. Grids with more than 6 children reveal as one unit.
 - **Hero:** transform-only entrance (text is painted immediately), gently floating cards, live counters and a simulated paced run — paused when off-screen or the tab is hidden.
 - **Micro-interactions:** button lift + light sweep, cursor spotlight on cards (`[data-spotlight]`), sliding nav indicator, accordion height animation (`interpolate-size`, progressive), demo row entrances.
-- Rules: transform and opacity only, no scroll-jacking, no continuous expensive effects (the two hero aurora gradients drift slowly via transform), **`prefers-reduced-motion: reduce` disables all of it** and the hero simulation does not run.
+- Rules: transform and opacity only, no scroll-jacking, **`prefers-reduced-motion: reduce` disables all of it** and the hero simulation does not run.
+
+### Performance rules (keep the site smooth)
+
+Measured on 2026-11-06: these changes cut idle homepage main-thread work from ~2.2 s per 4 s to ~0.1 s.
+
+- No `backdrop-filter` on sticky elements (header, feature nav): it re-blurs on every scroll frame. Use a near-opaque `color-mix` background.
+- No `filter: blur()` on large elements; radial gradients are already soft.
+- Never animate `width`, `height`, `top`/`left` or `box-shadow`. Animate `transform`/`opacity`; for hover shadows, fade a pre-rendered shadow layer (`.card-hover::after`).
+- Infinite animations must be small, compositor-only and paused off-screen (`.hero-visual.is-paused`).
+- Frequently updating UI lives in its own small component (`LiveRun`) so the rest never re-renders; counters write `textContent` directly.
+- No layout reads (`getBoundingClientRect`, `offset*`) on page load; they force layout of `content-visibility` sections.
+- Below-the-fold sections use `content-visibility: auto` with `contain-intrinsic-size`.
+- Don’t wrap SSR content in `<Suspense>` for hydration tricks: on static pages it can ship hidden HTML that needs JS to show.
 
 ## Components
 

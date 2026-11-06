@@ -47,7 +47,7 @@ export default function NonFollowersCheckerPage() {
             <li><Icon name="check" />Results stay in Chrome extension storage on your computer</li>
           </ul>
         </div>
-        <Screenshot shot="popup" priority caption="The popup right after a scan (real interface, sample account)" sizes="(max-width: 960px) 90vw, 420px" className="lp-shot" />
+        <Screenshot shot="popup" preload caption="The popup right after a scan (real interface, sample account)" sizes="(max-width: 960px) 360px, 420px" className="lp-shot" />
       </section>
 
       <section className="container lp-section" aria-labelledby="how-checker">
@@ -84,7 +84,7 @@ export default function NonFollowersCheckerPage() {
 
       <section className="container lp-section" aria-labelledby="methods">
         <div className="lp-split">
-          <Screenshot shot="inactive" caption="Following page with tabs, filters and selection (dark mode, sample accounts)" sizes="(max-width: 960px) 100vw, 580px" />
+          <Screenshot shot="following" caption="Following page: Don’t follow back tab, filters and selection (sample accounts)" sizes="(max-width: 960px) 100vw, 580px" />
           <div data-reveal="">
             <div className="eyebrow">Your options</div>
             <h2 id="methods">Checker vs checking by hand</h2>

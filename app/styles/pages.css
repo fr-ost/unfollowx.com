@@ -38,15 +38,21 @@
 .byline small { display: block; margin-top: 2px; color: var(--text-3); font-size: .8125rem; }
 .article-layout { display: grid; grid-template-columns: 240px minmax(0, 720px); justify-content: center; gap: clamp(2rem, 1rem + 3vw, 4.5rem); padding-top: var(--space-6); }
 .article-aside { position: relative; }
-.article-aside > * { position: sticky; top: calc(var(--header-h) + 28px); }
+/* One sticky column: the contents list and the CTA move together and can
+   never overlap. A long list scrolls inside its own area. */
+.article-aside-inner {
+  position: sticky; top: calc(var(--header-h) + 28px);
+  display: flex; flex-direction: column; gap: var(--space-6);
+  max-height: calc(100vh - var(--header-h) - 56px);
+}
+.article-aside-inner .toc { min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
 .toc b, .aside-cta b { display: block; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--tracking-label); color: var(--text-3); font-weight: 700; }
 .toc ol { list-style: none; margin-top: 12px; display: grid; gap: 2px; border-left: 1px solid var(--border); }
 .toc a { display: block; padding: 6px 0 6px 14px; margin-left: -1px; border-left: 2px solid transparent; font-size: .8125rem; line-height: 1.45; color: var(--text-2); transition: color var(--dur-2), border-color var(--dur-2); }
 .toc a:hover { color: var(--text); border-left-color: var(--accent); }
-.aside-cta { position: static !important; margin-top: var(--space-8); padding: 16px; border-radius: var(--radius-md); background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow-xs); }
+.aside-cta { flex: none; padding: 16px; border-radius: var(--radius-md); background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow-xs); }
 .aside-cta span { display: block; margin: 6px 0 12px; font-size: .8125rem; color: var(--text-2); line-height: 1.5; }
 .aside-cta .btn { width: 100%; }
-.article-aside .toc { max-height: calc(100vh - var(--header-h) - 220px); overflow-y: auto; }
 .article-body { min-width: 0; }
 .article-body > p:first-child { font-size: 1.125rem; color: var(--text); }
 .inline-cta {
@@ -83,7 +89,7 @@
 @media (max-width: 640px) { .next-steps { grid-template-columns: 1fr; } }
 
 /* ---------- Features page ---------- */
-.feature-nav { position: sticky; top: var(--header-h); z-index: var(--z-sticky); background: var(--surface-glass); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-block: 1px solid var(--border); }
+.feature-nav { position: sticky; top: var(--header-h); z-index: var(--z-sticky); background: color-mix(in srgb, var(--bg) 96%, transparent); border-block: 1px solid var(--border); }
 .feature-nav .container { display: flex; gap: 6px; overflow-x: auto; padding-block: 10px; scrollbar-width: none; }
 .feature-nav .container::-webkit-scrollbar { display: none; }
 .feature-nav a { flex: none; padding: 7px 13px; border-radius: 999px; font-size: .8125rem; font-weight: 600; color: var(--text-2); }
@@ -204,3 +210,11 @@
 .not-found .cta-row { justify-content: center; margin-top: var(--space-8); }
 .not-found .links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px; margin-top: var(--space-8); font-size: .9rem; }
 .not-found .links a { color: var(--accent-text); text-decoration: underline; text-underline-offset: 3px; }
+.setup-step .shot.shot-wide-step { max-width: none; }
+.shot-narrow { max-width: 380px; margin-inline: auto; width: 100%; }
+
+/* Rendering performance: skip off-screen groups until needed */
+.feature-group, .blog-group, .lp-section, .related, .troubleshoot {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
