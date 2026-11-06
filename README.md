@@ -39,7 +39,7 @@ npm run check:seo
 | `lib/site.js` | Store URL, contact details, extension version and facts, navigation |
 | `lib/blog.js` | Article registry and categories |
 | `lib/features.js`, `lib/faq.js` | Verified feature list and FAQ data |
-| `lib/analytics.js` | Consent-gated Google Analytics 4 (G-DEEP3H3Q83) and Google Tag Manager (GTM-M4QHPXQV) |
+| `lib/analytics-config.js`, `lib/analytics.js` | Google tag in every page (GTM-M4QHPXQV + GA4 G-DEEP3H3Q83) with Consent Mode v2, consent updates and events |
 | `public/images/screenshots/` | Real extension screenshots (WebP) |
 | `SEO/` | Keyword research, content roadmap, technical audit, internal linking map, launch checklist |
 | `docs/` | Design system, implementation notes, analytics setup, test report |

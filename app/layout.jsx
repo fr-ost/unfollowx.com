@@ -8,6 +8,7 @@ import RevealOnView from '@/components/RevealOnView';
 import Analytics from '@/components/Analytics';
 import JsonLd from '@/components/JsonLd';
 import { authorSchema, organizationSchema, websiteSchema } from '@/lib/seo';
+import { googleTagHeadScript } from '@/lib/analytics-config';
 import { SITE_NAME, SITE_URL } from '@/lib/site';
 
 const inter = localFont({
@@ -61,6 +62,8 @@ export default function RootLayout({ children }) {
     <html lang="en" data-theme="light" data-scroll-behavior="smooth" className={`${inter.variable} ${bricolage.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        {/* Google tag (GTM-M4QHPXQV + GA4) with Consent Mode v2 defaults — see lib/analytics-config.js */}
+        <script dangerouslySetInnerHTML={{ __html: googleTagHeadScript() }} />
       </head>
       <body>
         <a className="skip-link" href="#main">Skip to content</a>

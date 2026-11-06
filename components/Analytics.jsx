@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { getConsent, hasStoredChoice, initAnalytics, MANUAL_PAGE_VIEWS, onConsentChange, pagePath, sendPageView, setConsent, track } from '@/lib/analytics';
+import { canTrack, getConsent, hasStoredChoice, MANUAL_PAGE_VIEWS, onConsentChange, pagePath, sendPageView, setConsent, track } from '@/lib/analytics';
 
 const STORE_HOST = 'chromewebstore.google.com';
 
@@ -17,7 +17,7 @@ function linkText(el) {
 }
 
 function handleClick(event) {
-  if (getConsent() !== 'granted') return;
+  if (!canTrack()) return;
   const el = event.target instanceof Element ? event.target.closest('a[href], button[data-cta]') : null;
   if (!el) return;
   const path = pagePath();
@@ -60,7 +60,6 @@ export default function Analytics() {
   const [showBanner, setShowBanner] = useState(false);
 
   useEffect(() => {
-    if (getConsent() === 'granted') initAnalytics();
     setShowBanner(!hasStoredChoice() && getConsent() === 'unknown');
     const openSettings = () => setShowBanner(true);
     window.addEventListener('ux:consent-settings', openSettings);
@@ -86,8 +85,9 @@ export default function Analytics() {
     <section className="consent" role="region" aria-labelledby="consent-title">
       <h2 id="consent-title">Help improve this website?</h2>
       <p>
-        With your OK, we use Google Analytics (via Google’s tags) to count visits and clicks on “Add to Chrome”. Nothing loads unless you accept, and you can change your
-        mind any time from the footer. This choice is about the website, not the extension. <Link href="/privacy#website">Details</Link>
+        We use Google Analytics to understand visits and clicks on “Add to Chrome”. Accept to allow analytics cookies. Until you choose, no
+        cookies are set and Google only receives anonymous, cookieless measurements; Decline turns Google Analytics off for this site. You can
+        change your mind any time from the footer. This choice is about the website, not the extension. <Link href="/privacy#website">Details</Link>
       </p>
       <div className="cta-row">
         <button type="button" className="btn btn-secondary btn-sm" onClick={() => choose('denied')}>Decline</button>
@@ -111,7 +111,7 @@ export function TrackEvent({ name, params, withPath = false }) {
   useEffect(() => {
     let sent = false;
     const send = () => {
-      if (sent || getConsent() !== 'granted') return;
+      if (sent || !canTrack()) return;
       const payload = JSON.parse(serialized);
       if (withPath) payload.page_path = pagePath();
       sent = track(name, payload);

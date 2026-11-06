@@ -104,7 +104,7 @@ Rewritten (same URLs): see-who-doesn’t-follow-back, find-out-who-unfollowed, m
 
 ## 5. Analytics
 
-See `docs/google-analytics-setup.md`. GA4 (G-DEEP3H3Q83) and GTM (GTM-M4QHPXQV) load only after opt-in.
+See `docs/google-analytics-setup.md`. GA4 (G-DEEP3H3Q83) and GTM (GTM-M4QHPXQV) are in every page’s `<head>` with Google Consent Mode v2: no analytics cookies until Accept; Decline or GPC switches GA4 off.
 
 ## 6. Deployment
 

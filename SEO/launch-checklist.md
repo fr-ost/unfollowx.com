@@ -21,7 +21,8 @@
 ## Analytics (see `docs/google-analytics-setup.md`)
 
 - [ ] On the live site, accept the banner → GA4 Realtime shows your visit; DebugView (with Tag Assistant) shows `page_view` and a `chrome_install_click` after clicking a store link.
-- [ ] Decline → no requests to `googletagmanager.com` (DevTools → Network).
+- [ ] View source shows `gtm.js?id=GTM-M4QHPXQV`; in GTM / the Google tag screen, “Test your website” now detects the tag.
+- [ ] Decline → `window['ga-disable-G-DEEP3H3Q83']` is `true` in the console and no further `collect` requests appear (DevTools → Network).
 - [ ] GA4 Admin → Events → mark `chrome_install_click` as a **key event**.
 - [ ] GA4 Admin → Data streams → Enhanced measurement: “Page changes based on browser history events” is **on** (the app relies on it for client-side page views).
 - [ ] GTM container GTM-M4QHPXQV: contains **no** Google tag / GA4 tags for G-DEEP3H3Q83 (the site already sends GA4 directly), or switch `GA4_DELIVERY` to `'gtm'`.

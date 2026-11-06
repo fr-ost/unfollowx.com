@@ -103,3 +103,13 @@ Replaced with 2× captures of the real extension UI (2720 px dashboards, 760 px 
 - Support box: review link counted as `cta_click` (not an install), Telegram and copy-email tracked without the copied value, “Copied” state shown.
 - No-JS: a `<Suspense>` experiment hid homepage content without JavaScript and was reverted; the no-JS test passes.
 - Suites on the final build: technical SEO ✅, accessibility + functional 60/60 ✅, analytics 60/60 ✅, horizontal overflow (12 routes × 6 widths) ✅, reveal behaviour ✅.
+
+## Round 3 — Google tag detection (2026-11-06)
+
+Google reported “Your Google tag wasn’t detected” because the tag only loaded after Accept. The tag is now server-rendered in every page’s `<head>` with Consent Mode v2 defaults (owner’s decision; see `docs/google-analytics-setup.md`).
+
+- Raw HTML (curl, no JavaScript) of `/`, `/blog`, `/faq`, an article and a 404 contains `gtm.js?id=GTM-M4QHPXQV`, `gtag/js?id=G-DEEP3H3Q83`, the consent default and `gtag('js', new Date())`.
+- Consent-mode suite (stubbed Google scripts): **25/25** — see the analytics doc for the list.
+- Accessibility + functional: **60/60** with Google’s domains stubbed (without stubs, the only failures are console errors from this sandbox blocking `googletagmanager.com`).
+- Technical SEO checks: ✅.
+- Not verifiable here: Google’s own detection and real hits (Google’s domains are blocked in this environment). Lighthouse in this sandbox can’t include the cost of the real Google scripts, which now load on every page (roughly 100–150 KB of third-party JavaScript); expect a small drop in mobile performance on the live site.
