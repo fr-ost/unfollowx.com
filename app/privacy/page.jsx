@@ -6,8 +6,8 @@ import { pageMetadata } from '@/lib/seo';
 import { CONTACT_EMAIL, DEVELOPER, EXTENSION, PUBLISHER, TELEGRAM_URL } from '@/lib/site';
 
 export const metadata = pageMetadata({
-  title: 'Privacy Policy — Extension Data, Usage Stats & Website Analytics',
-  description: 'How UnfollowX Pro handles data: X lists stay in Chrome extension storage, optional anonymous usage statistics, permissions, and consent-based Google Analytics on this website.',
+  title: 'Privacy Policy — Extension Data & Website Analytics',
+  description: 'How UnfollowX Pro handles data: X lists stay in Chrome extension storage, optional anonymous usage stats, permissions, and opt-in Google Analytics on this site.',
   path: '/privacy'
 });
 
@@ -102,8 +102,9 @@ export default function PrivacyPage() {
 
           <h2 id="website">This website and Google Analytics</h2>
           <p>This website doesn’t require an account and has no newsletter form or advertising trackers. It is hosted on Vercel, which processes standard request logs to serve and secure the site.</p>
-          <h3>Google Analytics 4 — only with your consent</h3>
-          <p>With your permission, this website uses <strong>Google Analytics 4</strong> (measurement ID G-DEEP3H3Q83) to understand how visitors find and use the site — for example, which pages are visited, where visits come from, and how many people click “Add to Chrome”. The Google tag is <strong>not loaded at all</strong> until you choose “Accept analytics” in the banner. If you decline, or if your browser sends a Global Privacy Control signal and you haven’t chosen otherwise, Google Analytics is not loaded.</p>
+          <h3>Google Analytics 4 and Google Tag Manager — only with your consent</h3>
+          <p>With your permission, this website uses <strong>Google Analytics 4</strong> (measurement ID G-DEEP3H3Q83) to understand how visitors find and use the site — for example, which pages are visited, where visits come from, and how many people click “Add to Chrome”. It also loads <strong>Google Tag Manager</strong> (container GTM-M4QHPXQV), a Google tool for managing measurement tags on the site.</p>
+          <p>Neither is <strong>loaded at all</strong> until you choose “Accept analytics” in the banner. If you decline, or if your browser sends a Global Privacy Control signal and you haven’t chosen otherwise, no Google script is requested. Any tag run through Tag Manager is subject to the same choice, with advertising consent types set to “denied”.</p>
           <p>When enabled, Google Analytics may collect:</p>
           <ul>
             <li>pages viewed, the referring page or search source, and campaign parameters in the URL;</li>
@@ -112,7 +113,7 @@ export default function PrivacyPage() {
           </ul>
           <p>We don’t send names, email addresses, X usernames, X account data or anything you type into the demo. Google signals and ad personalization are disabled in our configuration, and advertising consent types are set to “denied”. Google states that <a href="https://support.google.com/analytics/answer/12017362" target="_blank" rel="noopener">Google Analytics 4 does not log or store IP addresses</a>.</p>
           <p>Google Analytics sets first-party cookies (<code>_ga</code> and <code>_ga_DEEP3H3Q83</code>) to distinguish visits, only after you accept. Data is retained according to the setting chosen for our Analytics property (Google offers 2 or 14 months for standard properties). Google’s own practices are described in <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">How Google uses information from sites or apps that use its services</a> and <a href="https://support.google.com/analytics/answer/6004245" target="_blank" rel="noopener">Safeguarding your data</a>.</p>
-          <p><strong>Changing your mind:</strong> use <ConsentSettingsButton className="link-btn" /> in the footer at any time. Declining after accepting stops analytics on this site and removes the Google Analytics cookies set for it. Google also offers a <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">browser add-on to opt out of Google Analytics</a>.</p>
+          <p><strong>Changing your mind:</strong> use <ConsentSettingsButton className="link-btn" /> in the footer at any time. Declining after accepting stops analytics events on this site, tells Google tags that analytics consent is withdrawn, and removes the Google Analytics cookies set for it; from the next page load, neither Google script is loaded. Google also offers a <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">browser add-on to opt out of Google Analytics</a>.</p>
           <h3>Small preferences stored in your browser</h3>
           <p>The site stores your theme choice (<code>unfollowx-theme</code>) and your analytics choice (<code>unfollowx-analytics-consent</code>) in your browser’s local storage. They never leave your device.</p>
           <p>Links to the Chrome Web Store, X, Telegram and other services take you to sites with their own privacy practices.</p>

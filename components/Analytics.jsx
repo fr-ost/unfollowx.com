@@ -85,7 +85,7 @@ export default function Analytics() {
     <section className="consent" role="region" aria-labelledby="consent-title">
       <h2 id="consent-title">Help improve this website?</h2>
       <p>
-        With your OK, we use Google Analytics to count visits and clicks on “Add to Chrome”. It only loads if you accept, and you can change your
+        With your OK, we use Google Analytics (via Google’s tags) to count visits and clicks on “Add to Chrome”. Nothing loads unless you accept, and you can change your
         mind any time from the footer. This choice is about the website, not the extension. <Link href="/privacy#website">Details</Link>
       </p>
       <div className="cta-row">

@@ -13,8 +13,8 @@ import { getArticle } from '@/lib/blog';
 import { pageMetadata, softwareSchema } from '@/lib/seo';
 
 export const metadata = pageMetadata({
-  title: 'Free X Follower Tracker — See Who Unfollowed You on Twitter',
-  description: 'Track new and lost followers on X (Twitter) with a free Chrome extension. Snapshot comparison, no partial-read false alarms, follow back in bulk — data stays on your device.',
+  title: 'Free X Follower Tracker — See Who Unfollowed You',
+  description: 'Track new and lost followers on X (Twitter) with a free Chrome extension. Snapshot comparison without false alarms, bulk follow-back, data kept on your device.',
   path: '/x-follower-tracker'
 });
 

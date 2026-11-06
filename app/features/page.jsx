@@ -13,8 +13,8 @@ import { pageMetadata, softwareSchema } from '@/lib/seo';
 import { absoluteUrl } from '@/lib/site';
 
 export const metadata = pageMetadata({
-  title: 'Features — Non-Follower Finder, Unfollower Tracker & More',
-  description: 'Every UnfollowX Pro feature, all free: find non-followers, track lost followers, filter inactive and non-blue accounts, whitelist, Keep rules, CSV, history and paced runs.',
+  title: 'Features — Non-Follower Finder & Unfollower Tracker',
+  description: 'Every UnfollowX Pro feature, all free: find non-followers, track lost followers, filter inactive accounts, whitelist, Keep rules, CSV, history and paced runs.',
   path: '/features'
 });
 

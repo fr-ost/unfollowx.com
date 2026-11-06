@@ -17,7 +17,7 @@ import { pageMetadata, softwareSchema } from '@/lib/seo';
 export const metadata = pageMetadata({
   title: 'UnfollowX Pro — Free & Unlimited X Unfollow Tool',
   absoluteTitle: true,
-  description: 'Clean up your X following list with UnfollowX Pro. Find non-followers, track unfollowers, filter inactive accounts and manage your connections. Free forever, unlimited to use, no subscription.',
+  description: 'Clean up your X following list with UnfollowX Pro. Find non-followers, track unfollowers and filter inactive accounts. Free forever, unlimited, no subscription.',
   path: '/'
 });
 

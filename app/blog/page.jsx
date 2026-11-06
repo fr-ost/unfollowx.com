@@ -10,7 +10,7 @@ import { pageMetadata } from '@/lib/seo';
 import { absoluteUrl } from '@/lib/site';
 
 export const metadata = pageMetadata({
-  title: 'Blog — X (Twitter) Following, Followers & Unfollow Guides',
+  title: 'Blog — X Following, Followers & Unfollow Guides',
   description: 'Practical, product-accurate guides to X: find non-followers, see who unfollowed you, mass unfollow safely, find inactive accounts and export your following list.',
   path: '/blog'
 });

@@ -36,6 +36,7 @@ export default function FaqPage() {
       </section>
 
       <section className="container">
+        <h2 className="visually-hidden">All questions</h2>
         <div className="faq-page">
           <FaqAccordion items={faqs} categories={faqCategories} idPrefix="faq" />
           <aside className="faq-side" aria-label="Help">

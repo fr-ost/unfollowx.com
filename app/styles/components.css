@@ -447,3 +447,6 @@
 @container (max-width: 280px) {
   .cover-art .cover-chip { display: none; }
 }
+
+.link-btn { padding: 0; border: 0; background: none; color: var(--accent-text); font-weight: 600; font-size: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.link-btn:disabled { opacity: .5; cursor: not-allowed; }
