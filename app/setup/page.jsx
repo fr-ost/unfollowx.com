@@ -1,131 +1,160 @@
 import Link from 'next/link';
+import '../styles/pages.css';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import CtaBand from '@/components/CtaBand';
+import FaqAccordion from '@/components/FaqAccordion';
+import Icon from '@/components/Icon';
+import InstallLink from '@/components/InstallLink';
+import JsonLd from '@/components/JsonLd';
+import Screenshot from '@/components/Screenshot';
+import { pageMetadata } from '@/lib/seo';
+import { CONTACT_EMAIL, STORE_URL, TELEGRAM_URL, absoluteUrl } from '@/lib/site';
 
-export const metadata = {
-  title: 'How to set up UnfollowX Pro for Chrome',
-  description: 'Install UnfollowX Pro, connect it to your existing X session, run your first scan, set Keep rules and manage actions at your pace.',
-  alternates: { canonical: '/setup' },
-  openGraph: {
-    type: 'website',
-    title: 'How to set up UnfollowX Pro for Chrome',
-    description: 'A clear, step-by-step guide to installing UnfollowX Pro and running your first X following scan.',
-    url: 'https://www.unfollowx.com/setup'
-  }
-};
+export const metadata = pageMetadata({
+  title: 'How to Set Up UnfollowX Pro in Chrome (Step-by-Step)',
+  description: 'Install UnfollowX Pro, run your first read-only scan of your X following list, protect accounts with a whitelist and Keep rules, choose a pace and start safely.',
+  path: '/setup'
+});
 
-const STORE = 'https://chromewebstore.google.com/detail/x-twitter-mass-unfollow-t/igpjmagghnibmjkkdcgpjgpkfkpiglnl';
 const steps = [
   {
     title: 'Add UnfollowX Pro to Chrome',
-    body: <>Open the <a href={STORE} target="_blank" rel="noopener">UnfollowX Pro listing in the Chrome Web Store</a> and choose <strong>Add to Chrome</strong>. Follow Chrome’s confirmation prompt to install it. There is no separate UnfollowX account to create.</>,
-    note: 'The extension is built for Google Chrome and supports x.com and twitter.com.'
+    body: <>Open the <a href={STORE_URL} target="_blank" rel="noopener" data-install="" data-location="setup_step">UnfollowX Pro listing in the Chrome Web Store</a> and choose <strong>Add to Chrome</strong>, then confirm Chrome’s prompt. There is no UnfollowX account to create and nothing to pay. Pin the extension from Chrome’s puzzle-piece menu so its icon stays in the toolbar.</>,
+    note: 'Desktop Chrome 116 or newer. Chrome on phones and tablets doesn’t run extensions.'
   },
   {
-    title: 'Sign in to X in your own browser',
-    body: <>Open <a href="https://x.com" target="_blank" rel="noopener">x.com</a> or <a href="https://twitter.com" target="_blank" rel="noopener">twitter.com</a> in Chrome and sign in directly with X. UnfollowX Pro uses that existing browser session. It does not ask you to enter, save or share your X password.</>,
-    note: 'If you use multiple X accounts, the extension keeps their scan and history data separately on your device.'
+    title: 'Sign in to X as usual',
+    body: <>Open <a href="https://x.com" target="_blank" rel="noopener">x.com</a> (or twitter.com) in Chrome and sign in to the account you want to manage. UnfollowX Pro works inside that existing session — it never asks for, stores or sends your X password.</>,
+    note: 'Using several X accounts? Each one gets its own scan, whitelist, history and daily count, and data switches automatically when you switch accounts on X.'
   },
   {
-    title: 'Open the dashboard and start a scan',
-    body: <>Select the UnfollowX Pro icon in Chrome’s toolbar to open its dashboard, then choose <strong>Scan following</strong>. Keep the X tab open and visible while the scan runs; X does not render the account rows in a hidden tab. The scan can identify mutuals and accounts that do not follow you back.</>,
-    note: 'The scan reads information available to your signed-in X session. Results can be affected by X availability and profile visibility.'
+    title: 'Run your first scan',
+    body: <>Click the UnfollowX Pro icon and press <strong>Scan my following</strong>. The scan is read-only and usually takes about a minute. It reads your list in the background through an x.com tab (the extension opens one if needed), so you can keep using other tabs.</>,
+    note: 'If X blocks direct reading, the extension may fall back to scrolling your Following page. In that case it asks you to keep that X tab in front until the scan finishes.',
+    shot: 'popup'
   },
   {
-    title: 'Review the results before choosing an action',
-    body: <>Use the Following view to search, filter and inspect the accounts in your scan. Treat “Don’t follow back” as one signal, not an automatic reason to unfollow. Open profiles when you need context and select only accounts you have decided to change.</>,
-    note: 'Last-active results refer to the newest readable post, reply or repost—not the last time someone logged in.'
+    title: 'Review the results',
+    body: <>The popup shows <strong>Following</strong>, <strong>Don’t follow back</strong> and <strong>Mutuals</strong>. Choose <strong>Review &amp; pick</strong> to open the dashboard, where the Following page has tabs for Don’t follow back, Mutuals, Not blue, Inactive, All, Kept and Unfollowed, plus search, filters and sorting. See <Link href="/blog/how-to-see-who-doesnt-follow-you-back-on-x">how to read non-follower results</Link>.</>,
+    note: 'After the scan, the extension also reads your followers to build a baseline for “who unfollowed you”. The first check has nothing to compare against yet.'
   },
   {
-    title: 'Protect people and groups you want to keep',
-    body: <>Add specific handles to your whitelist or use Keep rules for groups such as verified or private accounts, profiles above a follower threshold, matching keywords, or accounts you followed recently. Check which accounts are protected before starting a bulk run.</>,
-    note: 'Keep rules reduce the selectable set in supported bulk-cleanup views. Review the final selection yourself.'
+    title: 'Protect the accounts you want to keep',
+    body: <>Tap the shield next to anyone you never want unfollowed to add them to your whitelist. In <strong>Settings</strong>, Keep rules can protect verified accounts, private accounts, accounts above a follower count, keyword matches and accounts you followed recently. Check the <strong>Kept</strong> tab to confirm. Guide: <Link href="/blog/how-to-whitelist-accounts-before-unfollowing-on-x">whitelisting before unfollowing</Link>.</>,
+    note: 'Whitelisted accounts are never unfollowed, in any mode — including “Unfollow all”.'
   },
   {
-    title: 'Set a pace, then start a selected run',
-    body: <>In Settings, choose an action pace, delays, breaks and a daily limit that fit your use. Return to the account list, review the selection, and start only when it looks right. You can pause, resume or stop a run from the dashboard.</>,
-    note: 'These controls do not guarantee that X will allow every action or prevent rate limits. Stop if X asks you to slow down or verify your account.'
+    title: 'Choose a pace',
+    body: <>In <strong>Settings</strong>, pick <strong>Safe</strong> (15–35 s between actions, 10-minute break every 30, 250 a day), <strong>Balanced</strong> (8–20 s, 6 minutes every 50, 400 a day — the default) or <strong>Fast</strong> (4–10 s, 5 minutes every 80, 1,000 a day), or set your own numbers. New to bulk actions? Start with Safe.</>,
+    note: 'X applies its own limits and rules to every account. Pacing helps, but no tool can guarantee X will allow every action.'
   },
   {
-    title: 'Save a follower baseline and revisit later',
-    body: <>A first complete followers check creates the baseline for future comparisons. Check again later to see accounts that are newly present or missing from a later complete snapshot. The extension cannot identify changes from before your first snapshot.</>,
-    note: 'Follower lists, scan results and action history are stored in Chrome extension storage on your device.'
+    title: 'Start, then pause or stop whenever you like',
+    body: <>Select accounts and choose <strong>Unfollow selected</strong>, or use <strong>Unfollow non-followers</strong> in the popup. The run continues in the background; you can switch tabs or close the popup. Pause, resume or stop at any time, or press <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd> for an emergency stop.</>,
+    note: 'If X asks the extension to slow down, the run rests and continues. If X asks you to verify your account, it stops and waits for you.',
+    shot: 'run'
+  },
+  {
+    title: 'Check History and come back later',
+    body: <>History lists everything the extension unfollowed or followed, with <strong>Follow again</strong> for mistakes. Next time, rescan or press <strong>Check now</strong> on the Followers page to see who unfollowed you since the last check. Guide: <Link href="/blog/how-to-find-out-who-unfollowed-you-on-x">finding out who unfollowed you</Link>.</>,
+    note: 'Scans, snapshots, settings and history stay in Chrome extension storage on your computer.'
   }
 ];
 
-const breadcrumbSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.unfollowx.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Setup guide', item: 'https://www.unfollowx.com/setup' }
-  ]
-};
+const setupFaqs = [
+  { id: 'tab', q: 'Do I need to keep the X tab open while scanning?', a: ['Normally no. Scans read your list in the background through an x.com tab, and the extension opens one itself if needed. Only the fallback page-scrolling scan (used if X blocks direct reading) asks you to keep the X tab in front.'] },
+  { id: 'before', q: 'Can UnfollowX Pro show who unfollowed me before I installed it?', a: ['No. X doesn’t keep an unfollow history. Your first followers check creates a baseline, and later checks show changes since then.'] },
+  { id: 'password', q: 'Does setup need my X password?', a: ['No. UnfollowX Pro uses the X session already signed in to Chrome and never asks for your password.'] },
+  { id: 'cost', q: 'Is anything paid during or after setup?', a: ['No. There is no trial, subscription or premium plan. Every feature is free.'] }
+];
 
 export default function SetupPage() {
-  return <>
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema).replace(/</g, '\\u003c') }} />
-    <section className="page-hero setup-hero">
-      <div className="eyebrow">A CLEAR START, STEP BY STEP</div>
-      <h1>Set up UnfollowX Pro <em>for Chrome.</em></h1>
-      <p>Install the extension, connect it to the X session you already use, and make your first review with the choices in your hands.</p>
-      <div className="setup-hero-actions">
-        <a className="button button-primary button-large" href={STORE} target="_blank" rel="noopener">Add to Chrome <span>↗</span></a>
-        <span>Free to install · No separate sign-up</span>
-      </div>
-    </section>
+  const howTo = {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'How to set up UnfollowX Pro in Chrome',
+    description: 'Install UnfollowX Pro, run a read-only scan of your X following list, protect accounts and start a paced run.',
+    totalTime: 'PT5M',
+    tool: [{ '@type': 'HowToTool', name: 'Google Chrome (desktop, version 116 or newer)' }],
+    step: steps.map((s, i) => ({ '@type': 'HowToStep', position: i + 1, name: s.title, url: `${absoluteUrl('/setup')}#step-${i + 1}`, text: s.note }))
+  };
 
-    <nav className="breadcrumbs wrap" aria-label="Breadcrumb">
-      <Link href="/">Home</Link><span aria-hidden="true">/</span><span aria-current="page">Setup guide</span>
-    </nav>
-
-    <section className="content-section setup-content">
-      <div className="setup-layout wrap">
-        <ol className="setup-steps">
-          {steps.map((step, index) => <li className="setup-step" key={step.title}>
-            <span className="setup-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
-            <div><h2>{step.title}</h2><p>{step.body}</p><div className="setup-note"><span aria-hidden="true">✳</span>{step.note}</div></div>
-          </li>)}
-        </ol>
-
-        <aside className="setup-aside">
-          <div className="setup-aside-card">
-            <div className="eyebrow">QUICK CHECK</div>
-            <h2>Before a bulk action</h2>
-            <ul>
-              <li>Review the scan and selected accounts.</li>
-              <li>Check your whitelist and Keep rules.</li>
-              <li>Set delays, breaks and a daily limit.</li>
-              <li>Stop if X shows a warning or asks for verification.</li>
-            </ul>
-            <Link className="text-link" href="/features">Explore all features <span>→</span></Link>
+  return (
+    <>
+      <JsonLd data={howTo} />
+      <section className="page-hero">
+        <div className="container">
+          <Breadcrumbs items={[{ name: 'How-to Guides', path: '/guides' }, { name: 'Setup guide', path: '/setup' }]} />
+          <div className="eyebrow" style={{ marginTop: 28 }}>Setup guide · about 5 minutes</div>
+          <h1>Set up UnfollowX Pro <span className="gradient-text">in Chrome.</span></h1>
+          <p className="lead">Install the extension, run a read-only scan, protect the people who matter and choose a pace — with every decision left to you.</p>
+          <div className="cta-row">
+            <InstallLink location="setup_hero" size="lg" />
           </div>
-          <div className="setup-aside-card setup-privacy-card">
-            <div className="eyebrow">YOUR DATA</div>
-            <h2>Know what stays local.</h2>
-            <p>Lists, scans, settings and action history stay in Chrome extension storage on your device. Anonymous usage statistics are enabled by default and can be turned off in Settings.</p>
-            <Link className="text-link" href="/privacy">Read the privacy policy <span>→</span></Link>
-          </div>
-        </aside>
-      </div>
-    </section>
+          <p className="hero-note"><span><Icon name="check" />Free forever</span><span><Icon name="check" />No sign-up</span><span><Icon name="check" />No X password</span></p>
+        </div>
+      </section>
 
-    <section className="setup-faq wrap" aria-labelledby="setup-faq-heading">
-      <div className="eyebrow">A FEW THINGS PEOPLE ASK</div>
-      <h2 id="setup-faq-heading">Setup questions.</h2>
-      <details><summary>Why does my X tab need to stay visible while scanning?</summary><p>X does not render account rows in hidden tabs. Keep the X tab open and visible while a following scan runs.</p></details>
-      <details><summary>Can UnfollowX Pro show who unfollowed me before I installed it?</summary><p>No. A first complete followers snapshot creates a baseline. A later complete snapshot can show changes since that baseline.</p></details>
-      <details><summary>Does UnfollowX Pro need my X password?</summary><p>No. It works with the X session already signed in to Chrome and does not ask for your X password.</p></details>
-    </section>
+      <section className="container">
+        <div className="setup-layout">
+          <ol className="setup-steps" role="list">
+            {steps.map((step, index) => (
+              <li className="card setup-step" id={`step-${index + 1}`} key={step.title} data-reveal="">
+                <span className="setup-num" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+                <div>
+                  <h2><span className="visually-hidden">Step {index + 1}: </span>{step.title}</h2>
+                  <p>{step.body}</p>
+                  <div className="setup-note"><Icon name="info" /><span>{step.note}</span></div>
+                  {step.shot ? <Screenshot shot={step.shot} className="shot-sm" caption="Real extension interface · sample account" sizes="360px" /> : null}
+                </div>
+              </li>
+            ))}
+          </ol>
 
-    <section className="setup-troubleshoot wrap">
-      <div className="eyebrow">IF SOMETHING DOESN’T WORK</div>
-      <h2>A few quick things to check.</h2>
-      <div className="troubleshoot-grid">
-        <article><h3>The scan does not start</h3><p>Make sure you are signed in to X in Chrome and that an x.com or twitter.com tab is open and visible. Then try starting the scan again.</p></article>
-        <article><h3>The scan stops or looks incomplete</h3><p>X may not return every account on the first attempt. Wait a little, reopen the dashboard and rescan. Do not treat a partial followers check as a complete comparison.</p></article>
-        <article><h3>You want desktop notifications</h3><p>Notifications are optional. Enable them in extension Settings if you want local alerts; Chrome requests the permission at that point.</p></article>
-        <article><h3>You want to remove extension data</h3><p>Use Dashboard → Settings → Delete all extension data. See the <Link href="/privacy">privacy policy</Link> for more on storage and controls.</p></article>
-      </div>
-      <div className="setup-bottom-links">Need more help? Read the <Link href="/faq">FAQ</Link>, browse <Link href="/blog">all field notes</Link>, or <a href="mailto:shahriar.bmb@gmail.com">contact support</a>.</div>
-    </section>
-  </>;
+          <aside className="setup-aside" aria-label="Setup checklist">
+            <div className="card">
+              <div className="eyebrow">Before a bulk action</div>
+              <h2>Quick checklist</h2>
+              <ul>
+                {['Rescan so the list is current', 'Whitelist friends and must-follow accounts', 'Check the Kept tab', 'Pick Safe or Balanced pace', 'Stop if X shows a warning'].map((item) => <li key={item}><Icon name="checkCircle" />{item}</li>)}
+              </ul>
+              <Link className="text-link" href="/blog/how-to-mass-unfollow-accounts-on-x" data-cta="Mass unfollow guide" data-cta-location="setup_aside">Read the mass unfollow guide <Icon name="arrowRight" className="arrow" size={15} /></Link>
+            </div>
+            <div className="card">
+              <div className="eyebrow">Your data</div>
+              <h2>What stays local</h2>
+              <p>Lists, scans, settings and history stay in Chrome extension storage. Anonymous usage statistics are on by default and can be turned off in Settings → Privacy.</p>
+              <Link className="text-link" href="/privacy" data-cta="Privacy policy" data-cta-location="setup_aside">Privacy policy <Icon name="arrowRight" className="arrow" size={15} /></Link>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section className="container lp-section" aria-labelledby="trouble-title">
+        <div className="section-head" data-reveal="">
+          <div className="eyebrow">Troubleshooting</div>
+          <h2 id="trouble-title">If something doesn’t work</h2>
+        </div>
+        <div className="troubleshoot" data-stagger="60">
+          <div className="card"><h3>The scan doesn’t start</h3><p>Make sure you’re signed in on x.com in the same Chrome profile, then try again. Help → Connection check in the dashboard shows what the extension can reach.</p></div>
+          <div className="card"><h3>The scan stops early or looks incomplete</h3><p>X sometimes returns partial data. Wait a little and rescan. Incomplete followers reads are never compared, so they can’t create false “unfollowed you” results.</p></div>
+          <div className="card"><h3>A run is resting</h3><p>Either your daily limit was reached (the run continues automatically when there’s room) or X asked it to slow down. Both are expected; leave it be.</p></div>
+          <div className="card"><h3>X asked to verify your account</h3><p>The run stops and waits. Complete X’s check yourself on x.com, consider a slower pace, then resume.</p></div>
+          <div className="card"><h3>You want notifications</h3><p>Turn them on in Settings; Chrome then asks for permission. They’re off by default and shown only on your computer.</p></div>
+          <div className="card"><h3>You want to remove extension data</h3><p>Settings → Delete all extension data, or delete one account’s data. See the <Link href="/privacy">privacy policy</Link>.</p></div>
+        </div>
+      </section>
+
+      <section className="container lp-section" aria-labelledby="setup-faq-title">
+        <div className="section-head" data-reveal="">
+          <div className="eyebrow">Setup questions</div>
+          <h2 id="setup-faq-title">Quick answers</h2>
+          <p>Still stuck? <a className="text-link" href={TELEGRAM_URL} target="_blank" rel="noopener">Message support on Telegram</a> or <a className="text-link" href={`mailto:${CONTACT_EMAIL}`}>email us</a>, with your extension and Chrome versions.</p>
+        </div>
+        <FaqAccordion items={setupFaqs} idPrefix="setup-faq" />
+      </section>
+
+      <CtaBand location="setup_cta" title="Ready when you are." text="Install UnfollowX Pro and run a read-only scan. Nothing changes on X until you choose." secondary={{ label: 'Browse how-to guides', href: '/guides' }} />
+    </>
+  );
 }

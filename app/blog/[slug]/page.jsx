@@ -1,108 +1,145 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { articles, getRelatedArticles } from '@/lib/blog';
+import '../../styles/pages.css';
+import ArticleCard from '@/components/ArticleCard';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import Icon from '@/components/Icon';
+import InstallLink from '@/components/InstallLink';
+import JsonLd from '@/components/JsonLd';
+import { TrackEvent } from '@/components/Analytics';
+import { articleSlugs, getArticle, getRelated } from '@/lib/blog';
+import { renderBlocks } from '@/lib/markdown';
+import { AUTHOR_ID, ORGANIZATION_ID, pageMetadata } from '@/lib/seo';
+import { DEVELOPER, absoluteUrl } from '@/lib/site';
 
-export const dynamicParams = true;
+export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return articles.map(({ slug }) => ({ slug }));
+  return articleSlugs.map((slug) => ({ slug }));
 }
 
-function dateLabel(date) {
-  return new Date(date + 'T12:00:00Z').toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    timeZone: 'UTC'
-  });
-}
+const longDate = (d) => new Date(d + 'T12:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const article = articles.find((item) => item.slug === slug);
-  if (!article) return { title: 'Field note not found', robots: { index: false, follow: true } };
-
-  return {
-    title: article.title,
+  const article = getArticle(slug);
+  if (!article) return {};
+  return pageMetadata({
+    title: article.seoTitle,
     description: article.description,
-    alternates: { canonical: '/blog/' + article.slug },
-    openGraph: {
-      type: 'article',
-      siteName: 'UnfollowX Pro',
-      title: article.title,
-      description: article.description,
-      url: 'https://www.unfollowx.com/blog/' + article.slug,
-      publishedTime: article.publishedAt + 'T00:00:00.000Z',
-      modifiedTime: article.updatedAt + 'T00:00:00.000Z',
-      authors: ['https://www.unfollowx.com/'],
-      images: [{ url: '/assets/social-card.svg', width: 1200, height: 630, alt: 'UnfollowX Pro field notes' }]
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: article.title,
-      description: article.description,
-      images: ['/assets/social-card.svg']
+    path: `/blog/${article.slug}`,
+    type: 'article',
+    extra: {
+      authors: [{ name: DEVELOPER.name, url: DEVELOPER.url }],
+      openGraph: {
+        publishedTime: `${article.publishedAt}T00:00:00.000Z`,
+        modifiedTime: `${article.updatedAt}T00:00:00.000Z`,
+        authors: [DEVELOPER.url],
+        section: article.categoryName
+      }
     }
-  };
+  });
 }
 
 export default async function ArticlePage({ params }) {
   const { slug } = await params;
-  const article = articles.find((item) => item.slug === slug);
+  const article = getArticle(slug);
   if (!article) notFound();
-  const relatedArticles = getRelatedArticles(article);
-  const canonical = 'https://www.unfollowx.com/blog/' + article.slug;
-  const structuredData = [
-    {
-      '@context': 'https://schema.org',
-      '@type': 'BlogPosting',
-      '@id': canonical + '#article',
-      headline: article.title,
-      description: article.description,
-      datePublished: article.publishedAt + 'T00:00:00.000Z',
-      dateModified: article.updatedAt + 'T00:00:00.000Z',
-      articleSection: article.category,
-      inLanguage: 'en',
-      author: { '@id': 'https://www.unfollowx.com/#organization' },
-      publisher: { '@id': 'https://www.unfollowx.com/#organization' },
-      mainEntityOfPage: { '@type': 'WebPage', '@id': canonical }
-    },
-    {
-      '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.unfollowx.com/' },
-        { '@type': 'ListItem', position: 2, name: 'Field notes', item: 'https://www.unfollowx.com/blog' },
-        { '@type': 'ListItem', position: 3, name: article.title, item: canonical }
-      ]
-    }
-  ];
+  const related = getRelated(article);
+  const url = absoluteUrl(`/blog/${article.slug}`);
 
-  return <>
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }} />
-    <article className="article-wrap">
-      <nav className="breadcrumbs article-breadcrumbs" aria-label="Breadcrumb">
-        <Link href="/">Home</Link><span aria-hidden="true">/</span><Link href="/blog">Field notes</Link><span aria-hidden="true">/</span><span aria-current="page">{article.title}</span>
-      </nav>
-      <p className="article-meta">{article.category} · {article.readingTime} · <time dateTime={article.updatedAt}>UPDATED {dateLabel(article.updatedAt).toUpperCase()}</time></p>
-      <h1>{article.title}</h1>
-      <p className="dek">{article.description}</p>
-      <div className="prose">
-        {article.sections.map(([heading, body]) => <section key={heading}><h2>{heading}</h2><p>{body}</p></section>)}
-        <div className="callout">Want to try the workflow? <Link href="/setup">Follow the UnfollowX Pro setup guide</Link>, explore the <Link href="/features">feature guide</Link>, or review the <Link href="/privacy">privacy policy</Link>.</div>
-      </div>
-    </article>
-    <section className="related-guides wrap">
-      <div className="notes-heading"><div><div className="eyebrow">KEEP EXPLORING</div><h2>Related field notes.</h2></div><Link className="text-link" href="/blog">All guides <span>→</span></Link></div>
-      <div className="blog-cards">
-        {relatedArticles.map((item) => <Link className="blog-card" href={'/blog/' + item.slug} key={item.slug}>
-          <div className="blog-art"><span>{item.icon}</span><i/><b/></div>
-          <small>{item.category} <i>·</i> {item.readingTime}</small>
-          <h3>{item.title}</h3>
-          <p>{item.description}</p>
-          <span className="read-link">Read the guide <b>↗</b></span>
-        </Link>)}
-      </div>
-    </section>
-  </>;
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    '@id': `${url}#article`,
+    headline: article.title,
+    description: article.description,
+    image: `${url}/opengraph-image`,
+    datePublished: `${article.publishedAt}T00:00:00.000Z`,
+    dateModified: `${article.updatedAt}T00:00:00.000Z`,
+    articleSection: article.categoryName,
+    wordCount: article.words,
+    inLanguage: 'en',
+    author: { '@type': 'Person', '@id': AUTHOR_ID, name: DEVELOPER.name, url: DEVELOPER.url },
+    publisher: { '@id': ORGANIZATION_ID },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    isPartOf: { '@type': 'Blog', name: 'UnfollowX Pro Blog', url: absoluteUrl('/blog') }
+  };
+
+  return (
+    <>
+      <JsonLd data={schema} />
+      <TrackEvent name="blog_article_view" params={{ article_title: article.title, article_category: article.categoryName, article_slug: article.slug }} />
+      <article className="article">
+        <header className="article-hero">
+          <div className="container-narrow">
+            <Breadcrumbs items={[{ name: 'Blog', path: '/blog' }, { name: article.title, path: `/blog/${article.slug}` }]} />
+            <div className="article-meta article-meta-top">
+              <Link className="cat" href={`/blog#${article.category}`}>{article.categoryName}</Link><i />
+              <span>{article.readingTime} min read</span><i />
+              <span>Updated <time dateTime={article.updatedAt}>{longDate(article.updatedAt)}</time></span>
+            </div>
+            <h1>{article.title}</h1>
+            <p className="dek">{article.description}</p>
+            <div className="byline">
+              <img src="/assets/logo.svg" alt="" width="40" height="40" />
+              <div>
+                <span>By <a href={DEVELOPER.url} target="_blank" rel="noopener author">{DEVELOPER.name}</a>, developer of UnfollowX Pro</span>
+                <small>Published <time dateTime={article.publishedAt}>{longDate(article.publishedAt)}</time>{article.updatedAt !== article.publishedAt ? <> · Updated <time dateTime={article.updatedAt}>{longDate(article.updatedAt)}</time></> : null}</small>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <div className="container article-layout">
+          <aside className="article-aside" aria-label="On this page">
+            <div className="toc">
+              <b>On this page</b>
+              <ol>
+                {article.headings.map((h) => <li key={h.id}><a href={`#${h.id}`}>{h.text}</a></li>)}
+              </ol>
+            </div>
+            <div className="aside-cta">
+              <b>UnfollowX Pro</b>
+              <span>Free forever. No subscription, no premium plan.</span>
+              <InstallLink location="blog_sidebar" size="sm">Add to Chrome — Free</InstallLink>
+            </div>
+          </aside>
+
+          <div className="prose article-body">
+            {renderBlocks(article.blocks, { ctaLocation: 'blog_inline' })}
+            <div className="article-end">
+              <p className="disclaimer"><Icon name="info" /> UnfollowX Pro is an independent product and is not affiliated with or endorsed by X Corp. X’s features, rules and limits can change; check <a href="https://help.x.com" target="_blank" rel="noopener">X’s help center</a> for the latest.</p>
+              <div className="next-steps">
+                <Link href="/setup" data-cta="Setup guide" data-cta-location="blog_end"><Icon name="book" /><span><b>Setup guide</b><small>Install and run your first scan</small></span></Link>
+                <Link href="/features" data-cta="Features" data-cta-location="blog_end"><Icon name="sparkle" /><span><b>All features</b><small>Everything included, free</small></span></Link>
+                <Link href="/faq" data-cta="FAQ" data-cta-location="blog_end"><Icon name="info" /><span><b>FAQ</b><small>Pricing, limits and privacy</small></span></Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <section className="container related" aria-labelledby="related-title">
+        <div className="section-head-row">
+          <div className="section-head"><div className="eyebrow">Keep reading</div><h2 id="related-title">Related articles</h2></div>
+          <Link className="btn btn-secondary btn-sm" href="/blog">All articles <Icon name="arrowRight" className="btn-arrow" /></Link>
+        </div>
+        <div className="article-grid">
+          {related.map((r) => <ArticleCard key={r.slug} article={r} location="blog_related" />)}
+        </div>
+      </section>
+
+      <section className="container section-tight">
+        <div className="article-cta" data-reveal="scale">
+          <div>
+            <div className="eyebrow">Free forever</div>
+            <h2>Do this in minutes with UnfollowX Pro.</h2>
+            <p>Find non-followers, track unfollowers and clean up your following list at your own pace. No subscription, no premium unlocks.</p>
+          </div>
+          <InstallLink location="blog_footer_cta" size="lg" />
+        </div>
+      </section>
+    </>
+  );
 }

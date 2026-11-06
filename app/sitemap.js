@@ -1,20 +1,25 @@
-import { articles } from '@/lib/blog';
+import { getArticles } from '@/lib/blog';
+import { SITE_URL } from '@/lib/site';
+
+// Indexable pages only (no 404, no Open Graph image routes). lastModified
+// reflects the last material content change, not the build time.
+const SITE_UPDATED = new Date('2026-11-06T00:00:00.000Z');
+
+const pages = [
+  { path: '/', priority: 1, changeFrequency: 'weekly' },
+  { path: '/features', priority: 0.9, changeFrequency: 'monthly' },
+  { path: '/twitter-non-followers-checker', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/x-follower-tracker', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/setup', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/guides', priority: 0.7, changeFrequency: 'monthly' },
+  { path: '/blog', priority: 0.7, changeFrequency: 'weekly' },
+  { path: '/faq', priority: 0.7, changeFrequency: 'monthly' },
+  { path: '/privacy', priority: 0.4, changeFrequency: 'yearly' }
+];
 
 export default function sitemap() {
-  const base = 'https://www.unfollowx.com';
-  const pages = ['', '/features', '/setup', '/faq', '/privacy', '/blog'];
   return [
-    ...pages.map((path, index) => ({
-      url: base + (path || '/'),
-      lastModified: new Date('2026-11-04'),
-      changeFrequency: index === 0 || index === pages.length - 1 ? 'weekly' : 'monthly',
-      priority: index === 0 ? 1 : path === '/privacy' ? 0.5 : 0.8
-    })),
-    ...articles.map((article) => ({
-      url: base + '/blog/' + article.slug,
-      lastModified: new Date(article.updatedAt + 'T00:00:00.000Z'),
-      changeFrequency: 'yearly',
-      priority: 0.7
-    }))
+    ...pages.map((p) => ({ url: SITE_URL + (p.path === '/' ? '/' : p.path), lastModified: SITE_UPDATED, changeFrequency: p.changeFrequency, priority: p.priority })),
+    ...getArticles().map((a) => ({ url: `${SITE_URL}/blog/${a.slug}`, lastModified: new Date(`${a.updatedAt}T00:00:00.000Z`), changeFrequency: 'monthly', priority: 0.7 }))
   ];
 }

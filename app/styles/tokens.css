@@ -1,0 +1,180 @@
+/* ==========================================================================
+   UnfollowX Pro design tokens
+   Documented in docs/design-system.md. Components consume only these
+   variables; light and dark themes swap the semantic layer.
+   Breakpoints (used in media queries; CSS cannot read them as variables):
+     --bp-sm 480px · --bp-md 768px · --bp-lg 1024px · --bp-xl 1280px
+   ========================================================================== */
+
+:root {
+  /* ---- Brand palette (raw values, theme-independent) ---- */
+  --brand-blue: #3b82f6;
+  --brand-indigo: #5046e5;
+  --brand-violet: #8b5cf6;
+  --brand-red: #e5484d;
+  --brand-mint: #12b886;
+  --brand-amber: #f59f00;
+
+  /* ---- Typography ---- */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-display: var(--font-bricolage), var(--font-inter), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', 'Cascadia Code', 'Roboto Mono', Menlo, Consolas, monospace;
+
+  --text-2xs: .6875rem;   /* 11px — micro labels in product UI */
+  --text-xs: .75rem;      /* 12px — captions, eyebrows */
+  --text-sm: .875rem;     /* 14px — secondary copy, buttons */
+  --text-base: 1rem;      /* 16px — body */
+  --text-md: 1.0625rem;   /* 17px — long-form body */
+  --text-lg: 1.1875rem;   /* 19px — lead paragraphs */
+  --text-xl: 1.375rem;    /* 22px — h4 / card titles */
+  --text-2xl: clamp(1.5rem, 1.2rem + 1vw, 1.875rem);         /* h3 */
+  --text-3xl: clamp(1.875rem, 1.35rem + 2.1vw, 2.75rem);     /* h2 */
+  --text-4xl: clamp(2.375rem, 1.6rem + 3.4vw, 3.75rem);      /* page h1 */
+  --text-5xl: clamp(2.625rem, 1.55rem + 4.9vw, 4.75rem);     /* hero h1 */
+
+  --leading-tight: 1.04;
+  --leading-snug: 1.2;
+  --leading-normal: 1.55;
+  --leading-relaxed: 1.72;
+  --tracking-display: -.035em;
+  --tracking-tight: -.02em;
+  --tracking-label: .09em;
+
+  /* ---- Spacing (4px base) ---- */
+  --space-1: .25rem;
+  --space-2: .5rem;
+  --space-3: .75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --section-y: clamp(4.5rem, 3rem + 6vw, 8rem);
+  --gutter: clamp(1rem, .5rem + 2.5vw, 2rem);
+  --container: 1200px;
+  --container-narrow: 760px;
+  --header-h: 64px;
+
+  /* ---- Radii ---- */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+
+  /* ---- Motion ---- */
+  --dur-1: 120ms;
+  --dur-2: 200ms;
+  --dur-3: 320ms;
+  --dur-4: 560ms;
+  --dur-5: 900ms;
+  --ease-out: cubic-bezier(.22, 1, .36, 1);
+  --ease-in: cubic-bezier(.55, 0, 1, .45);
+  --ease-in-out: cubic-bezier(.65, 0, .35, 1);
+  --ease-spring: cubic-bezier(.34, 1.4, .64, 1);
+
+  /* ---- Layers ---- */
+  --z-base: 1;
+  --z-sticky: 40;
+  --z-header: 60;
+  --z-overlay: 80;
+  --z-toast: 90;
+}
+
+/* ---- Light theme (default) ---- */
+:root,
+:root[data-theme='light'] {
+  color-scheme: light;
+  --bg: #f7f8fc;
+  --bg-elevated: #ffffff;
+  --bg-inset: #eef1f8;
+  --surface: #ffffff;
+  --surface-2: #f3f5fa;
+  --surface-3: #e9edf5;
+  --surface-glass: rgba(255, 255, 255, .78);
+  --border: #e3e7f0;
+  --border-strong: #cfd6e3;
+  --text: #0b1020;
+  --text-2: #475069;
+  --text-3: #6b7490;
+  --text-inverse: #ffffff;
+  --accent: #4f46e5;
+  --accent-strong: #4338ca;
+  --accent-text: #4338ca;
+  --accent-soft: #eef0ff;
+  --accent-soft-2: #e0e4ff;
+  --danger: #d92d3a;
+  --danger-soft: #fff0f1;
+  --success: #0b8a62;
+  --success-soft: #e6f7f0;
+  --warning: #b76e00;
+  --warning-soft: #fff6e0;
+  --focus: #4f46e5;
+  --grad-brand: linear-gradient(135deg, #3b82f6 0%, #5046e5 52%, #8b5cf6 100%);
+  --grad-text: linear-gradient(120deg, #2f6df6 0%, #5046e5 45%, #8b45f0 100%);
+  --grad-surface: linear-gradient(180deg, #ffffff 0%, #f8f9fd 100%);
+  --glow-1: rgba(80, 70, 229, .16);
+  --glow-2: rgba(59, 130, 246, .14);
+  --glow-3: rgba(139, 92, 246, .12);
+  --grid-line: rgba(15, 23, 42, .055);
+  --shadow-xs: 0 1px 2px rgba(15, 23, 42, .06);
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, .05), 0 4px 14px rgba(15, 23, 42, .05);
+  --shadow-md: 0 2px 6px rgba(15, 23, 42, .05), 0 14px 36px rgba(15, 23, 42, .08);
+  --shadow-lg: 0 4px 10px rgba(15, 23, 42, .04), 0 30px 70px rgba(30, 41, 89, .14);
+  --shadow-brand: 0 8px 22px rgba(80, 70, 229, .32), 0 2px 6px rgba(80, 70, 229, .22);
+  --highlight: inset 0 1px 0 rgba(255, 255, 255, .9);
+  --band-bg: #0b1020;
+  --band-text: #eef1f8;
+  --band-text-2: #a8b1c8;
+}
+
+/* ---- Dark theme: deep ink, lit edges, brighter accents ---- */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #07090f;
+  --bg-elevated: #0d111b;
+  --bg-inset: #05070c;
+  --surface: #0e121c;
+  --surface-2: #141a27;
+  --surface-3: #1b2232;
+  --surface-glass: rgba(10, 13, 21, .72);
+  --border: rgba(255, 255, 255, .08);
+  --border-strong: rgba(255, 255, 255, .15);
+  --text: #eef1f8;
+  --text-2: #a8b1c8;
+  --text-3: #7f89a3;
+  --text-inverse: #07090f;
+  --accent: #8b93ff;
+  --accent-strong: #a5abff;
+  --accent-text: #aab0ff;
+  --accent-soft: rgba(139, 147, 255, .12);
+  --accent-soft-2: rgba(139, 147, 255, .2);
+  --danger: #ff6b72;
+  --danger-soft: rgba(255, 107, 114, .12);
+  --success: #3ddc97;
+  --success-soft: rgba(61, 220, 151, .12);
+  --warning: #ffc046;
+  --warning-soft: rgba(255, 192, 70, .12);
+  --focus: #a5abff;
+  --grad-brand: linear-gradient(135deg, #3b82f6 0%, #5b54f0 52%, #9b6bff 100%);
+  --grad-text: linear-gradient(120deg, #7ea6ff 0%, #a29bff 50%, #c39bff 100%);
+  --grad-surface: linear-gradient(180deg, #111623 0%, #0d111b 100%);
+  --glow-1: rgba(99, 102, 241, .22);
+  --glow-2: rgba(59, 130, 246, .16);
+  --glow-3: rgba(167, 139, 250, .14);
+  --grid-line: rgba(255, 255, 255, .045);
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, .4);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .4), 0 6px 18px rgba(0, 0, 0, .25);
+  --shadow-md: 0 2px 6px rgba(0, 0, 0, .35), 0 18px 44px rgba(0, 0, 0, .38);
+  --shadow-lg: 0 4px 12px rgba(0, 0, 0, .4), 0 36px 90px rgba(0, 0, 0, .55);
+  --shadow-brand: 0 10px 28px rgba(91, 84, 240, .38), 0 2px 8px rgba(91, 84, 240, .3);
+  --highlight: inset 0 1px 0 rgba(255, 255, 255, .06);
+  --band-bg: #0d111b;
+  --band-text: #eef1f8;
+  --band-text-2: #a8b1c8;
+}

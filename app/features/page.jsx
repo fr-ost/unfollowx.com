@@ -1,3 +1,111 @@
 import Link from 'next/link';
-export const metadata={title:'Features — Review followers, filter and manage your X list',description:'Explore UnfollowX Pro features: find X non-followers, track unfollowers, filter accounts, create Keep rules, export CSV and manage actions at your pace.',alternates:{canonical:'/features'}};
-export default function FeaturesPage(){return <><section className="page-hero"><div className="eyebrow">A TOOLBOX FOR A MORE INTENTIONAL FOLLOWING LIST</div><h1>Every feature. <em>Your choice.</em></h1><p>UnfollowX Pro helps you understand your X connections, sort through your list and take action only when you’re ready.</p><p style={{marginTop:25}}><a className="button button-primary" href="https://chromewebstore.google.com/detail/x-twitter-mass-unfollow-t/igpjmagghnibmjkkdcgpjgpkfkpiglnl" target="_blank" rel="noopener">Add to Chrome — free ↗</a></p></section><section className="content-section"><div className="content-grid wrap"><aside className="toc"><b>ON THIS PAGE</b><a href="#scan">Scan your following</a><a href="#changes">Track follower changes</a><a href="#filters">Filters and search</a><a href="#keep">Whitelist and Keep rules</a><a href="#history">History and follow back</a><a href="#import">Groups and CSV</a><a href="#pace">Pacing and controls</a><a href="#accounts">Accounts and languages</a></aside><article className="prose"><h2 id="scan">See who follows you back</h2><p>Scan the accounts you follow on X to see mutuals and accounts that don’t follow you back. Review the results in a dashboard, search names and handles, and select individual accounts or a larger group. You stay in control of the final selection.</p><p>The scan reads your following list from X in the browser session you already use. It can also identify accounts without a blue check and, when X makes the data available, show the date of an account’s latest post.</p><h2 id="changes">Keep track of follower changes</h2><p>Save a followers snapshot, then check again later to compare. The Followers view can show accounts that have left since your previous complete check, new followers and people who follow you but whom you don’t follow back. The extension avoids comparing an incomplete list, so a partial result is not treated as a confirmed change.</p><h2 id="filters">Search and filter before you decide</h2><p>Search by name, handle or bio. Sort and filter by follow-back status, activity, verification, profile photo, post count, follower count, following ratio, account age, keywords and writing system. Availability depends on the profile information X exposes in your session.</p><h2 id="keep">Protect accounts you want to keep</h2><p>Add individual accounts to your whitelist. You can also set Keep rules for verified or private accounts, accounts above a follower threshold, accounts with chosen words in their profile, and accounts you followed recently. These protections apply to bulk cleanup modes.</p><h2 id="history">Review history and follow back</h2><p>See accounts the extension has followed or unfollowed and when the action occurred. Follow again from your history if you change your mind. The Followers view can also help you choose new followers to follow back.</p><h2 id="import">Save groups and use CSV</h2><p>Save selected accounts as a named group to revisit later. Import a list of handles from a CSV or pasted text to target specific accounts. Export lists, selections, follower changes or action history to CSV for your own records.</p><h2 id="pace">Set a pace that works for you</h2><p>Choose a speed preset or customize the delay between actions, breaks and a rolling daily limit. Pause, resume or stop a run. The extension can back off if X asks you to slow down and stop if X requires an account check. These controls cannot guarantee that X will never rate-limit or restrict an account.</p><h2 id="accounts">Designed for your browser</h2><p>UnfollowX Pro is a Chrome extension for x.com and twitter.com. It supports multiple X accounts, with scans, whitelist, history, groups and counters kept separately per account on your device. The interface includes English, Spanish, Portuguese (Brazil), Hindi, Indonesian, Turkish and Arabic, plus light and dark themes.</p><div className="callout">UnfollowX Pro is an independent product and is not affiliated with or endorsed by X Corp. or Twitter. X can change its site and policies at any time.</div><h2>Want the short version?</h2><p>Install the extension, open X, scan your list, review the results and choose what to do. Visit the <Link href="/faq">FAQ</Link> for setup and privacy answers, or read the <Link href="/privacy">privacy policy</Link>.</p></article></div></section></>}
+import '../styles/pages.css';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import CtaBand from '@/components/CtaBand';
+import Icon from '@/components/Icon';
+import InstallLink from '@/components/InstallLink';
+import JsonLd from '@/components/JsonLd';
+import Screenshot from '@/components/Screenshot';
+import { TrackEvent } from '@/components/Analytics';
+import { featureGroups, features } from '@/lib/features';
+import { getArticle } from '@/lib/blog';
+import { pageMetadata, softwareSchema } from '@/lib/seo';
+import { absoluteUrl } from '@/lib/site';
+
+export const metadata = pageMetadata({
+  title: 'Features — Non-Follower Finder, Unfollower Tracker & More',
+  description: 'Every UnfollowX Pro feature, all free: find non-followers, track lost followers, filter inactive and non-blue accounts, whitelist, Keep rules, CSV, history and paced runs.',
+  path: '/features'
+});
+
+const groupShots = {
+  find: <div className="feature-shot pair"><Screenshot shot="popup" caption="Popup after a scan" sizes="(max-width: 860px) 80vw, 340px" /><Screenshot shot="followers" caption="Followers page: who unfollowed you and who’s new" sizes="(max-width: 860px) 100vw, 720px" /></div>,
+  review: <div className="feature-shot"><Screenshot shot="inactive" caption="Following → Inactive with filters, in dark mode" sizes="(max-width: 1200px) 100vw, 1100px" /></div>,
+  control: <div className="feature-shot pair"><Screenshot shot="run" caption="A paced run: progress, next account, Pause and Stop" sizes="(max-width: 860px) 80vw, 340px" /><Screenshot shot="storePacing" caption="Chrome Web Store screenshot: pacing that runs in the background" sizes="(max-width: 860px) 100vw, 720px" /></div>
+};
+
+export default function FeaturesPage() {
+  const itemList = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'UnfollowX Pro features',
+    itemListElement: features.map((f, i) => ({ '@type': 'ListItem', position: i + 1, name: f.title, url: absoluteUrl(`/features#${f.id}`) }))
+  };
+
+  return (
+    <>
+      <JsonLd data={[softwareSchema, itemList]} />
+      <TrackEvent name="feature_page_view" params={{ feature_name: 'features_overview' }} withPath />
+
+      <section className="page-hero">
+        <div className="container">
+          <Breadcrumbs items={[{ name: 'Features', path: '/features' }]} />
+          <div className="eyebrow" style={{ marginTop: 28 }}>Features · all free</div>
+          <h1>Every feature. <span className="gradient-text">No premium tier.</span></h1>
+          <p className="lead">UnfollowX Pro helps you see your X following list clearly, protect the accounts that matter and act at your own pace. Here is everything it does today — each feature linked to a guide that explains it in depth.</p>
+          <div className="cta-row">
+            <InstallLink location="features_hero" size="lg" />
+            <Link className="btn btn-secondary btn-lg" href="/setup" data-cta="Setup guide" data-cta-location="features_hero">Setup guide <Icon name="arrowRight" className="btn-arrow" /></Link>
+          </div>
+          <p className="hero-note"><span><Icon name="check" />17 features</span><span><Icon name="check" />No subscription</span><span><Icon name="check" />No usage quotas from UnfollowX Pro</span></p>
+        </div>
+      </section>
+
+      <nav className="feature-nav" aria-label="Feature groups">
+        <div className="container">
+          {featureGroups.map((g) => <a key={g.id} href={`#group-${g.id}`}>{g.title}</a>)}
+        </div>
+      </nav>
+
+      <div className="container">
+        {featureGroups.map((group) => {
+          const items = features.filter((f) => f.group === group.id);
+          return (
+            <section className="feature-group" id={`group-${group.id}`} key={group.id} aria-labelledby={`group-${group.id}-title`}>
+              <div className="feature-group-head" data-reveal="">
+                <h2 id={`group-${group.id}-title`}>{group.title}</h2>
+                <p>{group.text}</p>
+              </div>
+              <div className="feature-list" data-stagger="70">
+                {items.map((f) => {
+                  const guide = f.guide ? getArticle(f.guide) : null;
+                  return (
+                    <article className="card feature-item" id={f.id} key={f.id} data-spotlight="">
+                      <span className={`icon-tile ${f.tone === 'blue' || f.tone === 'violet' ? '' : f.tone}`}><Icon name={f.icon} /></span>
+                      <h3>{f.title}</h3>
+                      <p className="short">{f.short}</p>
+                      <p className="long">{f.body}</p>
+                      {guide ? <Link className="text-link" href={`/blog/${guide.slug}`} data-cta="feature_guide" data-cta-location="features_page">Guide: {guide.title} <Icon name="arrowRight" className="arrow" size={15} /></Link> : null}
+                    </article>
+                  );
+                })}
+              </div>
+              {groupShots[group.id] || null}
+            </section>
+          );
+        })}
+
+        <section className="feature-group" aria-labelledby="limits-title">
+          <div className="callout warn" data-reveal="">
+            <Icon name="alert" />
+            <p id="limits-title"><strong>About X’s limits.</strong> UnfollowX Pro sets no usage quotas, but X applies its own limits and rules to every account — including a <a href="https://help.x.com/en/using-x/x-follow-limit" target="_blank" rel="noopener">technical limit of 400 follows per day</a> and rules against aggressive or automated follow behaviour. Pacing controls help you stay measured, but no tool can guarantee X will permit every action. UnfollowX Pro is independent and not affiliated with or endorsed by X Corp.</p>
+          </div>
+        </section>
+      </div>
+
+      <section className="container lp-section" aria-labelledby="tools-title">
+        <div className="section-head" data-reveal="">
+          <div className="eyebrow">Focused tools</div>
+          <h2 id="tools-title">Looking for one specific job?</h2>
+        </div>
+        <div className="lp-cards" data-stagger="70">
+          <Link className="card card-hover" href="/twitter-non-followers-checker" data-spotlight="" data-cta="Non-followers checker" data-cta-location="features_tools"><span className="icon-tile red"><Icon name="userMinus" /></span><h3>Twitter non-followers checker</h3><p>See every account you follow that doesn’t follow you back, then review and decide.</p></Link>
+          <Link className="card card-hover" href="/x-follower-tracker" data-spotlight="" data-cta="Follower tracker" data-cta-location="features_tools"><span className="icon-tile"><Icon name="arrowsSwap" /></span><h3>X follower tracker</h3><p>Compare follower snapshots to see who unfollowed you and who’s new.</p></Link>
+          <Link className="card card-hover" href="/guides" data-spotlight="" data-cta="How-to guides" data-cta-location="features_tools"><span className="icon-tile green"><Icon name="book" /></span><h3>How-to guides</h3><p>Step-by-step answers for every common following-list task.</p></Link>
+        </div>
+      </section>
+
+      <CtaBand location="features_cta" title="All of this. Free. Forever." text="No trial, no premium unlocks, no subscription. Install UnfollowX Pro and start with a read-only scan." />
+    </>
+  );
+}

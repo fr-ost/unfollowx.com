@@ -1,49 +1,79 @@
-import './globals.css';
-import './performance.css';
+import localFont from 'next/font/local';
+import { ViewTransition } from 'react';
+import './styles/tokens.css';
+import './styles/base.css';
+import './styles/components.css';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 import RevealOnView from '@/components/RevealOnView';
+import Analytics from '@/components/Analytics';
+import JsonLd from '@/components/JsonLd';
+import { authorSchema, organizationSchema, websiteSchema } from '@/lib/seo';
+import { SITE_NAME, SITE_URL } from '@/lib/site';
+
+const inter = localFont({
+  src: './fonts/inter-latin-variable.woff2',
+  variable: '--font-inter',
+  weight: '100 900',
+  display: 'swap',
+  fallback: ['ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Arial']
+});
+
+const bricolage = localFont({
+  src: './fonts/bricolage-grotesque-latin-variable.woff2',
+  variable: '--font-bricolage',
+  weight: '200 800',
+  display: 'swap',
+  fallback: ['ui-sans-serif', 'system-ui', 'Segoe UI', 'Arial']
+});
 
 export const metadata = {
-  metadataBase: new URL('https://www.unfollowx.com'),
-  title: { default: 'UnfollowX Pro — A clearer view of your X following', template: '%s | UnfollowX Pro' },
-  description: 'Review your X following list with UnfollowX Pro. Find non-followers, track follower changes and choose who stays with a free Chrome extension.',
-  applicationName: 'UnfollowX Pro',
-  category: 'software',
-  referrer: 'strict-origin-when-cross-origin',
+  metadataBase: new URL(SITE_URL),
+  title: { default: 'UnfollowX Pro — Free & Unlimited X Unfollow Tool', template: '%s | UnfollowX Pro' },
+  description: 'Clean up your X following list with UnfollowX Pro. Find non-followers, track unfollowers, filter inactive accounts and manage your connections. Free forever, no subscription.',
+  applicationName: SITE_NAME,
+  category: 'technology',
+  creator: 'Shahriar Ahmed',
+  publisher: 'Unique Labs',
+  formatDetection: { telephone: false, email: false, address: false },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 } },
-  openGraph: {
-    type: 'website', siteName: 'UnfollowX Pro', url: 'https://www.unfollowx.com',
-    title: 'UnfollowX Pro — A clearer view of your X following',
-    description: 'Find non-followers. Track changes. Choose who stays — at your pace.',
-    images: [{ url: '/assets/social-card.svg', width: 1200, height: 630, alt: 'UnfollowX Pro — a clearer view of your X following' }]
-  },
-  twitter: { card: 'summary_large_image', title: 'UnfollowX Pro', description: 'A thoughtful way to review your X following.', images: ['/assets/social-card.svg'] },
-  icons: { icon: '/assets/icon128.png' },
-  alternates: { canonical: '/' }
+  openGraph: { type: 'website', siteName: SITE_NAME, locale: 'en_US', url: `${SITE_URL}/` },
+  twitter: { card: 'summary_large_image' }
 };
 
-const siteStructuredData = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    '@id': 'https://www.unfollowx.com/#organization',
-    name: 'UnfollowX Pro',
-    url: 'https://www.unfollowx.com/',
-    logo: { '@type': 'ImageObject', url: 'https://www.unfollowx.com/assets/icon128.png' },
-    email: 'shahriar.bmb@gmail.com'
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    '@id': 'https://www.unfollowx.com/#website',
-    name: 'UnfollowX Pro',
-    url: 'https://www.unfollowx.com/',
-    publisher: { '@id': 'https://www.unfollowx.com/#organization' },
-    inLanguage: 'en'
-  }
-];
+export const viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#f7f8fc' },
+    { media: '(prefers-color-scheme: dark)', color: '#07090f' }
+  ],
+  colorScheme: 'light dark'
+};
+
+// Runs before first paint so the saved or system theme never flashes.
+const themeScript = `(function(){try{var t=localStorage.getItem('unfollowx-theme');if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}var d=document.documentElement;d.dataset.theme=t;d.style.colorScheme=t}catch(e){}})();`;
+
+const siteGraph = {
+  '@context': 'https://schema.org',
+  '@graph': [organizationSchema, websiteSchema, authorSchema].map(({ '@context': _, ...node }) => node)
+};
 
 export default function RootLayout({ children }) {
-  return <html lang="en" data-theme="light"><body><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteStructuredData).replace(/</g, '\\u003c') }} /><SiteHeader /><main>{children}</main><SiteFooter /><RevealOnView /></body></html>;
+  return (
+    <html lang="en" data-theme="light" data-scroll-behavior="smooth" className={`${inter.variable} ${bricolage.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
+      <body>
+        <a className="skip-link" href="#main">Skip to content</a>
+        <JsonLd data={siteGraph} />
+        <SiteHeader />
+        <ViewTransition update="page-swap" default="none">
+          <main id="main" tabIndex={-1}>{children}</main>
+        </ViewTransition>
+        <SiteFooter />
+        <RevealOnView />
+        <Analytics />
+      </body>
+    </html>
+  );
 }
