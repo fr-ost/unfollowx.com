@@ -33,7 +33,7 @@ The live site (www.unfollowx.com) could not be fetched from the build environmen
 | 12 | Internal linking | See `internal-linking-map.md` | 0 broken links |
 | 13–16 | Images | Real screenshots as WebP with descriptive filenames (`unfollowx-pro-dashboard-followers-tracker.webp`…), `next/image` with explicit width/height, `sizes`, AVIF/WebP negotiation; descriptive `alt` | `check:seo` (alt), CLS 0 |
 | 17 | HTTP status codes | Unknown URLs → 404; unknown blog slugs → 404 (`dynamicParams = false`) | `check:seo` |
-| 18 | Redirects | `/features.html`, `/faq.html`, `/privacy.html`, `/setup.html`, `/index.html`, `/blog/index.html`, `/blog/:slug.html` → clean URLs (308); `unfollowx.com/*` → `https://www.unfollowx.com/*` (308) | `check:seo` (legacy redirects) |
+| 18 | Redirects | `/features.html`, `/faq.html`, `/privacy.html`, `/setup.html`, `/index.html`, `/blog/index.html`, `/blog/:slug.html` → clean URLs (308); `unfollowx.com/*` and `unfollowx-com.vercel.app/*` → `https://www.unfollowx.com/*` (308; preview `*.vercel.app` hosts unaffected) | `check:seo` (legacy redirects) |
 | 19–20 | Trailing slash, duplicates | Next default: no trailing slash; `/features/` → 308 → `/features` | `check:seo` |
 | 21 | Broken links | `npm run check:seo` | 0 |
 | 22 | Crawlable navigation | Plain `<a href>` links (Next `<Link>`), no JS-only navigation; FAQ answers always in HTML (`<details>`) | No-JS test |

@@ -12,6 +12,7 @@
 - [ ] Project root = repository root, framework = Next.js, default build command.
 - [ ] Domains: `www.unfollowx.com` is the **primary** domain; `unfollowx.com` redirects to it (or is attached without a redirect — the app redirects it). Never configure www → apex: the app’s apex → www redirect would loop.
 - [ ] After deploy: `curl -I https://unfollowx.com/features` → `308` to `https://www.unfollowx.com/features`.
+- [ ] `curl -I https://unfollowx-com.vercel.app/features` → `308` to `https://www.unfollowx.com/features`.
 - [ ] `curl -I https://www.unfollowx.com/features/` → `308` to `/features`.
 - [ ] `curl -I https://www.unfollowx.com/features.html` → `308` to `/features`.
 - [ ] `https://www.unfollowx.com/robots.txt` and `/sitemap.xml` load.

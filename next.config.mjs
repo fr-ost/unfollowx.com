@@ -25,6 +25,9 @@ const nextConfig = {
       // Canonical host is www.unfollowx.com. Make sure the Vercel domain
       // settings do not redirect www → apex, or this would loop.
       { source: '/:path*', has: [{ type: 'host', value: 'unfollowx.com' }], destination: 'https://www.unfollowx.com/:path*', permanent: true },
+      // Default Vercel production alias → canonical host. Exact match only, so
+      // preview deployments (other *.vercel.app hostnames) stay reachable.
+      { source: '/:path*', has: [{ type: 'host', value: 'unfollowx-com.vercel.app' }], destination: 'https://www.unfollowx.com/:path*', permanent: true },
       // Legacy static-site URLs (pre-Next.js) keep their link equity.
       { source: '/index.html', destination: '/', permanent: true },
       { source: '/features.html', destination: '/features', permanent: true },
