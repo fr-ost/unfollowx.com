@@ -120,7 +120,7 @@ On Vercel: import the repository, framework preset Next.js, root directory = rep
 ## 7. Known limitations
 
 - Lighthouse mobile performance is 94–96 with simulated LCP ≈ 2.8–3.0 s (observed unthrottled LCP 0.23 s); see `SEO/technical-seo-audit.md`.
-- Extension v7.3.5 (in the extension repo) adds a second, opt-out “Share anonymous feature usage” stream (GA4 via the developer’s Worker). The website’s privacy policy and copy still describe v7.3.4’s data practices — update them when 7.3.5 is published on the Chrome Web Store.
+- Privacy policy updated for extension v7.3.5 (two statistics switches, GA4 via the developer’s Worker) on 2026-11-18. Re-check when the extension’s data handling changes again (7.3.6–7.3.7 changed behaviour only).
 - GA4/GTM delivery verified with stubs only; confirm in DebugView/Realtime and inspect the GTM container (`GA4_DELIVERY`).
 - X help-center statements were taken from search results (help.x.com blocked in the build environment); re-check wording periodically.
 - The website is English-only; the extension supports 7 languages.

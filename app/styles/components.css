@@ -496,3 +496,6 @@
   .support-channel { grid-template-columns: auto minmax(0, 1fr); }
   .support-actions { grid-column: 1 / -1; justify-content: flex-start; }
 }
+.footer-langs { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 16px; padding-block: 0 var(--space-6); font-size: .8125rem; color: var(--text-3); }
+.footer-langs a { color: var(--text-2); }
+.footer-langs a:hover { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }

@@ -3,6 +3,7 @@ import Icon from '@/components/Icon';
 import InstallLink from '@/components/InstallLink';
 import { ConsentSettingsButton } from '@/components/Analytics';
 import { CONTACT_EMAIL, PUBLISHER, STORE_URL, TELEGRAM_URL } from '@/lib/site';
+import { LOCALES } from '@/lib/i18n';
 
 const columns = [
   {
@@ -74,6 +75,10 @@ export default function SiteFooter() {
           </div>
         ))}
       </div>
+      <nav className="container footer-langs" aria-label="Languages">
+        <span>Also available in</span>
+        {LOCALES.map((l) => <Link key={l.slug} href={`/${l.slug}`} hrefLang={l.hreflang} lang={l.hreflang} data-nav="footer" data-nav-item={l.name}>{l.name}</Link>)}
+      </nav>
       <div className="container footer-bottom">
         <span>© {year} UnfollowX Pro · A product of {PUBLISHER}</span>
         <span className="footer-promise"><Icon name="infinity" /> Free forever. No subscription. No premium paywall.</span>

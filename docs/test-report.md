@@ -121,3 +121,12 @@ Google reported “Your Google tag wasn’t detected” because the tag only loa
 - Consent-mode suite (stubbed Google scripts): **27/27**, including no gtag.js from the site, consent defaults before the GTM bootstrap, and no stale parameters between dataLayer events.
 - Accessibility + functional: **60/60**. Technical SEO checks: ✅.
 - **Live verification (site owner):** container imported and published; GA4 confirmed working on www.unfollowx.com.
+
+## Round 5 — privacy v7.3.5 + SEO expansion (2026-11-18)
+
+- Build: 62 static routes (adds 6 language pages, `/feed.xml`, `/llms.txt`, a new article and its OG image).
+- `npm run check:seo`: ✅ 29 sitemap URLs, 29 internal links, 24 OG images, hreflang reciprocal on 7 pages (advisory: Spanish title 74 chars).
+- Accessibility + functional (axe on 17 routes incl. `/es`, `/ar` and the new article, both themes): **66/66**.
+- Consent-mode analytics: **27/27**. Horizontal overflow incl. `/es`, `/ar`, `/hi` at 6 widths: ✅.
+- Visual: Spanish (desktop) and Arabic (390 px, right-to-left) pages; privacy “two switches” section.
+- Not verifiable here: whether Google has indexed the site (live domain unreachable from this environment); see `SEO/indexing-action-plan.md`.

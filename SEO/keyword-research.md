@@ -85,3 +85,18 @@ After launch, replace judgement with data:
 1. Google Search Console → Performance → Queries, filtered per page, after 4–8 weeks.
 2. Check for two URLs ranking for the same query (cannibalisation) and merge or re-scope.
 3. Use a keyword tool (e.g. Google Keyword Planner) for relative volume before writing new articles.
+
+## Localized pages (added 2026-11-18)
+
+Each language page targets the store listing’s own phrasing — the terms the developer chose for that market — with no search-volume claims:
+
+| URL | Primary phrase (from the official title) |
+| --- | --- |
+| `/es` | dejar de seguir en masa en X (Twitter) |
+| `/pt-br` | unfollow em massa no X (Twitter) |
+| `/hi` | X (Twitter) के लिए मुफ़्त मास अनफ़ॉलो |
+| `/id` | unfollow massal di X (Twitter) |
+| `/tr` | X (Twitter) toplu takipten çıkma |
+| `/ar` | إلغاء المتابعة الجماعي على X (تويتر) |
+
+New English article: `/blog/mute-vs-unfollow-vs-block-on-x` — primary “mute vs unfollow on X”, secondary “mute vs block twitter”, “remove follower without blocking”. Informational; distinct from every existing page.

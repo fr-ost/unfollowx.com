@@ -38,7 +38,16 @@ export const metadata = {
   formatDetection: { telephone: false, email: false, address: false },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 } },
   openGraph: { type: 'website', siteName: SITE_NAME, locale: 'en_US', url: `${SITE_URL}/` },
-  twitter: { card: 'summary_large_image' }
+  twitter: { card: 'summary_large_image' },
+  // Blog feed for readers, aggregators and faster discovery.
+  alternates: { types: { 'application/rss+xml': [{ url: '/feed.xml', title: 'UnfollowX Pro Blog' }] } },
+  // Search-engine ownership verification. Set these in Vercel → Settings →
+  // Environment Variables (values come from Search Console / Bing / Yandex).
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION || undefined,
+    yandex: process.env.YANDEX_VERIFICATION || undefined,
+    other: process.env.BING_SITE_VERIFICATION ? { 'msvalidate.01': process.env.BING_SITE_VERIFICATION } : undefined
+  }
 };
 
 export const viewport = {

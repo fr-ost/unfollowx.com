@@ -1,0 +1,139 @@
+{
+  "slug": "id",
+  "hreflang": "id",
+  "title": "UnfollowX Pro – Unfollow Massal di X (Twitter), Gratis & Tanpa Batas",
+  "summary": "Berhenti mengikuti massal di X (Twitter), gratis & tanpa batas. Rapikan daftar yang diikuti dan hapus yang tidak mengikuti balik.",
+  "intro": [
+    "UnfollowX Pro menunjukkan siapa yang tidak mengikuti Anda balik di X (Twitter), siapa yang berhenti mengikuti Anda, dan akun mana yang sudah tidak aktif. Lalu, ekstensi ini berhenti mengikuti akun yang Anda pilih dengan kecepatan yang aman, sementara Anda tetap menjelajah. Gratis, tanpa batas, tanpa pendaftaran, dan tanpa langganan.",
+    "Berfungsi di situs web X yang baru maupun yang klasik."
+  ],
+  "sections": {
+    "features": {
+      "heading": "APA YANG DILAKUKANNYA",
+      "paragraphs": [],
+      "items": [
+        "Menampilkan semua akun yang Anda ikuti tetapi tidak mengikuti Anda balik",
+        "Berhenti mengikuti semuanya dalam satu klik, atau hanya yang Anda pilih",
+        "Menampilkan siapa yang berhenti mengikuti Anda sejak pemeriksaan terakhir, serta pengikut baru Anda",
+        "Menemukan akun yang tidak memposting apa pun selama 30 hari, 90 hari, 6 bulan, atau setahun",
+        "Menemukan akun tanpa centang biru",
+        "Memungkinkan Anda mengikuti balik, atau mengikuti lagi siapa pun yang tidak sengaja Anda hapus",
+        "Melindungi orang-orang penting bagi Anda dengan daftar putih dan aturan sederhana",
+        "Tetap bekerja di latar belakang, dengan jeda istirahat dan batas harian"
+      ],
+      "steps": [],
+      "faq": []
+    },
+    "how": {
+      "heading": "CARA KERJANYA",
+      "paragraphs": [
+        "Selesai. Anda bisa menutup popup atau berpindah tab; prosesnya tetap berjalan. Jeda atau hentikan kapan saja."
+      ],
+      "items": [],
+      "steps": [
+        "Buka x.com dan masuk seperti biasa.",
+        "Klik ikon ekstensi lalu tekan \"Pindai yang saya ikuti\". Prosesnya sekitar satu menit dan tidak mengubah apa pun.",
+        "Periksa hasilnya. Tambahkan ke daftar putih siapa pun yang ingin Anda pertahankan.",
+        "Tekan \"Berhenti mengikuti yang tidak mengikuti balik\", atau buka dasbor dan pilih dengan tepat siapa yang dihapus."
+      ],
+      "faq": []
+    },
+    "unfollowers": {
+      "heading": "LIHAT SIAPA YANG BERHENTI MENGIKUTI ANDA",
+      "paragraphs": [
+        "X tidak memberi tahu saat seseorang pergi. UnfollowX Pro memberi tahu Anda. Setiap kali Anda memindai, ekstensi ini membandingkan pengikut Anda dengan pemeriksaan terakhir dan menampilkan siapa yang pergi, siapa yang baru, dan siapa yang belum Anda ikuti balik. Jika X mengirim daftar yang tidak lengkap, tidak ada yang dibandingkan, jadi tidak ada orang yang tercantum karena kesalahan."
+      ],
+      "items": [],
+      "steps": [],
+      "faq": []
+    },
+    "choose": {
+      "heading": "PILIH DENGAN TEPAT SIAPA YANG DIHAPUS",
+      "paragraphs": [
+        "Dasbor menampilkan semua akun yang Anda ikuti. Cari berdasarkan nama atau bio, lalu persempit daftarnya: tanpa foto profil, sangat sedikit postingan, sangat sedikit pengikut, akun yang mengikuti jauh lebih banyak orang daripada jumlah pengikutnya, akun privat atau terverifikasi, kapan mereka bergabung dengan X, dan kata-kata di bio mereka.",
+        "Pilih satu akun atau seribu. Simpan pilihan sebagai grup untuk dipakai lagi nanti, atau ekspor sebagai file CSV. Sudah punya daftar nama pengguna? Tempelkan atau impor CSV, dan hanya akun-akun itu yang akan berhenti Anda ikuti."
+      ],
+      "items": [],
+      "steps": [],
+      "faq": []
+    },
+    "keep": {
+      "heading": "PERTAHANKAN ORANG-ORANG PENTING",
+      "paragraphs": [
+        "Akun di daftar putih Anda tidak akan pernah berhenti diikuti. Anda juga bisa mempertahankan seluruh kelompok secara otomatis: akun terverifikasi, akun privat, akun besar, siapa pun yang bionya menyebut kata pilihan Anda, dan orang yang baru saja Anda ikuti, agar mereka punya waktu untuk mengikuti Anda balik.",
+        "Tidak sengaja berhenti mengikuti seseorang? Buka Riwayat dan tekan \"Ikuti lagi\"."
+      ],
+      "items": [],
+      "steps": [],
+      "faq": []
+    },
+    "safe": {
+      "heading": "DIRANCANG AGAR AMAN",
+      "paragraphs": [
+        "X membatasi akun yang berhenti mengikuti terlalu cepat, jadi UnfollowX Pro bekerja dengan kecepatan manusia: jeda acak di antara setiap akun, istirahat rutin, dan batas harian (400 secara default). Saat batas tercapai, ekstensi ini beristirahat lalu melanjutkan sendiri. Jika X meminta untuk melambat, ekstensi ini menunggu. Jika X meminta Anda memverifikasi akun, ekstensi ini berhenti dan menunggu Anda.",
+        "Pilih Aman, Seimbang, atau Cepat, atau atur angka Anda sendiri. Tekan Alt + Shift + S untuk berhenti seketika.",
+        "Tidak ada alat yang bisa menjamin X tidak akan pernah membatasi sebuah akun, tetapi pengaturan yang wajar membuat risikonya tetap rendah."
+      ],
+      "items": [],
+      "steps": [],
+      "faq": []
+    },
+    "also": {
+      "heading": "JUGA TERSEDIA",
+      "paragraphs": [],
+      "items": [
+        "Grafik akun yang Anda ikuti dan pengikut Anda dari waktu ke waktu",
+        "Data terpisah untuk setiap akun X yang Anda gunakan",
+        "Notifikasi desktop opsional",
+        "Mode terang dan gelap",
+        "English, Español, Português (Brasil), हिन्दी, Bahasa Indonesia, Türkçe, dan العربية"
+      ],
+      "steps": [],
+      "faq": []
+    },
+    "data": {
+      "heading": "DATA ANDA TETAP BERSAMA ANDA",
+      "paragraphs": [
+        "Daftar akun yang Anda ikuti, pengikut, daftar putih, dan riwayat Anda tetap tersimpan di browser Anda. Semuanya tidak pernah diunggah ke mana pun. Ekstensi ini menggunakan sesi X tempat Anda sudah masuk dan tidak pernah meminta kata sandi Anda.",
+        "Untuk menghitung jumlah pemasangan dan menemukan bug, ekstensi ini mengirim statistik penggunaan anonim: ID acak, versi, dan negara Anda. Tidak pernah alamat IP, akun X, atau daftar Anda. Anda bisa menonaktifkannya di Pengaturan."
+      ],
+      "items": [],
+      "steps": [],
+      "faq": []
+    },
+    "faq": {
+      "heading": "PERTANYAAN",
+      "paragraphs": [],
+      "items": [],
+      "steps": [],
+      "faq": [
+        {
+          "q": "Apakah benar-benar gratis?",
+          "a": "Ya. Semua fitur gratis, dan tidak ada batas jumlah akun yang bisa Anda periksa."
+        },
+        {
+          "q": "Berapa batas berhenti mengikuti per hari?",
+          "a": "X biasanya mengizinkan sekitar 400 per hari untuk akun gratis dan sekitar 1.000 dengan X Premium. Batas default-nya 400, dan Anda bisa mengubahnya."
+        },
+        {
+          "q": "Apakah ekstensi ini akan berhenti mengikuti teman-teman saya?",
+          "a": "Tidak. Orang yang mengikuti Anda balik hanya dihapus jika Anda memilih \"Berhenti mengikuti semua\". Akun di daftar putih tidak pernah dihapus."
+        },
+        {
+          "q": "Apakah berfungsi di tampilan baru X?",
+          "a": "Ya. Berfungsi di situs web X yang baru maupun yang klasik."
+        }
+      ]
+    },
+    "support": {
+      "heading": "DUKUNGAN",
+      "paragraphs": [
+        "Menemukan bug atau punya ide? Gunakan \"Laporkan bug\" di dalam ekstensi. Beri tahu kami versi ekstensi Anda dan apa yang terjadi; tangkapan layar akan sangat membantu.",
+        "UnfollowX Pro adalah ekstensi independen. Ekstensi ini tidak dibuat oleh, tidak berafiliasi dengan, dan tidak didukung oleh X Corp. X dan Twitter adalah merek dagang milik pemiliknya masing-masing."
+      ],
+      "items": [],
+      "steps": [],
+      "faq": []
+    }
+  }
+}

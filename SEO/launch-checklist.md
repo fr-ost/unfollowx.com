@@ -1,5 +1,7 @@
 # Launch checklist
 
+> **Not showing up on Google?** Start with `SEO/indexing-action-plan.md` (Search Console, Chrome Web Store official URL, GitHub repo visibility, Bing + IndexNow, owned links).
+
 ## Before deploying
 
 - [ ] `npm ci && npm run build` succeeds (no errors).

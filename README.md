@@ -29,6 +29,14 @@ Technical SEO checks (with the production server running):
 npm run check:seo
 ```
 
+After deploying new or changed pages, notify Bing/Yandex/Naver/Seznam via IndexNow:
+
+```bash
+npm run indexnow
+```
+
+Optional environment variables (Vercel → Settings → Environment Variables): `GOOGLE_SITE_VERIFICATION`, `BING_SITE_VERIFICATION`, `YANDEX_VERIFICATION` — search-engine ownership tags. See `SEO/indexing-action-plan.md`.
+
 ## Where things live
 
 | Path | What |
@@ -36,6 +44,7 @@ npm run check:seo
 | `app/` | Routes, metadata, OG images, sitemap, robots, styles (`app/styles/`) and self-hosted fonts |
 | `components/` | Header, footer, consent/analytics, hero dashboard, interactive demo, FAQ accordion, cards… |
 | `content/articles/` | Blog article bodies (Markdown subset, see `lib/markdown.js`) |
+| `content/i18n/`, `lib/i18n.js` | Localized landing pages (/es, /pt-br, /hi, /id, /tr, /ar) from the official store translations |
 | `lib/site.js` | Store URL, contact details, extension version and facts, navigation |
 | `lib/blog.js` | Article registry and categories |
 | `lib/features.js`, `lib/faq.js` | Verified feature list and FAQ data |

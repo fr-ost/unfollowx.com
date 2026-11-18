@@ -96,3 +96,19 @@ Simulated throttling (Moto G Power / Slow 4G for mobile). These are lab numbers 
 3. ~~Replace 1× screenshots with 2× captures~~ — done (2× real UI captures).
 4. Re-validate X help-center quotes (help.x.com was unreachable from the build environment).
 5. Consider hreflang + localised pages for the extension’s 7 languages.
+
+## 5. Update — 2026-11-18 (“maximum SEO”)
+
+Finding: no www.unfollowx.com pages were in search results two weeks after launch; the site’s public GitHub repo and unrelated “UnfollowX” projects ranked instead. Off-site fixes are in `SEO/indexing-action-plan.md`. On-site additions:
+
+| Area | Change |
+| --- | --- |
+| International | `/es`, `/pt-br`, `/hi`, `/id`, `/tr`, `/ar` from the developer’s official store translations; `lang`/`dir` on the content; reciprocal hreflang + `x-default` on all 7 versions and in the sitemap; footer language links. `check:seo` now validates hreflang reciprocity. |
+| Entity | `alternateName` (“UnfollowX”) on Organization, WebSite and SoftwareApplication; `sameAs` → Chrome Web Store listing (and Telegram for the organization); `featureList`; `screenshot` ImageObjects; version 7.3.5. Still no ratings. |
+| Store links | Canonical listing URL updated to `/detail/unfollowx-pro-%E2%80%93-free-unli/igpjmagghnibmjkkdcgpjgpkfkpiglnl`. |
+| Titles | Homepage: “UnfollowX Pro – Free & Unlimited X (Twitter) Unfollow Tool”; description leads with “Free X (Twitter) unfollow tool for Chrome”. |
+| Discovery | Image sitemap (26 screenshot entries); RSS 2.0 feed `/feed.xml` linked via `rel=alternate` on every page; `/llms.txt`; IndexNow key file + `npm run indexnow`. |
+| Verification | `GOOGLE_SITE_VERIFICATION`, `BING_SITE_VERIFICATION`, `YANDEX_VERIFICATION` env vars render the ownership meta tags. |
+| Content | New article “Mute vs Unfollow vs Block on X”. |
+
+Result: `check:seo` passes on 29 sitemap URLs, 7 hreflang pages, 24 OG images (one advisory: the Spanish store title is 74 characters).

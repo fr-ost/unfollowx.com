@@ -126,7 +126,7 @@ export default function SetupPage() {
             <div className="card">
               <div className="eyebrow">Your data</div>
               <h2>What stays local</h2>
-              <p>Lists, scans, settings and history stay in Chrome extension storage. Anonymous usage statistics are on by default and can be turned off in Settings → Privacy.</p>
+              <p>Lists, scans, settings and history stay in Chrome extension storage. Anonymous usage stats and anonymous feature usage can each be turned off in Settings → Privacy.</p>
               <Link className="text-link" href="/privacy" data-cta="Privacy policy" data-cta-location="setup_aside">Privacy policy <Icon name="arrowRight" className="arrow" size={15} /></Link>
             </div>
           </aside>

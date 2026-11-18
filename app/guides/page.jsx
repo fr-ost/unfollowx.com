@@ -52,7 +52,7 @@ const tasks = [
   {
     icon: 'sparkle', tone: 'green', title: 'Clean up your following list',
     answer: 'Decide what your feed is for, protect people first, then review in batches — dormant accounts, likely spam, unfamiliar non-followers — using several signals together.',
-    guides: ['a-thoughtful-guide-to-cleaning-up-your-x-following-list', 'best-free-x-unfollow-tools-what-to-look-for']
+    guides: ['a-thoughtful-guide-to-cleaning-up-your-x-following-list', 'mute-vs-unfollow-vs-block-on-x', 'best-free-x-unfollow-tools-what-to-look-for']
   },
   {
     icon: 'monitor', tone: '', title: 'Manage several X accounts in Chrome',

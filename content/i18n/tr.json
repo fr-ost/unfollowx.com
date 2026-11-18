@@ -1,0 +1,139 @@
+{
+  "slug": "tr",
+  "hreflang": "tr",
+  "title": "UnfollowX Pro – X (Twitter) Toplu Takipten Çıkma, Ücretsiz ve Sınırsız",
+  "summary": "Ücretsiz ve sınırsız X (Twitter) toplu takipten çıkma aracı. Takip listeni temizle, seni takip etmeyenleri kolayca takipten çık.",
+  "intro": [
+    "UnfollowX Pro, X (Twitter) üzerinde seni geri takip etmeyenleri, seni takipten çıkanları ve artık sessizleşmiş hesapları gösterir. Ardından sen gezinmeye devam ederken seçtiğin hesapları güvenli bir hızda takipten çıkar. Ücretsizdir; sınır yok, kayıt yok, abonelik yok.",
+    "X'in hem yeni hem de klasik web sitesinde çalışır."
+  ],
+  "sections": {
+    "features": {
+      "heading": "NE YAPAR",
+      "paragraphs": [],
+      "items": [
+        "Takip ettiğin ama seni geri takip etmeyen herkesi listeler",
+        "Hepsini tek tıkla ya da yalnızca seçtiklerini takipten çıkar",
+        "Son kontrolünden bu yana seni kimlerin takipten çıktığını ve yeni takipçilerini gösterir",
+        "30 gün, 90 gün, 6 ay ya da bir yıldır paylaşım yapmayan hesapları bulur",
+        "Mavi tiki olmayan hesapları bulur",
+        "İnsanları geri takip etmeni ya da yanlışlıkla çıkardığın birini yeniden takip etmeni sağlar",
+        "Önemsediğin kişileri beyaz liste ve basit kurallarla korur",
+        "Molalar ve günlük sınırla arka planda çalışmaya devam eder"
+      ],
+      "steps": [],
+      "faq": []
+    },
+    "how": {
+      "heading": "NASIL ÇALIŞIR",
+      "paragraphs": [
+        "Hepsi bu. Açılır pencereyi kapatabilir ya da sekme değiştirebilirsin; işlem devam eder. İstediğin zaman duraklat ya da durdur."
+      ],
+      "items": [],
+      "steps": [
+        "x.com'u aç ve her zamanki gibi giriş yap.",
+        "Eklenti simgesine tıkla ve \"Takip ettiklerimi tara\"ya bas. Yaklaşık bir dakika sürer ve hiçbir şeyi değiştirmez.",
+        "Sonuçlara göz at. Tutmak istediğin herkesi beyaz listeye ekle.",
+        "\"Takip etmeyenleri takipten çık\"a bas ya da paneli açıp kimin gideceğini tek tek seç."
+      ],
+      "faq": []
+    },
+    "unfollowers": {
+      "heading": "SENİ KİMLERİN TAKİPTEN ÇIKTIĞINI GÖR",
+      "paragraphs": [
+        "Biri seni takipten çıktığında X bunu söylemez. UnfollowX Pro söyler. Her taramada takipçilerini bir önceki kontrolle karşılaştırır ve kimin gittiğini, kimin yeni geldiğini ve henüz kimi geri takip etmediğini gösterir. X eksik bir liste gönderirse hiçbir karşılaştırma yapılmaz; böylece kimse yanlışlıkla listelenmez."
+      ],
+      "items": [],
+      "steps": [],
+      "faq": []
+    },
+    "choose": {
+      "heading": "KİMİN GİDECEĞİNİ SEN SEÇ",
+      "paragraphs": [
+        "Panel takip ettiğin herkesi listeler. İsme ya da biyografiye göre ara ve listeyi daralt: profil fotoğrafı olmayanlar, çok az gönderisi olanlar, çok az takipçisi olanlar, takipçi sayısından çok daha fazla kişiyi takip eden hesaplar, gizli ya da onaylı hesaplar, X'e ne zaman katıldıkları ve biyografilerindeki kelimeler.",
+        "Bir hesap ya da bin hesap seç. Bir seçimi daha sonra tekrar kullanmak için grup olarak kaydet ya da CSV dosyası olarak dışa aktar. Elinde zaten bir kullanıcı adı listesi mi var? Yapıştır ya da bir CSV içe aktar; yalnızca o hesaplar takipten çıkarılır."
+      ],
+      "items": [],
+      "steps": [],
+      "faq": []
+    },
+    "keep": {
+      "heading": "ÖNEMSEDİĞİN KİŞİLERİ KORU",
+      "paragraphs": [
+        "Beyaz listendeki hiç kimse takipten çıkarılmaz. Ayrıca bütün grupları otomatik olarak tutabilirsin: onaylı hesaplar, gizli hesaplar, büyük hesaplar, biyografisinde seçtiğin bir kelime geçen herkes ve yakın zamanda takip ettiğin kişiler (böylece seni geri takip etmeye zamanları olur).",
+        "Birini yanlışlıkla takipten mi çıktın? Geçmiş'i aç ve \"Yeniden takip et\"e bas."
+      ],
+      "items": [],
+      "steps": [],
+      "faq": []
+    },
+    "safe": {
+      "heading": "GÜVENLİ OLACAK ŞEKİLDE TASARLANDI",
+      "paragraphs": [
+        "X, çok hızlı takipten çıkan hesapları kısıtlar; bu yüzden UnfollowX Pro insan hızında çalışır: her hesap arasında rastgele aralıklar, düzenli molalar ve günlük bir sınır (varsayılan olarak 400). Sınıra ulaşınca dinlenir ve kendiliğinden kaldığı yerden devam eder. X yavaşlamasını isterse bekler. X senden hesabını doğrulamanı isterse durur ve seni bekler.",
+        "Güvenli, Dengeli ya da Hızlı'yı seç veya kendi değerlerini belirle. Anında durdurmak için Alt + Shift + S'ye bas.",
+        "Hiçbir araç X'in bir hesabı asla kısıtlamayacağını garanti edemez, ama makul ayarlar riski düşük tutar."
+      ],
+      "items": [],
+      "steps": [],
+      "faq": []
+    },
+    "also": {
+      "heading": "AYRICA",
+      "paragraphs": [],
+      "items": [
+        "Zaman içinde takip ettiklerinin ve takipçilerinin grafiği",
+        "Kullandığın her X hesabı için ayrı veriler",
+        "İsteğe bağlı masaüstü bildirimleri",
+        "Açık ve koyu mod",
+        "English, Español, Português (Brasil), हिन्दी, Bahasa Indonesia, Türkçe ve العربية"
+      ],
+      "steps": [],
+      "faq": []
+    },
+    "data": {
+      "heading": "VERİLERİN SENDE KALIR",
+      "paragraphs": [
+        "Takip ettiklerin, takipçilerin, beyaz listen ve geçmişin tarayıcında kalır. Hiçbir yere yüklenmez. Eklenti, zaten giriş yapmış olduğun X oturumunu kullanır ve şifreni asla istemez.",
+        "Kurulumları saymak ve hataları fark etmek için anonim kullanım istatistikleri gönderir: rastgele bir kimlik, sürüm ve ülken. IP adresin, X hesabın ya da listelerin asla gönderilmez. Bunu Ayarlar'dan kapatabilirsin."
+      ],
+      "items": [],
+      "steps": [],
+      "faq": []
+    },
+    "faq": {
+      "heading": "SORULAR",
+      "paragraphs": [],
+      "items": [],
+      "steps": [],
+      "faq": [
+        {
+          "q": "Gerçekten ücretsiz mi?",
+          "a": "Evet. Tüm özellikler ücretsiz ve gözden geçirebileceğin hesap sayısında bir üst sınır yok."
+        },
+        {
+          "q": "Günde kaç hesabı takipten çıkabilirim?",
+          "a": "X genellikle ücretsiz bir hesapta günde yaklaşık 400'e, X Premium ile yaklaşık 1.000'e izin verir. Varsayılan sınır 400'dür ve bunu değiştirebilirsin."
+        },
+        {
+          "q": "Arkadaşlarımı takipten çıkarır mı?",
+          "a": "Hayır. Seni geri takip eden kişiler yalnızca \"Hepsini takipten çık\"ı seçersen çıkarılır. Beyaz listedeki hesaplar asla çıkarılmaz."
+        },
+        {
+          "q": "X'in yeni tasarımında çalışıyor mu?",
+          "a": "Evet. X'in hem yeni hem de klasik web sitesinde çalışır."
+        }
+      ]
+    },
+    "support": {
+      "heading": "DESTEK",
+      "paragraphs": [
+        "Bir hata mı buldun ya da bir fikrin mi var? Eklentinin içindeki \"Hata bildir\"i kullan. Eklenti sürümünü ve ne olduğunu yaz; bir ekran görüntüsü çok yardımcı olur.",
+        "UnfollowX Pro bağımsız bir eklentidir. X Corp. tarafından yapılmamıştır, X Corp. ile bağlantılı değildir ve X Corp. tarafından onaylanmamıştır. X ve Twitter, sahiplerinin ticari markalarıdır."
+      ],
+      "items": [],
+      "steps": [],
+      "faq": []
+    }
+  }
+}

@@ -40,6 +40,7 @@ if (!urls.length) fail('/sitemap.xml', 'no URLs');
 urls.forEach((u) => { if (!u.startsWith(PROD + '/') && u !== PROD + '/') fail('/sitemap.xml', `non-canonical URL ${u}`); });
 
 const titles = new Map();
+const hreflangs = new Map(); // page url → { lang: href }
 const descriptions = new Map();
 const internalLinks = new Set();
 const ogImages = new Set();
@@ -74,6 +75,11 @@ for (const url of urls) {
   if (ogImage) ogImages.add(ogImage);
   if (meta(html, 'property', 'og:url') && norm(meta(html, 'property', 'og:url')) !== norm(url)) fail(path, `og:url ${meta(html, 'property', 'og:url')} ≠ ${url}`);
 
+  const alt = {};
+  for (const m of html.matchAll(/<link[^>]+rel="alternate"[^>]+hrefLang="([^"]+)"[^>]+href="([^"]+)"/gi)) alt[m[1]] = m[2];
+  for (const m of html.matchAll(/<link[^>]+rel="alternate"[^>]+href="([^"]+)"[^>]+hrefLang="([^"]+)"/gi)) alt[m[2]] = m[1];
+  if (Object.keys(alt).length) hreflangs.set(url, alt);
+
   const body = html.slice(html.indexOf('<body'));
   const h1s = body.match(/<h1[\s>]/gi) || [];
   if (h1s.length !== 1) fail(path, `${h1s.length} <h1> elements`);
@@ -94,6 +100,16 @@ for (const url of urls) {
   for (const m of body.matchAll(/<a[^>]+href="([^"]+)"/gi)) {
     const href = decode(m[1]);
     if (href.startsWith('/') && !href.startsWith('//')) internalLinks.add(href.split('#')[0] || '/');
+  }
+}
+
+// hreflang: every alternate must be a sitemap URL and must link back (reciprocal).
+for (const [page, alt] of hreflangs) {
+  if (!alt['x-default']) fail(new URL(page).pathname, 'hreflang set has no x-default');
+  for (const [lang, href] of Object.entries(alt)) {
+    if (!urls.map(norm).includes(norm(href))) { fail(new URL(page).pathname, `hreflang ${lang} → ${href} is not in the sitemap`); continue; }
+    const back = hreflangs.get(urls.find((u) => norm(u) === norm(href)));
+    if (!back || !Object.values(back).map(norm).includes(norm(page))) fail(new URL(page).pathname, `hreflang ${lang} → ${href} does not link back`);
   }
 }
 
@@ -124,7 +140,7 @@ for (const [from, to] of redirects) {
   if (![301, 308].includes(status) || !location.endsWith(to)) fail(from, `expected permanent redirect to ${to}, got ${status} ${location}`);
 }
 
-console.log(`Checked ${urls.length} sitemap URLs, ${internalLinks.size} internal links, ${ogImages.size} OG images.`);
+console.log(`Checked ${urls.length} sitemap URLs, ${internalLinks.size} internal links, ${ogImages.size} OG images, ${hreflangs.size} pages with hreflang.`);
 if (warnings.length) console.log(`\nWarnings (${warnings.length}):\n  ${warnings.join('\n  ')}`);
 if (failures.length) { console.log(`\nFailures (${failures.length}):\n  ${failures.join('\n  ')}`); process.exit(1); }
 console.log('\nAll technical SEO checks passed.');

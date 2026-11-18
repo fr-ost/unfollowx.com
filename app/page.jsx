@@ -14,12 +14,14 @@ import { features } from '@/lib/features';
 import { homeFaqs } from '@/lib/faq';
 import { getArticle } from '@/lib/blog';
 import { pageMetadata, softwareSchema } from '@/lib/seo';
+import { LANGUAGE_ALTERNATES } from '@/lib/i18n';
 
 export const metadata = pageMetadata({
-  title: 'UnfollowX Pro — Free & Unlimited X Unfollow Tool',
+  title: 'UnfollowX Pro – Free & Unlimited X (Twitter) Unfollow Tool',
   absoluteTitle: true,
-  description: 'Clean up your X following list with UnfollowX Pro. Find non-followers, track unfollowers and filter inactive accounts. Free forever, unlimited, no subscription.',
-  path: '/'
+  description: 'Free X (Twitter) unfollow tool for Chrome. See who doesn’t follow you back, who unfollowed you and who’s inactive, then bulk unfollow safely. No limits, no subscription.',
+  path: '/',
+  languages: LANGUAGE_ALTERNATES
 });
 
 const trust = [
@@ -308,7 +310,7 @@ export default function HomePage() {
             <li><span className="icon-tile green"><Icon name="key" /></span><div><h3>Uses your existing X session</h3><p>Requests go to X itself (x.com, twitter.com and X’s app files on abs.twimg.com), the same way X’s website talks to X.</p></div></li>
             <li><span className="icon-tile green"><Icon name="lock" /></span><div><h3>Never asks for your X password</h3><p>It doesn’t sign in for you and has no account system of its own.</p></div></li>
             <li><span className="icon-tile"><Icon name="database" /></span><div><h3>Lists stay in Chrome extension storage</h3><p>Scans, follower snapshots, whitelist, settings and action history are saved on your device — not uploaded to the developer.</p></div></li>
-            <li><span className="icon-tile amber"><Icon name="chart" /></span><div><h3>Anonymous usage stats — on by default, easy to turn off</h3><p>A random install ID, extension version, install / daily-active / uninstall events and a daily count of follow and unfollow actions. Country is derived on the server. Never your X account, lists or history. Off switch: Settings → Privacy.</p></div></li>
+            <li><span className="icon-tile amber"><Icon name="chart" /></span><div><h3>Anonymous statistics — two switches, both easy to turn off</h3><p>Basic usage stats (random install ID, version, install / daily-active events, a daily action count) and, optionally, anonymous feature usage (counts and fixed values only). Never your X account, lists, history or IP address. Off switches: Settings → Privacy.</p></div></li>
             <li><span className="icon-tile red"><Icon name="trash" /></span><div><h3>Delete everything in one click</h3><p>Settings → Delete all extension data, or delete one X account’s data. Removing the extension clears it too.</p></div></li>
             <li><span className="icon-tile"><Icon name="bell" /></span><div><h3>Notifications are optional</h3><p>Off by default. Chrome asks for permission only if you switch them on.</p></div></li>
           </ul>

@@ -1,0 +1,139 @@
+{
+  "slug": "pt-br",
+  "hreflang": "pt-BR",
+  "title": "UnfollowX Pro – Unfollow em massa no X (Twitter), grátis e ilimitado",
+  "summary": "Deixe de seguir em massa no X (Twitter), grátis e sem limites. Limpe a lista de quem você segue e remova quem não segue de volta.",
+  "intro": [
+    "O UnfollowX Pro mostra quem não segue você de volta no X (Twitter), quem deixou de seguir você e quais contas pararam de postar. Depois, deixa de seguir as que você escolher, em um ritmo seguro, enquanto você continua navegando. É grátis, sem limites, sem cadastro e sem assinatura.",
+    "Funciona tanto no site novo quanto no site clássico do X."
+  ],
+  "sections": {
+    "features": {
+      "heading": "O QUE ELE FAZ",
+      "paragraphs": [],
+      "items": [
+        "Lista todo mundo que você segue e que não segue você de volta",
+        "Deixa de seguir todos com um clique, ou só os que você escolher",
+        "Mostra quem deixou de seguir você desde a última verificação, e seus novos seguidores",
+        "Encontra contas que não postam há 30 dias, 90 dias, 6 meses ou um ano",
+        "Encontra contas sem o selo azul",
+        "Permite seguir de volta, ou seguir de novo quem você removeu por engano",
+        "Protege as pessoas importantes para você com uma lista branca e regras simples",
+        "Continua funcionando em segundo plano, com pausas e um limite diário"
+      ],
+      "steps": [],
+      "faq": []
+    },
+    "how": {
+      "heading": "COMO FUNCIONA",
+      "paragraphs": [
+        "Pronto. Você pode fechar o pop-up ou trocar de aba; a tarefa continua. Pause ou pare quando quiser."
+      ],
+      "items": [],
+      "steps": [
+        "Abra o x.com e entre na sua conta como de costume.",
+        "Clique no ícone da extensão e em \"Escanear quem eu sigo\". Leva cerca de um minuto e não altera nada.",
+        "Confira os resultados. Adicione à lista branca quem você quer manter.",
+        "Clique em \"Deixar de seguir quem não segue você\", ou abra o painel e escolha exatamente quem sai."
+      ],
+      "faq": []
+    },
+    "unfollowers": {
+      "heading": "VEJA QUEM DEIXOU DE SEGUIR VOCÊ",
+      "paragraphs": [
+        "O X não avisa quando alguém vai embora. O UnfollowX Pro avisa. A cada escaneamento, ele compara seus seguidores com a verificação anterior e mostra quem saiu, quem é novo e quem você ainda não seguiu de volta. Se o X devolver uma lista incompleta, nada é comparado, então ninguém aparece na lista por engano."
+      ],
+      "items": [],
+      "steps": [],
+      "faq": []
+    },
+    "choose": {
+      "heading": "ESCOLHA EXATAMENTE QUEM SAI",
+      "paragraphs": [
+        "O painel lista todo mundo que você segue. Pesquise por nome ou bio e refine a lista: sem foto de perfil, pouquíssimos posts, pouquíssimos seguidores, contas que seguem muito mais pessoas do que têm de seguidores, contas privadas ou verificadas, quando entraram no X e palavras na bio.",
+        "Selecione uma conta ou mil. Salve uma seleção como grupo para usar depois, ou exporte como arquivo CSV. Já tem uma lista de nomes de usuário? Cole ou importe um CSV, e só essas contas deixarão de ser seguidas."
+      ],
+      "items": [],
+      "steps": [],
+      "faq": []
+    },
+    "keep": {
+      "heading": "MANTENHA QUEM IMPORTA PARA VOCÊ",
+      "paragraphs": [
+        "Quem está na sua lista branca nunca deixa de ser seguido. Você também pode manter grupos inteiros automaticamente: contas verificadas, contas privadas, contas grandes, qualquer pessoa cuja bio mencione uma palavra que você escolher, e pessoas que você seguiu recentemente, para que tenham tempo de seguir você de volta.",
+        "Deixou de seguir alguém por engano? Abra o Histórico e clique em \"Seguir de novo\"."
+      ],
+      "items": [],
+      "steps": [],
+      "faq": []
+    },
+    "safe": {
+      "heading": "PENSADO PARA SER SEGURO",
+      "paragraphs": [
+        "O X restringe contas que deixam de seguir rápido demais, então o UnfollowX Pro trabalha em ritmo humano: intervalos aleatórios entre uma conta e outra, pausas regulares e um limite diário (400 por padrão). Ao atingir o limite, ele descansa e retoma sozinho. Se o X pedir para ir mais devagar, ele espera. Se o X pedir que você verifique sua conta, ele para e espera por você.",
+        "Escolha Segura, Equilibrada ou Rápida, ou defina seus próprios números. Pressione Alt + Shift + S para parar na hora.",
+        "Nenhuma ferramenta pode prometer que o X nunca vai limitar uma conta, mas configurações sensatas mantêm o risco baixo."
+      ],
+      "items": [],
+      "steps": [],
+      "faq": []
+    },
+    "also": {
+      "heading": "TAMBÉM INCLUI",
+      "paragraphs": [],
+      "items": [
+        "Um gráfico de quem você segue e dos seus seguidores ao longo do tempo",
+        "Dados separados para cada conta do X que você usa",
+        "Notificações opcionais na área de trabalho",
+        "Modo claro e escuro",
+        "English, Español, Português (Brasil), हिन्दी, Bahasa Indonesia, Türkçe e العربية"
+      ],
+      "steps": [],
+      "faq": []
+    },
+    "data": {
+      "heading": "SEUS DADOS FICAM COM VOCÊ",
+      "paragraphs": [
+        "A lista de quem você segue, seus seguidores, sua lista branca e seu histórico ficam no seu navegador. Nunca são enviados para lugar nenhum. A extensão usa a sessão do X em que você já está conectado e nunca pede sua senha.",
+        "Para contar instalações e encontrar bugs, ela envia estatísticas de uso anônimas: um ID aleatório, a versão e o seu país. Nunca seu endereço IP, sua conta do X ou suas listas. Você pode desativar isso nas Configurações."
+      ],
+      "items": [],
+      "steps": [],
+      "faq": []
+    },
+    "faq": {
+      "heading": "PERGUNTAS",
+      "paragraphs": [],
+      "items": [],
+      "steps": [],
+      "faq": [
+        {
+          "q": "É grátis mesmo?",
+          "a": "Sim. Todos os recursos são gratuitos e não há limite de quantas contas você pode revisar."
+        },
+        {
+          "q": "Quantas contas posso deixar de seguir por dia?",
+          "a": "O X costuma permitir cerca de 400 por dia em uma conta gratuita e cerca de 1.000 com o X Premium. O limite padrão é 400, e você pode alterá-lo."
+        },
+        {
+          "q": "Ele vai deixar de seguir meus amigos?",
+          "a": "Não. Quem segue você de volta só é removido se você escolher \"Deixar de seguir todos\". Contas da lista branca nunca são removidas."
+        },
+        {
+          "q": "Funciona no novo layout do X?",
+          "a": "Sim. Funciona tanto no site novo quanto no site clássico do X."
+        }
+      ]
+    },
+    "support": {
+      "heading": "SUPORTE",
+      "paragraphs": [
+        "Encontrou um bug ou tem uma ideia? Use \"Informar um bug\" dentro da extensão. Conte qual é a versão da extensão e o que aconteceu; uma captura de tela ajuda.",
+        "O UnfollowX Pro é uma extensão independente. Não foi criado pela X Corp., nem é afiliado a ela ou endossado por ela. X e Twitter são marcas de seus respectivos donos."
+      ],
+      "items": [],
+      "steps": [],
+      "faq": []
+    }
+  }
+}
