@@ -27,7 +27,8 @@ export default function FaqPage() {
         <div className="container">
           <Breadcrumbs items={[{ name: 'FAQ', path: '/faq' }]} />
           <div className="eyebrow" style={{ marginTop: 28 }}>Frequently asked questions</div>
-          <h1>Questions, <span className="gradient-text">answered honestly.</span></h1>
+          <h1 className="hub-h1">Twitter (X) Unfollow Extension FAQ</h1>
+          <p className="page-subhead">Questions, <span className="gradient-text">answered honestly.</span></p>
           <p className="lead">What “free forever” and “unlimited” mean, what X controls, how your data is handled, and how the features work.</p>
         </div>
       </section>

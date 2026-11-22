@@ -506,3 +506,7 @@
 .store-rating b { color: var(--text); font-weight: 760; }
 .store-rating:hover span:last-child { text-decoration: underline; text-underline-offset: 3px; }
 .store-rating-stars { color: var(--brand-amber); letter-spacing: 1px; font-size: 1rem; line-height: 1; }
+
+/* Hub pages: keyword H1 with the original line kept as a display sub-heading */
+.page-hero h1.hub-h1 { max-width: 22ch; }
+.page-subhead { margin-top: var(--space-4); font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 680; letter-spacing: var(--tracking-tight); line-height: var(--leading-snug); color: var(--text); max-width: 30ch; }

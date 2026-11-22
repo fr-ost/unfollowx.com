@@ -43,7 +43,8 @@ export default function FeaturesPage() {
         <div className="container">
           <Breadcrumbs items={[{ name: 'Features', path: '/features' }]} />
           <div className="eyebrow" style={{ marginTop: 28 }}>Features · all free</div>
-          <h1>Every feature. <span className="gradient-text">No premium tier.</span></h1>
+          <h1 className="hub-h1">Twitter (X) Unfollow Tool Features – All Free</h1>
+          <p className="page-subhead">Every feature. <span className="gradient-text">No premium tier.</span></p>
           <p className="lead">UnfollowX Pro helps you see your X following list clearly, protect the accounts that matter and act at your own pace. Here is everything it does today — each feature linked to a guide that explains it in depth.</p>
           <div className="cta-row">
             <InstallLink location="features_hero" size="lg" />

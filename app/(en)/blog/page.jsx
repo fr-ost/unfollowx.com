@@ -40,7 +40,8 @@ export default function BlogIndex() {
         <div className="container">
           <Breadcrumbs items={[{ name: 'Blog', path: '/blog' }]} />
           <div className="eyebrow" style={{ marginTop: 28 }}>The UnfollowX Pro blog</div>
-          <h1>Smarter ways to manage <span className="gradient-text">your X network.</span></h1>
+          <h1 className="hub-h1">Twitter (X) Unfollow &amp; Follower Guides</h1>
+          <p className="page-subhead">Smarter ways to manage <span className="gradient-text">your X network.</span></p>
           <p className="lead">Clear, honest guides to following, followers and unfollowing on X — useful whether or not you ever install our extension.</p>
           <nav className="chip-row blog-cats" aria-label="Blog categories">
             {grouped.map((cat) => <a key={cat.id} className="chip" href={`#${cat.id}`}>{cat.name}<span className="count">{cat.items.length}</span></a>)}

@@ -78,7 +78,8 @@ export default function GuidesPage() {
         <div className="container">
           <Breadcrumbs items={[{ name: 'How-to Guides', path: '/guides' }]} />
           <div className="eyebrow" style={{ marginTop: 28 }}>How-to guides</div>
-          <h1>What do you want <span className="gradient-text">to do on X?</span></h1>
+          <h1 className="hub-h1">Twitter (X) Unfollow Guides</h1>
+          <p className="page-subhead">What do you want <span className="gradient-text">to do on X?</span></p>
           <p className="lead">Pick a task. Each one starts with the short answer, then links to the step-by-step guide. They’re written to help whether or not you use UnfollowX Pro.</p>
         </div>
       </section>
