@@ -1,8 +1,8 @@
 export default function manifest() {
   return {
     name: 'UnfollowX Pro',
-    short_name: 'UnfollowX',
-    description: 'Free forever X (Twitter) following manager for Chrome: find non-followers, track unfollowers and clean up your following list.',
+    short_name: 'UnfollowX Pro',
+    description: 'UnfollowX Pro: a free Chrome extension to mass unfollow on Twitter (X), find non-followers and track unfollowers at a safe pace.',
     start_url: '/',
     display: 'browser',
     background_color: '#f7f8fc',

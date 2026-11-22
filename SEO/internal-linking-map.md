@@ -82,3 +82,19 @@ Every article also has: breadcrumbs (Home → Blog → Article), a category link
 - **Footer (every page):** “Also available in” links to `/es`, `/pt-br`, `/hi`, `/id`, `/tr`, `/ar`.
 - **Language pages:** a language switcher (English + 6) at the top, links to `/privacy` and back to the English homepage, store CTAs.
 - **New article** `mute-vs-unfollow-vs-block-on-x`: linked from `/guides` (Clean up task); links out to mass unfollow, non-followers, inactive accounts, cleanup and `/features`.
+
+## Added 2026-11-22 (on-page SEO overhaul)
+
+Hub structure: **homepage → tool pages → posts**, and posts link back up.
+
+- **Header nav:** “Mass Unfollow” (`/mass-unfollow-twitter`) replaces “How It Works” (still in the footer).
+- **Footer “Twitter (X) tools” column (every page):** Mass unfollow on Twitter, Unfollow non-followers, See who unfollowed you, Circleboom alternative, How to unfollow on Twitter. Company column adds About.
+- **Homepage:** hero secondary CTA → `/mass-unfollow-twitter`; “Mass unfollow on Twitter” section → `/mass-unfollow-twitter`, `/features`, `/twitter-non-followers-checker`, `/faq#faq-rate-limits`; rating badge → store reviews.
+- **`/mass-unfollow-twitter`** → checker, setup, FAQ, best-tools post, Circleboom alternative, whitelist guide, privacy; related posts: mass-unfollow guide, how-to-unfollow, whitelist; plus unfollow-everyone, inactive, follower tracker.
+- **`/twitter-non-followers-checker`** → new “Unfollow them in bulk” section → `/mass-unfollow-twitter` + mass-unfollow guide.
+- **`/alternatives/circleboom`** → mass unfollow tool, checker, features, best-tools post, mass-unfollow guide, non-followers guide.
+- **`/about`** → checker, tracker, mass unfollow, features, privacy.
+- **Every article:** at least 2 in-body links to money pages (`/`, `/mass-unfollow-twitter`, `/twitter-non-followers-checker`) with varied anchors, plus end-of-article next steps (mass unfollow tool, non-followers checker, setup).
+- **`/blog/how-to-mass-unfollow-accounts-on-x`** opens with a TIP linking the tool page (blog = guide, landing page = tool).
+- **`/faq`:** new “Twitter unfollow Chrome extension” category linking the tool pages and the Circleboom page.
+- `npm run seo:check` now also fails on orphan sitemap pages (no internal link pointing to them).

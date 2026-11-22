@@ -7,13 +7,21 @@ import { LOCALES } from '@/lib/i18n';
 
 const columns = [
   {
+    title: 'Twitter (X) tools',
+    links: [
+      ['Mass unfollow on Twitter', '/mass-unfollow-twitter'],
+      ['Unfollow non-followers', '/twitter-non-followers-checker'],
+      ['See who unfollowed you', '/x-follower-tracker'],
+      ['Circleboom alternative', '/alternatives/circleboom'],
+      ['How to unfollow on Twitter', '/blog/how-to-unfollow-on-twitter']
+    ]
+  },
+  {
     title: 'Product',
     links: [
       ['Features', '/features'],
       ['How it works', '/#how-it-works'],
       ['Setup guide', '/setup'],
-      ['Non-followers checker', '/twitter-non-followers-checker'],
-      ['Follower tracker', '/x-follower-tracker'],
       ['Chrome Web Store', STORE_URL]
     ]
   },
@@ -29,6 +37,7 @@ const columns = [
   {
     title: 'Company',
     links: [
+      ['About UnfollowX Pro', '/about'],
       ['Privacy policy', '/privacy'],
       ['Contact & support', '/faq#support'],
       ['Telegram support', TELEGRAM_URL],
@@ -47,7 +56,7 @@ export default function SiteFooter() {
             <img src="/assets/logo.svg" alt="UnfollowX Pro" width="30" height="30" />
             <span>UnfollowX <span className="brand-pro">PRO</span></span>
           </Link>
-          <p>A Chrome extension for reviewing who you follow on X. Find non-followers, track follower changes and choose who stays. Free forever, with no premium plan.</p>
+          <p>A free Chrome extension to mass unfollow on Twitter (X): find non-followers, track follower changes and bulk unfollow at a safe pace. Free forever, with no premium plan.</p>
           <InstallLink location="footer" size="sm" />
         </div>
         {columns.map((column) => (
@@ -82,7 +91,7 @@ export default function SiteFooter() {
       <div className="container footer-bottom">
         <span>© {year} UnfollowX Pro · A product of {PUBLISHER}</span>
         <span className="footer-promise"><Icon name="infinity" /> Free forever. No subscription. No premium paywall.</span>
-        <span>Independent product. Not affiliated with, endorsed by or sponsored by X Corp. X and Twitter are trademarks of their owners.</span>
+        <span>UnfollowX Pro is independent and not affiliated with X Corp. X and Twitter are trademarks of their owners.</span>
       </div>
     </footer>
   );

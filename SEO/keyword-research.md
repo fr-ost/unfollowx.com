@@ -100,3 +100,20 @@ Each language page targets the store listing’s own phrasing — the terms the 
 | `/ar` | إلغاء المتابعة الجماعي على X (تويتر) |
 
 New English article: `/blog/mute-vs-unfollow-vs-block-on-x` — primary “mute vs unfollow on X”, secondary “mute vs block twitter”, “remove follower without blocking”. Informational; distinct from every existing page.
+
+## Re-targeting (2026-11-22)
+
+After an external audit showed no page-1 rankings for the “Twitter” variants, primary targets were moved to the phrasing people search with (“Twitter (X)”, “mass unfollow”, “bulk unfollow”):
+
+| URL | Primary keyword | Notes |
+| --- | --- | --- |
+| `/` | mass unfollow twitter | title, H1, first 100 words, H2, alt text, 150–250-word keyword section |
+| `/mass-unfollow-twitter` (new) | mass unfollow on twitter (x) / bulk unfollow twitter | the tool landing page; the blog guide is the how-to |
+| `/twitter-non-followers-checker` | unfollow non followers twitter | was “twitter non-followers checker” |
+| `/x-follower-tracker` | see who unfollowed you on twitter | |
+| `/blog/how-to-unfollow-on-twitter` (new) | how to unfollow someone on twitter | single-account intent; links to the tool for bulk |
+| `/blog/how-to-unfollow-everyone-on-x` | unfollow everyone on twitter at once | URL kept |
+| `/blog/best-free-x-unfollow-tools-what-to-look-for` | best mass unfollow tools twitter | URL kept; now a comparison |
+| `/alternatives/circleboom` (new) | circleboom alternative | competitor facts marked TODO in code |
+
+Cannibalisation guard: the homepage owns the head term, `/mass-unfollow-twitter` the tool-intent long form, and `/blog/how-to-mass-unfollow-accounts-on-x` the “how to” intent; each links to the others with different anchors.
