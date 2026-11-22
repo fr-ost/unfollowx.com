@@ -9,9 +9,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "check:seo": "node scripts/check-seo.mjs",
+    "check:seo": "node scripts/seo-check.mjs",
     "indexnow": "node scripts/indexnow.mjs",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "seo:check": "node scripts/seo-check.mjs"
   },
   "dependencies": {
     "next": "latest",
