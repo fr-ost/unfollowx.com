@@ -6,22 +6,19 @@ import FaqAccordion from '@/components/FaqAccordion';
 import Icon from '@/components/Icon';
 import SupportBox from '@/components/SupportBox';
 import JsonLd from '@/components/JsonLd';
-import { faqCategories, faqs, plainAnswer } from '@/lib/faq';
+import { faqCategories, faqPageSchema, faqs } from '@/lib/faq';
+import { absoluteUrl } from '@/lib/site';
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
-  title: 'FAQ — Free Forever, X Limits, Privacy & Features',
+  title: 'FAQ: Twitter (X) Unfollow Extension & Limits',
   description: 'Is UnfollowX Pro really free forever? Does it need your X password? Can X rate-limit actions? Where is your data stored? Honest answers to common questions.',
   path: '/faq'
 });
 
 export default function FaqPage() {
   // Every question here is visible on the page (all <details> are in the HTML).
-  const schema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqs.map((item) => ({ '@type': 'Question', name: item.q, acceptedAnswer: { '@type': 'Answer', text: plainAnswer(item.a) } }))
-  };
+  const schema = faqPageSchema(faqs, absoluteUrl('/faq'));
 
   return (
     <>

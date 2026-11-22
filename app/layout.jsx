@@ -29,8 +29,8 @@ const bricolage = localFont({
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
-  title: { default: 'UnfollowX Pro — Free & Unlimited X Unfollow Tool', template: '%s | UnfollowX Pro' },
-  description: 'Clean up your X following list with UnfollowX Pro. Find non-followers, track unfollowers, filter inactive accounts and manage your connections. Free forever, no subscription.',
+  title: { default: 'UnfollowX Pro — Free Mass Unfollow Tool for Twitter (X)', template: '%s | UnfollowX Pro' },
+  description: 'UnfollowX Pro is a free Chrome extension to mass unfollow on Twitter (X): find non-followers, bulk unfollow at a safe pace and protect accounts with a whitelist.',
   applicationName: SITE_NAME,
   category: 'technology',
   creator: 'Shahriar Ahmed',

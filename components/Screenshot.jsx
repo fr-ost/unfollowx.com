@@ -18,12 +18,12 @@ export const SHOTS = {
   settingsKeep: { src: '/images/screenshots/unfollowx-pro-settings-keep-rules.webp', width: 2200, height: 820, alt: 'UnfollowX Pro Settings: Keep rules for verified accounts, private accounts, a minimum follower count, recently followed accounts and keywords' }
 };
 
-export default function Screenshot({ shot, caption = 'Real extension interface · sample accounts', preload = false, sizes = '(max-width: 768px) 100vw, 640px', className = '' }) {
+export default function Screenshot({ shot, alt, caption = 'Real extension interface · sample accounts', preload = false, sizes = '(max-width: 768px) 100vw, 640px', className = '' }) {
   const s = SHOTS[shot];
   return (
     <figure className={`shot ${className}`.trim()}>
       <div className="shot-frame">
-        <Image src={s.src} width={s.width} height={s.height} alt={s.alt} sizes={sizes} preload={preload} quality={90} />
+        <Image src={s.src} width={s.width} height={s.height} alt={alt || s.alt} sizes={sizes} preload={preload} quality={90} />
       </div>
       {caption ? <figcaption>{caption}</figcaption> : null}
     </figure>

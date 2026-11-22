@@ -12,7 +12,7 @@ const fontsPromise = Promise.all([
   readFile(join(process.cwd(), 'public/assets/logo.svg'))
 ]);
 
-export async function renderOg({ eyebrow = 'Free forever · Unlimited', title, subtitle }) {
+export async function renderOg({ eyebrow = 'Free forever · Safe pace', title, subtitle }) {
   const [display, body, logo] = await fontsPromise;
   const logoSrc = `data:image/svg+xml;base64,${logo.toString('base64')}`;
   const titleSize = title.length > 70 ? 54 : title.length > 48 ? 62 : 72;

@@ -11,15 +11,17 @@ import JsonLd from '@/components/JsonLd';
 import Screenshot from '@/components/Screenshot';
 import SupportBox from '@/components/SupportBox';
 import { features } from '@/lib/features';
-import { homeFaqs } from '@/lib/faq';
+import { faqPageSchema, homeFaqs } from '@/lib/faq';
 import { getArticle } from '@/lib/blog';
-import { buildMetadata, softwareSchema } from '@/lib/seo';
+import { buildMetadata, softwareSchemaWithRating } from '@/lib/seo';
+import StoreRating from '@/components/StoreRating';
+import { SITE_URL } from '@/lib/site';
 import { LANGUAGE_ALTERNATES } from '@/lib/i18n';
 
 export const metadata = buildMetadata({
-  title: 'UnfollowX Pro – Free & Unlimited X (Twitter) Unfollow Tool',
+  title: 'Mass Unfollow Twitter (X) Free – Bulk Unfollow Tool | UnfollowX',
   absoluteTitle: true,
-  description: 'Free X (Twitter) unfollow tool for Chrome. See who doesn’t follow you back, who unfollowed you and who’s inactive, then bulk unfollow safely. No limits, no subscription.',
+  description: 'Free Chrome extension to mass unfollow on Twitter (X). Find non-followers, bulk unfollow at a safe pace and protect accounts with a whitelist. No password.',
   path: '/',
   languages: LANGUAGE_ALTERNATES
 });
@@ -124,20 +126,21 @@ export default function HomePage() {
 
   return (
     <>
-      <JsonLd data={softwareSchema} />
+      <JsonLd data={[softwareSchemaWithRating, faqPageSchema(homeFaqs, `${SITE_URL}/`)]} />
 
       {/* ---------- Hero ---------- */}
       <section className="home-hero">
         <div className="hero-bg" aria-hidden="true"><span className="aurora a" /><span className="aurora b" /><span className="hero-grid" /></div>
         <div className="container hero-layout">
           <div className="hero-copy">
-            <span className="badge hero-badge"><span className="badge-dot"><Icon name="check" strokeWidth={3} /></span>Free forever · Unlimited</span>
-            <h1>The Ultimate X Unfollow Tool. <span className="gradient-text">Free Forever.</span></h1>
-            <p className="hero-lede">Find non-followers, track follower changes, filter inactive accounts and manage your X following list with powerful tools. No subscriptions, no premium plans, no artificial usage limits. Just free.</p>
+            <span className="badge hero-badge"><span className="badge-dot"><Icon name="check" strokeWidth={3} /></span>Free forever · Safe pace</span>
+            <h1>Mass unfollow on Twitter (X) — <span className="gradient-text">free, safe and in bulk</span></h1>
+            <p className="hero-lede">UnfollowX Pro is a free Chrome extension that finds who doesn’t follow you back on Twitter / X, then bulk unfollows them at a human pace while your whitelist stays safe.</p>
             <div className="cta-row hero-ctas">
               <InstallLink location="hero" size="lg">Add to Chrome — It’s Free</InstallLink>
-              <Link className="btn btn-secondary btn-lg" href="/features" data-cta="Explore Features" data-cta-location="hero">Explore Features <Icon name="arrowRight" className="btn-arrow" /></Link>
+              <Link className="btn btn-secondary btn-lg" href="/mass-unfollow-twitter" data-cta="How mass unfollow works" data-cta-location="hero">How mass unfollow works <Icon name="arrowRight" className="btn-arrow" /></Link>
             </div>
+            <StoreRating location="hero" className="hero-rating" />
             <ul className="hero-trust" role="list">
               {trust.map((item) => <li key={item}><Icon name="check" strokeWidth={2.4} />{item}</li>)}
             </ul>
@@ -158,6 +161,33 @@ export default function HomePage() {
           <span><Icon name="moon" />Light &amp; dark themes</span>
         </div>
       </div>
+
+      {/* ---------- Mass unfollow (primary keyword section) ---------- */}
+      <section className="section-tight mass-intro" id="mass-unfollow" aria-labelledby="mass-title">
+        <div className="container mass-layout">
+          <div className="mass-copy" data-reveal="">
+            <div className="eyebrow">Bulk unfollow, done carefully</div>
+            <h2 id="mass-title">Mass unfollow on Twitter</h2>
+            <p>Cleaning up a following list one profile at a time can take hours. UnfollowX Pro turns it into a single review: it scans the accounts you follow, marks who follows you back, and lets you mass unfollow Twitter accounts you no longer want — non-followers, inactive accounts, accounts with no profile photo or very few posts.</p>
+            <p>Unlike a bulk unfollow Twitter script pasted into the browser console, the extension shows you every account first. Pick a group, protect anyone on your whitelist or covered by a Keep rule, and start a run. It works through the list with random gaps between actions, regular breaks and a daily limit you control (400 by default), and it rests or stops when X asks it to.</p>
+            <p>It’s a free Twitter unfollow tool with no subscription and no sign-up — an unfollow Twitter Chrome extension that runs inside the X session you already use, so it never asks for your password. Ready to unfollow non-followers in bulk? Read the <Link href="/mass-unfollow-twitter">complete mass unfollow walkthrough</Link> or see <Link href="/features">every feature</Link>.</p>
+          </div>
+          <div className="mass-cards" data-stagger="80">
+            <article className="card mass-card">
+              <span className="icon-tile red"><Icon name="userMinus" /></span>
+              <h2>Unfollow non-followers on X</h2>
+              <p>One read-only scan splits your following list into mutuals and accounts that don’t follow you back. Review the Don’t follow back tab, filter it, then press “Unfollow N non-followers” — whitelisted accounts are skipped automatically.</p>
+              <Link className="text-link" href="/twitter-non-followers-checker" data-cta="Check non-followers" data-cta-location="home_mass">Check who doesn’t follow you back <Icon name="arrowRight" className="arrow" size={15} /></Link>
+            </article>
+            <article className="card mass-card">
+              <span className="icon-tile green"><Icon name="shield" /></span>
+              <h2>Is bulk unfollowing safe?</h2>
+              <p>X sets its own limits for every account and can restrict accounts that act aggressively — no tool can guarantee X will never limit an account. UnfollowX Pro keeps you measured: Safe, Balanced and Fast presets, random delays, breaks, a daily limit, and an automatic stop if X asks you to verify.</p>
+              <Link className="text-link" href="/faq#faq-rate-limits" data-cta="How X limits work" data-cta-location="home_mass">How X limits work <Icon name="arrowRight" className="arrow" size={15} /></Link>
+            </article>
+          </div>
+        </div>
+      </section>
 
       {/* ---------- Free forever ---------- */}
       <section className="section free-section" id="free-forever" aria-labelledby="free-title">
@@ -248,7 +278,7 @@ export default function HomePage() {
         <div className="container">
           <div className="section-head center" data-reveal="">
             <div className="eyebrow">How it works</div>
-            <h2 id="how-title">Three steps. <span className="gradient-text">You decide every one.</span></h2>
+            <h2 id="how-title">How to mass unfollow on Twitter <span className="gradient-text">in 3 steps</span></h2>
             <p>Scanning is read-only. Nothing changes on your account until you review the results and choose an action.</p>
           </div>
           <ol className="steps" data-stagger="90" role="list">
@@ -290,7 +320,7 @@ export default function HomePage() {
             <p>Screenshots of the actual popup and dashboard, shown with fictional sample accounts.</p>
           </div>
           <div className="shots-grid" data-stagger="90">
-            <Screenshot shot="popup" className="shot-popup" caption="Popup after a scan" sizes="(max-width: 860px) 340px, 340px" />
+            <Screenshot shot="popup" className="shot-popup" caption="Popup after a scan" alt="Mass unfollow on Twitter (X) with the UnfollowX Pro popup: 432 accounts that don’t follow back, with Unfollow non-followers, Review & pick and Unfollow all buttons" sizes="(max-width: 860px) 340px, 340px" />
             <Screenshot shot="overview" className="shot-wide" caption="Dashboard overview with a paced run in progress" sizes="(max-width: 860px) 100vw, 780px" />
             <Screenshot shot="inactive" className="shot-wide2" caption="Following → Inactive, in dark mode" sizes="(max-width: 860px) 100vw, 780px" />
           </div>
@@ -365,8 +395,8 @@ export default function HomePage() {
         <div className="container faq-layout">
           <div className="faq-intro" data-reveal="">
             <div className="eyebrow">FAQ</div>
-            <h2 id="faq-title">Questions, answered honestly.</h2>
-            <p>Including the fine print: what “free” and “unlimited” mean, and what X controls.</p>
+            <h2 id="faq-title">Twitter unfollow Chrome extension FAQ</h2>
+            <p>Questions, answered honestly — including the fine print: what “free” means, and what X controls.</p>
             <Link className="text-link" href="/faq" data-cta="See all questions" data-cta-location="home_faq">See all questions <Icon name="arrowRight" className="arrow" size={15} /></Link>
           </div>
           <FaqAccordion items={homeFaqs} idPrefix="home-faq" />

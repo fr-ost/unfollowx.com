@@ -486,3 +486,19 @@ kbd { font-family: var(--font-mono); font-size: .8em; padding: 1px 6px; border-r
   content-visibility: auto;
   contain-intrinsic-size: auto 1100px;
 }
+
+/* ---------- Hero rating ---------- */
+.hero-rating { margin-top: var(--space-6); animation: rise-in var(--dur-5) var(--ease-out) 210ms both; }
+@media (max-width: 1100px) { .hero-rating { justify-content: center; } }
+
+/* ---------- Mass unfollow keyword section ---------- */
+.mass-intro { content-visibility: auto; contain-intrinsic-size: auto 760px; }
+.mass-layout { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: clamp(2rem, 1rem + 4vw, 4.5rem); align-items: start; }
+.mass-copy h2 { font-size: var(--text-3xl); margin-bottom: var(--space-5); }
+.mass-copy p { color: var(--text-2); font-size: var(--text-md); line-height: var(--leading-relaxed); margin-top: var(--space-4); }
+.mass-copy p a { color: var(--accent-text); text-decoration: underline; text-underline-offset: 3px; }
+.mass-cards { display: grid; gap: var(--space-5); }
+.mass-card { padding: clamp(1.25rem, 1rem + 1vw, 1.75rem); display: grid; gap: var(--space-3); justify-items: start; }
+.mass-card h2 { font-size: var(--text-xl); letter-spacing: var(--tracking-tight); }
+.mass-card p { color: var(--text-2); font-size: var(--text-sm); line-height: var(--leading-normal); }
+@media (max-width: 900px) { .mass-layout { grid-template-columns: 1fr; } }
