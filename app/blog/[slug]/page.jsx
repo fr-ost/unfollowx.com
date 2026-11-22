@@ -27,6 +27,7 @@ export async function generateMetadata({ params }) {
   if (!article) return {};
   return buildMetadata({
     title: article.seoTitle,
+    absoluteTitle: Boolean(article.seoTitleAbsolute),
     description: article.description,
     path: `/blog/${article.slug}`,
     type: 'article',
@@ -66,10 +67,19 @@ export default async function ArticlePage({ params }) {
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
     isPartOf: { '@type': 'Blog', name: 'UnfollowX Pro Blog', url: absoluteUrl('/blog') }
   };
+  const howTo = article.howTo ? {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    '@id': `${url}#howto`,
+    name: article.howTo.name,
+    description: article.description,
+    estimatedCost: { '@type': 'MonetaryAmount', currency: 'USD', value: '0' },
+    step: article.howTo.steps.map((s, i) => ({ '@type': 'HowToStep', position: i + 1, name: s.name, text: s.text }))
+  } : null;
 
   return (
     <>
-      <JsonLd data={schema} />
+      <JsonLd data={howTo ? [schema, howTo] : schema} />
       <TrackEvent name="blog_article_view" params={{ article_title: article.title, article_category: article.categoryName, article_slug: article.slug }} />
       <article className="article">
         <header className="article-hero">
@@ -114,9 +124,9 @@ export default async function ArticlePage({ params }) {
             <div className="article-end">
               <p className="disclaimer"><Icon name="info" /> UnfollowX Pro is an independent product and is not affiliated with or endorsed by X Corp. X’s features, rules and limits can change; check <a href="https://help.x.com" target="_blank" rel="noopener">X’s help center</a> for the latest.</p>
               <div className="next-steps">
+                <Link href="/mass-unfollow-twitter" data-cta="Mass unfollow tool" data-cta-location="blog_end"><Icon name="users" /><span><b>Mass unfollow tool</b><small>Bulk unfollow on Twitter (X) at a safe pace</small></span></Link>
+                <Link href="/twitter-non-followers-checker" data-cta="Non-followers checker" data-cta-location="blog_end"><Icon name="userMinus" /><span><b>Non-followers checker</b><small>See who doesn’t follow you back</small></span></Link>
                 <Link href="/setup" data-cta="Setup guide" data-cta-location="blog_end"><Icon name="book" /><span><b>Setup guide</b><small>Install and run your first scan</small></span></Link>
-                <Link href="/features" data-cta="Features" data-cta-location="blog_end"><Icon name="sparkle" /><span><b>All features</b><small>Everything included, free</small></span></Link>
-                <Link href="/faq" data-cta="FAQ" data-cta-location="blog_end"><Icon name="info" /><span><b>FAQ</b><small>Pricing, limits and privacy</small></span></Link>
               </div>
             </div>
           </div>

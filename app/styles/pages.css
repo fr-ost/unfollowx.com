@@ -201,6 +201,14 @@
 .lp-steps b { display: block; color: var(--text); }
 .lp-steps span { display: block; margin-top: 3px; color: var(--text-2); font-size: .9375rem; line-height: 1.6; }
 @media (max-width: 960px) { .lp-hero, .lp-split { grid-template-columns: 1fr; } .lp-cards { grid-template-columns: 1fr; } }
+.lp-rating { margin-top: var(--space-5); }
+.lp-steps-wide { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.lp-note { margin-top: var(--space-6); color: var(--text-2); line-height: 1.65; }
+.lp-note a, .lp-prose a { color: var(--accent-text); text-decoration: underline; text-underline-offset: 3px; }
+.lp-prose { max-width: 72ch; }
+.lp-cards .card .icon-tile + h3 { margin-top: 14px; }
+@media (max-width: 960px) { .lp-steps-wide { grid-template-columns: 1fr; } }
+@media (min-width: 961px) and (max-width: 1100px) { .lp-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
 /* ---------- 404 ---------- */
 .not-found { min-height: 62vh; display: grid; place-items: center; text-align: center; padding-block: var(--section-y); }
@@ -218,3 +226,6 @@
   content-visibility: auto;
   contain-intrinsic-size: auto 900px;
 }
+.lp-cards-two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.lp-card-title { margin-top: 14px; font-size: var(--text-xl); letter-spacing: var(--tracking-tight); }
+@media (max-width: 960px) { .lp-cards-two { grid-template-columns: 1fr; } }
