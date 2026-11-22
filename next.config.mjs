@@ -1,3 +1,17 @@
+import { djb2Hash } from 'next/dist/shared/lib/hash.js';
+
+// English pages live in the app/(en) route group (see app/(en)/layout.jsx).
+// Next.js adds a hash suffix to metadata images inside route groups
+// (/features/opengraph-image → /features/opengraph-image-sby49y). Same hash
+// function Next uses, so these rewrites keep every original
+// …/opengraph-image URL working (shared links, BlogPosting.image).
+const ogSuffix = (parent) => djb2Hash(parent).toString(36).slice(0, 6);
+const OG_SEGMENTS = ['/about', '/alternatives/circleboom', '/blog', '/faq', '/features', '/guides', '/mass-unfollow-twitter', '/privacy', '/setup', '/twitter-non-followers-checker', '/x-follower-tracker'];
+const ogRewrites = [
+  ...OG_SEGMENTS.map((seg) => ({ source: `${seg}/opengraph-image`, destination: `${seg}/opengraph-image-${ogSuffix(`/(en)${seg}`)}` })),
+  { source: '/blog/:slug/opengraph-image', destination: `/blog/:slug/opengraph-image-${ogSuffix('/(en)/blog/[slug]')}` }
+];
+
 /** @type {import('next').NextConfig} */
 const securityHeaders = [
   { key: 'X-Content-Type-Options', value: 'nosniff' },
@@ -8,6 +22,9 @@ const securityHeaders = [
 
 const nextConfig = {
   poweredByHeader: false,
+  // Two root layouts (English pages and /[lang] pages, so each renders its own
+  // <html lang>) need app/global-not-found.jsx for unmatched URLs.
+  experimental: { globalNotFound: true },
   reactStrictMode: true,
   turbopack: { root: process.cwd() },
   images: {
@@ -19,6 +36,9 @@ const nextConfig = {
   // them in traced output in case a route is ever rendered on demand.
   outputFileTracingIncludes: {
     '/**': ['./content/articles/*.md', './lib/og-fonts/*', './public/assets/logo.svg']
+  },
+  async rewrites() {
+    return ogRewrites;
   },
   async redirects() {
     return [
