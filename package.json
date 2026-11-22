@@ -10,11 +10,16 @@
     "build": "next build",
     "start": "next start",
     "check:seo": "node scripts/check-seo.mjs",
-    "indexnow": "node scripts/indexnow.mjs"
+    "indexnow": "node scripts/indexnow.mjs",
+    "lint": "eslint ."
   },
   "dependencies": {
     "next": "latest",
     "react": "latest",
     "react-dom": "latest"
+  },
+  "devDependencies": {
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.4.5"
   }
 }

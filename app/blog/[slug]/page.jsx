@@ -10,7 +10,7 @@ import SupportBox from '@/components/SupportBox';
 import { TrackEvent } from '@/components/Analytics';
 import { articleSlugs, getArticle, getRelated } from '@/lib/blog';
 import { renderBlocks } from '@/lib/markdown';
-import { AUTHOR_ID, ORGANIZATION_ID, pageMetadata } from '@/lib/seo';
+import { AUTHOR_ID, ORGANIZATION_ID, buildMetadata } from '@/lib/seo';
 import { DEVELOPER, absoluteUrl } from '@/lib/site';
 
 export const dynamicParams = false;
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const article = getArticle(slug);
   if (!article) return {};
-  return pageMetadata({
+  return buildMetadata({
     title: article.seoTitle,
     description: article.description,
     path: `/blog/${article.slug}`,
@@ -83,7 +83,7 @@ export default async function ArticlePage({ params }) {
             <h1>{article.title}</h1>
             <p className="dek">{article.description}</p>
             <div className="byline">
-              <img src="/assets/logo.svg" alt="" width="40" height="40" />
+              <img src="/assets/logo.svg" alt="UnfollowX Pro" width="40" height="40" />
               <div>
                 <span>By <a href={DEVELOPER.url} target="_blank" rel="noopener author">{DEVELOPER.name}</a>, developer of UnfollowX Pro</span>
                 <small>Published <time dateTime={article.publishedAt}>{longDate(article.publishedAt)}</time>{article.updatedAt !== article.publishedAt ? <> · Updated <time dateTime={article.updatedAt}>{longDate(article.updatedAt)}</time></> : null}</small>

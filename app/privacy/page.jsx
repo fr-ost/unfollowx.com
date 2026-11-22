@@ -1,11 +1,12 @@
+import Link from 'next/link';
 import '../styles/pages.css';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Icon from '@/components/Icon';
 import { ConsentSettingsButton } from '@/components/Analytics';
-import { pageMetadata } from '@/lib/seo';
+import { buildMetadata } from '@/lib/seo';
 import { CONTACT_EMAIL, DEVELOPER, EXTENSION, PUBLISHER, TELEGRAM_URL } from '@/lib/site';
 
-export const metadata = pageMetadata({
+export const metadata = buildMetadata({
   title: 'Privacy Policy — Extension Data & Website Analytics',
   description: 'How UnfollowX Pro handles data: X lists stay in Chrome storage, two anonymous statistics switches, permissions, and Google Analytics on this site.',
   path: '/privacy'
@@ -149,7 +150,7 @@ export default function PrivacyPage() {
           <p>If what the extension stores or shares changes, or this website’s analytics change, this page and the Chrome Web Store listing will be updated. The date at the top shows the latest revision.</p>
 
           <h2 id="contact">Contact</h2>
-          <p>For privacy questions, email <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> or message <a href={TELEGRAM_URL} target="_blank" rel="noopener">@igfrostt on Telegram</a>. All support options are on the <a href="/faq#support">contact &amp; support</a> section. UnfollowX Pro is a product of {PUBLISHER}, developed by <a href={DEVELOPER.url} target="_blank" rel="noopener">{DEVELOPER.name}</a>.</p>
+          <p>For privacy questions, email <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> or message <a href={TELEGRAM_URL} target="_blank" rel="noopener">@igfrostt on Telegram</a>. All support options are on the <Link href="/faq#support">contact &amp; support</Link> section. UnfollowX Pro is a product of {PUBLISHER}, developed by <a href={DEVELOPER.url} target="_blank" rel="noopener">{DEVELOPER.name}</a>.</p>
           <div className="callout"><Icon name="info" /><p>X, Twitter and related marks belong to their respective owners. UnfollowX Pro is independent and is not affiliated with, endorsed by or sponsored by X Corp.</p></div>
         </article>
       </div>

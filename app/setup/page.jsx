@@ -8,10 +8,10 @@ import InstallLink from '@/components/InstallLink';
 import JsonLd from '@/components/JsonLd';
 import Screenshot from '@/components/Screenshot';
 import SupportBox from '@/components/SupportBox';
-import { pageMetadata } from '@/lib/seo';
+import { buildMetadata } from '@/lib/seo';
 import { STORE_URL, absoluteUrl } from '@/lib/site';
 
-export const metadata = pageMetadata({
+export const metadata = buildMetadata({
   title: 'How to Set Up UnfollowX Pro in Chrome (Step-by-Step)',
   description: 'Install UnfollowX Pro, run your first read-only scan of your X following list, protect accounts with a whitelist and Keep rules, choose a pace and start safely.',
   path: '/setup'

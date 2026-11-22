@@ -147,10 +147,11 @@ export default function ProductDemo() {
     setNotice('');
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduce) { setScan({ running: false, progress: 1 }); setNotice('Sample scan complete. In the extension, a real scan reads your list from X and changes nothing.'); return; }
-    const start = performance.now();
+    let start = null;
     const duration = 2200;
     setScan({ running: true, progress: 0 });
     const step = (now) => {
+      if (start === null) start = now;
       const t = Math.min(1, (now - start) / duration);
       setScan({ running: t < 1, progress: t });
       if (t < 1) scanTimer.current = requestAnimationFrame(step);

@@ -13,10 +13,10 @@ import SupportBox from '@/components/SupportBox';
 import { features } from '@/lib/features';
 import { homeFaqs } from '@/lib/faq';
 import { getArticle } from '@/lib/blog';
-import { pageMetadata, softwareSchema } from '@/lib/seo';
+import { buildMetadata, softwareSchema } from '@/lib/seo';
 import { LANGUAGE_ALTERNATES } from '@/lib/i18n';
 
-export const metadata = pageMetadata({
+export const metadata = buildMetadata({
   title: 'UnfollowX Pro – Free & Unlimited X (Twitter) Unfollow Tool',
   absoluteTitle: true,
   description: 'Free X (Twitter) unfollow tool for Chrome. See who doesn’t follow you back, who unfollowed you and who’s inactive, then bulk unfollow safely. No limits, no subscription.',
@@ -181,7 +181,7 @@ export default function HomePage() {
           </div>
           <div className="receipt-wrap" data-reveal="scale">
             <div className="receipt" aria-label="Your UnfollowX Pro bill: every feature included, total $0.00">
-              <div className="receipt-head"><img src="/assets/logo.svg" alt="" width="28" height="28" /><span><b>UnfollowX Pro</b><small>Your bill, today and every day</small></span></div>
+              <div className="receipt-head"><img src="/assets/logo.svg" alt="UnfollowX Pro" width="28" height="28" /><span><b>UnfollowX Pro</b><small>Your bill, today and every day</small></span></div>
               <ul role="list">
                 {receipt.map(([item, value]) => <li key={item}><span>{item}</span><em>{value}</em><b className="tabular">$0.00</b></li>)}
               </ul>

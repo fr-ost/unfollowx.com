@@ -6,10 +6,10 @@ import CtaBand from '@/components/CtaBand';
 import Icon from '@/components/Icon';
 import JsonLd from '@/components/JsonLd';
 import { categories, getArticles } from '@/lib/blog';
-import { pageMetadata } from '@/lib/seo';
+import { buildMetadata } from '@/lib/seo';
 import { absoluteUrl } from '@/lib/site';
 
-export const metadata = pageMetadata({
+export const metadata = buildMetadata({
   title: 'Blog — X Following, Followers & Unfollow Guides',
   description: 'Practical, product-accurate guides to X: find non-followers, see who unfollowed you, mass unfollow safely, find inactive accounts and export your following list.',
   path: '/blog'

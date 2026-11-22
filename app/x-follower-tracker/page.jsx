@@ -10,9 +10,9 @@ import Screenshot from '@/components/Screenshot';
 import ArticleCard from '@/components/ArticleCard';
 import { TrackEvent } from '@/components/Analytics';
 import { getArticle } from '@/lib/blog';
-import { pageMetadata, softwareSchema } from '@/lib/seo';
+import { buildMetadata, softwareSchema } from '@/lib/seo';
 
-export const metadata = pageMetadata({
+export const metadata = buildMetadata({
   title: 'Free X Follower Tracker — See Who Unfollowed You',
   description: 'Track new and lost followers on X (Twitter) with a free Chrome extension. Snapshot comparison without false alarms, bulk follow-back, data kept on your device.',
   path: '/x-follower-tracker'

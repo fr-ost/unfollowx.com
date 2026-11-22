@@ -9,10 +9,10 @@ import Screenshot from '@/components/Screenshot';
 import { TrackEvent } from '@/components/Analytics';
 import { featureGroups, features } from '@/lib/features';
 import { getArticle } from '@/lib/blog';
-import { pageMetadata, softwareSchema } from '@/lib/seo';
+import { buildMetadata, softwareSchema } from '@/lib/seo';
 import { absoluteUrl } from '@/lib/site';
 
-export const metadata = pageMetadata({
+export const metadata = buildMetadata({
   title: 'Features — Non-Follower Finder & Unfollower Tracker',
   description: 'Every UnfollowX Pro feature, all free: find non-followers, track lost followers, filter inactive accounts, whitelist, Keep rules, CSV, history and paced runs.',
   path: '/features'

@@ -7,9 +7,9 @@ import Icon from '@/components/Icon';
 import SupportBox from '@/components/SupportBox';
 import JsonLd from '@/components/JsonLd';
 import { faqCategories, faqs, plainAnswer } from '@/lib/faq';
-import { pageMetadata } from '@/lib/seo';
+import { buildMetadata } from '@/lib/seo';
 
-export const metadata = pageMetadata({
+export const metadata = buildMetadata({
   title: 'FAQ — Free Forever, X Limits, Privacy & Features',
   description: 'Is UnfollowX Pro really free forever? Does it need your X password? Can X rate-limit actions? Where is your data stored? Honest answers to common questions.',
   path: '/faq'

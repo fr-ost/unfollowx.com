@@ -5,10 +5,10 @@ import CtaBand from '@/components/CtaBand';
 import Icon from '@/components/Icon';
 import JsonLd from '@/components/JsonLd';
 import { getArticle } from '@/lib/blog';
-import { pageMetadata } from '@/lib/seo';
+import { buildMetadata } from '@/lib/seo';
 import { absoluteUrl } from '@/lib/site';
 
-export const metadata = pageMetadata({
+export const metadata = buildMetadata({
   title: 'How-to Guides for Managing Your X (Twitter) Following',
   description: 'Short answers and step-by-step guides for every common X following task: find non-followers, see who unfollowed you, mass unfollow, protect accounts and export lists.',
   path: '/guides'

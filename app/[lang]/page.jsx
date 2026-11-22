@@ -7,7 +7,7 @@ import InstallLink from '@/components/InstallLink';
 import JsonLd from '@/components/JsonLd';
 import Screenshot from '@/components/Screenshot';
 import { LANGUAGE_ALTERNATES, LOCALES, LOCALE_SLUGS, getLocale, headingCase } from '@/lib/i18n';
-import { FEED_ALTERNATE, SOFTWARE_ID, WEBSITE_ID } from '@/lib/seo';
+import { SOFTWARE_ID, WEBSITE_ID, buildMetadata } from '@/lib/seo';
 import { CONTACT_EMAIL, SITE_NAME, TELEGRAM_HANDLE, TELEGRAM_URL, absoluteUrl } from '@/lib/site';
 
 // Localized landing pages built from the developer's official Chrome Web
@@ -22,16 +22,18 @@ export async function generateMetadata({ params }) {
   const { lang } = await params;
   const l = getLocale(lang);
   if (!l) return {};
-  const url = absoluteUrl(`/${l.slug}`);
-  return {
-    title: { absolute: l.title },
+  // The localized pages reuse the main social card (its fonts are Latin-only).
+  return buildMetadata({
+    title: l.title,
+    absoluteTitle: true,
     description: l.summary,
-    alternates: { canonical: `/${l.slug}`, languages: LANGUAGE_ALTERNATES, types: FEED_ALTERNATE },
-    // The localized pages reuse the main social card (its fonts are Latin-only).
-    openGraph: { type: 'website', url, siteName: SITE_NAME, title: l.title, description: l.summary, locale: l.ogLocale, images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'UnfollowX Pro — free X (Twitter) unfollow tool' }] },
-    twitter: { card: 'summary_large_image', title: l.title, description: l.summary, images: ['/opengraph-image'] }
-  };
+    path: `/${l.slug}`,
+    locale: l.ogLocale,
+    languages: LANGUAGE_ALTERNATES,
+    image: '/opengraph-image'
+  });
 }
+
 
 export default async function LocalePage({ params }) {
   const { lang } = await params;

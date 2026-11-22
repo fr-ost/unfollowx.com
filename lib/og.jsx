@@ -22,7 +22,7 @@ export async function renderOg({ eyebrow = 'Free forever · Unlimited', title, s
         <div style={{ position: 'absolute', top: -260, right: -180, width: 820, height: 820, borderRadius: 9999, background: 'radial-gradient(closest-side, rgba(91,84,240,.55), rgba(7,9,15,0))', display: 'flex' }} />
         <div style={{ position: 'absolute', bottom: -300, left: -200, width: 760, height: 760, borderRadius: 9999, background: 'radial-gradient(closest-side, rgba(59,130,246,.32), rgba(7,9,15,0))', display: 'flex' }} />
         <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
-          <img src={logoSrc} width={64} height={64} style={{ borderRadius: 18 }} />
+          <img src={logoSrc} alt="" width={64} height={64} style={{ borderRadius: 18 }} />
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 34, fontFamily: 'Bricolage', letterSpacing: -1 }}>
             UnfollowX
             <span style={{ fontSize: 16, fontFamily: 'Inter', letterSpacing: 3, padding: '6px 10px', borderRadius: 8, background: 'rgba(139,147,255,.18)', color: '#b7bdff' }}>PRO</span>

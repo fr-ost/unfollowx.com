@@ -151,7 +151,7 @@ export default function HeroDashboard() {
         </div>
         <div className="hd-body">
           <div className="hd-side">
-            <div className="hd-brand"><img src="/assets/logo.svg" alt="" width="22" height="22" /><span>UnfollowX Pro<small>Free &amp; Unlimited</small></span></div>
+            <div className="hd-brand"><img src="/assets/logo.svg" alt="UnfollowX Pro" width="22" height="22" /><span>UnfollowX Pro<small>Free &amp; Unlimited</small></span></div>
             <span className="hd-nav"><Icon name="chart" />Overview</span>
             <span className="hd-nav is-on"><Icon name="users" />Following<em className="red">432</em></span>
             <span className="hd-nav"><Icon name="userCheck" />Followers<em className="red">23</em></span>

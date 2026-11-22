@@ -60,6 +60,8 @@ export default function Analytics() {
   const [showBanner, setShowBanner] = useState(false);
 
   useEffect(() => {
+    // Consent lives in localStorage, which only exists after hydration.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setShowBanner(!hasStoredChoice() && getConsent() === 'unknown');
     const openSettings = () => setShowBanner(true);
     window.addEventListener('ux:consent-settings', openSettings);

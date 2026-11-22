@@ -57,8 +57,9 @@ export default function SiteHeader() {
     return () => media.removeEventListener?.('change', onChange);
   }, []);
 
-  // Close the menu on navigation.
-  useEffect(() => { setOpen(false); }, [pathname]);
+  // Close the menu on navigation (state derived during render, no effect).
+  const [menuPath, setMenuPath] = useState(pathname);
+  if (menuPath !== pathname) { setMenuPath(pathname); setOpen(false); }
 
   // Mobile menu: Escape closes, Tab stays inside, page behind does not scroll.
   useEffect(() => {
@@ -142,7 +143,7 @@ export default function SiteHeader() {
     <header ref={headerRef} className={`site-header${scrolled ? ' is-scrolled' : ''}${open ? ' menu-open' : ''}`}>
       <div className="container header-inner">
         <Link className="brand" href="/" aria-label="UnfollowX Pro home" data-nav="header" data-nav-item="Home">
-          <img src="/assets/logo.svg" alt="" width="30" height="30" />
+          <img src="/assets/logo.svg" alt="UnfollowX Pro" width="30" height="30" />
           <span>UnfollowX <span className="brand-pro">PRO</span></span>
         </Link>
 

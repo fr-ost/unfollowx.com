@@ -10,9 +10,9 @@ import Screenshot from '@/components/Screenshot';
 import ArticleCard from '@/components/ArticleCard';
 import { TrackEvent } from '@/components/Analytics';
 import { getArticle } from '@/lib/blog';
-import { pageMetadata, softwareSchema } from '@/lib/seo';
+import { buildMetadata, softwareSchema } from '@/lib/seo';
 
-export const metadata = pageMetadata({
+export const metadata = buildMetadata({
   title: 'Free Twitter Non-Followers Checker for X',
   description: 'Check who doesn’t follow you back on X (Twitter) with a free, read-only Chrome extension. No password, no sign-up, no limits — review, filter and decide what to do.',
   path: '/twitter-non-followers-checker'

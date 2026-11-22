@@ -44,7 +44,7 @@ export default function SiteFooter() {
       <div className="container footer-top">
         <div className="footer-brand">
           <Link className="brand" href="/" data-nav="footer" data-nav-item="Home">
-            <img src="/assets/logo.svg" alt="" width="30" height="30" />
+            <img src="/assets/logo.svg" alt="UnfollowX Pro" width="30" height="30" />
             <span>UnfollowX <span className="brand-pro">PRO</span></span>
           </Link>
           <p>A Chrome extension for reviewing who you follow on X. Find non-followers, track follower changes and choose who stays. Free forever, with no premium plan.</p>
