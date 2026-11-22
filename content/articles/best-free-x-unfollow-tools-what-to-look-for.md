@@ -10,7 +10,7 @@ There are four realistic ways to bulk unfollow on X in 2026: a browser extension
      Sources checked 2026-11-22 (search results only): Circleboom pricing page (free plan +
      paid plans; prices not quoted here on purpose), Circleboom help center "What are the
      limitations of your app" (freemium excludes some modules incl. Whitelist/Blacklist;
-     advises max 1,500 unfollows/day). Sign-in method assumed to be X's official OAuth — confirm. -->
+     unfollows limited to 50 per 15 minutes and 800 per 24 hours). Sign-in method assumed to be X's official OAuth — confirm. -->
 
 | | UnfollowX Pro | Circleboom (web app) | Console scripts | By hand on X |
 | --- | --- | --- | --- | --- |
@@ -19,7 +19,7 @@ There are four realistic ways to bulk unfollow on X in 2026: a browser extension
 | Account access | Your existing X session in Chrome, no password | Connects to your X account (check the permissions it asks for) | Runs in your signed-in X tab | — |
 | Review before unfollowing | Yes: tabs, filters, search, selection | Yes (see its current feature list) | Usually no — it unfollows whatever is on screen | Yes, one profile at a time |
 | Whitelist | Included, respected in every mode | Not in the free plan, per its help center | No | — |
-| Pacing | Random delays, breaks, daily limit (400 by default) | Advises up to 1,500 unfollows a day, per its help center | Whatever the script does | Your own clicking speed |
+| Pacing | Random delays, breaks, daily limit (400 by default) | Up to 800 unfollows per 24 hours (50 per 15 minutes), per its help center (checked Nov 2026) | Whatever the script does | Your own clicking speed |
 | Where your lists live | Chrome storage on your computer | Processed by Circleboom’s service | Nowhere — no record | — |
 | Undo | History with Follow again | Check its current features | No | Remember who you unfollowed |
 | Other features | Following management only | Also posting, scheduling and analytics | — | — |

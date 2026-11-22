@@ -31,8 +31,8 @@ export const metadata = buildMetadata({
 //   - Pricing page: a free plan with limits and several paid plans. Prices are
 //     deliberately NOT quoted (they change and differ between sources).
 //   - Help center, "What are the limitations of your app": the freemium plan
-//     excludes some modules including Whitelist/Blacklist; Circleboom advises
-//     at most 1,500 unfollows per day.
+//     excludes some modules including Whitelist/Blacklist; unfollows are
+//     limited to 50 per 15 minutes and 800 per 24 hours (corrected 2026-11-22).
 //   - Account connection: assumed to be X's official app authorisation
 //     (OAuth) — TODO confirm.
 // Unverified cells say "check Circleboom’s site" instead of guessing.
@@ -45,7 +45,7 @@ const rows = [
   ['How it reaches your account', 'Inside the X session already signed in to Chrome; never asks for your password', 'You connect your X account to Circleboom’s web app (check the permissions it requests)'],
   ['Find non-followers and inactive accounts', 'Yes — Don’t follow back, Mutuals, Inactive 30d / 90d / 180d / 1y, Not blue', 'Yes (check Circleboom’s site for current filters)'],
   ['Whitelist', 'Included, respected in every mode, plus Keep rules', 'Listed by Circleboom’s help center as not included in the free plan'],
-  ['Pacing', `Random delays, breaks and a daily limit you set (${EXTENSION.defaultDailyLimit} by default); rests or stops when X asks`, 'Circleboom’s help center advises up to 1,500 unfollows a day'],
+  ['Pacing', `Random delays, breaks and a daily limit you set (${EXTENSION.defaultDailyLimit} by default); rests or stops when X asks`, 'Up to 800 unfollows per 24 hours (50 per 15 minutes), per its help center (checked Nov 2026)'],
   ['Where your lists are kept', 'Chrome extension storage on your computer', 'Processed by Circleboom’s online service (see its privacy policy)'],
   ['Undo', 'History with Follow again', 'Check Circleboom’s site'],
   ['Posting, scheduling, analytics', 'No — following management only', 'Yes — part of its wider toolset'],
