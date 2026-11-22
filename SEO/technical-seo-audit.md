@@ -23,18 +23,18 @@ The live site (www.unfollowx.com) could not be fetched from the build environmen
 
 | # | Requirement | Implementation | Verified |
 | --- | --- | --- | --- |
-| 1–2 | Unique titles and descriptions | `pageMetadata()` in `lib/seo.js`; every page sets its own; titles ≤ 70 chars incl. “ \| UnfollowX Pro”, descriptions 70–170 chars | `check:seo`: 0 duplicates, 0 length warnings |
-| 3 | Canonical URLs | `alternates.canonical` per page against `metadataBase` `https://www.unfollowx.com` | `check:seo` |
-| 4 | Robots directives | Global `index, follow, max-image-preview:large`; 404 is `noindex, follow` | `check:seo` |
-| 5–6 | XML sitemap, robots.txt | `app/sitemap.js` (9 pages + 13 articles, real `lastModified`), `app/robots.js` with sitemap + host | `check:seo` |
+| 1–2 | Unique titles and descriptions | `buildMetadata()` in `lib/seo.js`; every page sets its own; titles ≤ 70 chars incl. “ \| UnfollowX Pro”, descriptions 70–170 chars | `seo:check`: 0 duplicates, 0 length warnings |
+| 3 | Canonical URLs | `alternates.canonical` per page against `metadataBase` `https://www.unfollowx.com` | `seo:check` |
+| 4 | Robots directives | Global `index, follow, max-image-preview:large`; 404 is `noindex, follow` | `seo:check` |
+| 5–6 | XML sitemap, robots.txt | `app/sitemap.js` (9 pages + 13 articles, real `lastModified`), `app/robots.js` with sitemap + host | `seo:check` |
 | 7–8 | Open Graph + X cards | Per-route PNG images via `opengraph-image.jsx` (1200×630, generated at build with `next/og`); `summary_large_image`; article OG includes published/modified time, section, author | 22 PNGs return `image/png` |
-| 9–10 | Semantic HTML, heading hierarchy | One `<h1>` per page, no skipped levels (FAQ uses a visually hidden `<h2>`), landmarks (`header`, `nav`, `main`, `footer`), FAQ questions as `<h3>` inside `<summary>` | `check:seo`, axe |
+| 9–10 | Semantic HTML, heading hierarchy | One `<h1>` per page, no skipped levels (FAQ uses a visually hidden `<h2>`), landmarks (`header`, `nav`, `main`, `footer`), FAQ questions as `<h3>` inside `<summary>` | `seo:check`, axe |
 | 11 | Breadcrumbs | `components/Breadcrumbs.jsx` renders visible trail + `BreadcrumbList` JSON-LD on all inner pages | JSON-LD parse |
 | 12 | Internal linking | See `internal-linking-map.md` | 0 broken links |
-| 13–16 | Images | Real screenshots as WebP with descriptive filenames (`unfollowx-pro-dashboard-followers-tracker.webp`…), `next/image` with explicit width/height, `sizes`, AVIF/WebP negotiation; descriptive `alt` | `check:seo` (alt), CLS 0 |
-| 17 | HTTP status codes | Unknown URLs → 404; unknown blog slugs → 404 (`dynamicParams = false`) | `check:seo` |
-| 18 | Redirects | `/features.html`, `/faq.html`, `/privacy.html`, `/setup.html`, `/index.html`, `/blog/index.html`, `/blog/:slug.html` → clean URLs (308); `unfollowx.com/*` and `unfollowx-com.vercel.app/*` → `https://www.unfollowx.com/*` (308; preview `*.vercel.app` hosts unaffected) | `check:seo` (legacy redirects) |
-| 19–20 | Trailing slash, duplicates | Next default: no trailing slash; `/features/` → 308 → `/features` | `check:seo` |
+| 13–16 | Images | Real screenshots as WebP with descriptive filenames (`unfollowx-pro-dashboard-followers-tracker.webp`…), `next/image` with explicit width/height, `sizes`, AVIF/WebP negotiation; descriptive `alt` | `seo:check` (alt), CLS 0 |
+| 17 | HTTP status codes | Unknown URLs → 404; unknown blog slugs → 404 (`dynamicParams = false`) | `seo:check` |
+| 18 | Redirects | `/features.html`, `/faq.html`, `/privacy.html`, `/setup.html`, `/index.html`, `/blog/index.html`, `/blog/:slug.html` → clean URLs (308); `unfollowx.com/*` and `unfollowx-com.vercel.app/*` → `https://www.unfollowx.com/*` (308; preview `*.vercel.app` hosts unaffected) | `seo:check` (legacy redirects) |
+| 19–20 | Trailing slash, duplicates | Next default: no trailing slash; `/features/` → 308 → `/features` | `seo:check` |
 | 21 | Broken links | `npm run seo:check` | 0 |
 | 22 | Crawlable navigation | Plain `<a href>` links (Next `<Link>`), no JS-only navigation; FAQ answers always in HTML (`<details>`) | No-JS test |
 | 23 | Indexable blog | All articles statically generated, full text in HTML | Build output (SSG) |
@@ -54,7 +54,7 @@ The live site (www.unfollowx.com) could not be fetched from the build environmen
 | `/blog/*` | `BlogPosting` + `BreadcrumbList` | headline, description, image (OG), dates, author `Person` (Shahriar Ahmed, developer — verifiable from the extension), publisher, wordCount |
 | `/guides` | `CollectionPage` | |
 
-`check:seo` parses every JSON-LD block and fails on syntax errors, missing `@type` or any rating fields.
+`seo:check` parses every JSON-LD block and validates its shape (FAQPage, HowTo, SoftwareApplication, BreadcrumbList, BlogPosting, Organization…). `aggregateRating` is allowed only where the same rating is visibly shown on the page (homepage and `/mass-unfollow-twitter`, from `STORE_RATING` in `lib/site.js`); reviews are never emitted.
 
 ### Metadata reference
 
@@ -103,7 +103,7 @@ Finding: no www.unfollowx.com pages were in search results two weeks after launc
 
 | Area | Change |
 | --- | --- |
-| International | `/es`, `/pt-br`, `/hi`, `/id`, `/tr`, `/ar` from the developer’s official store translations; `lang`/`dir` on the content; reciprocal hreflang + `x-default` on all 7 versions and in the sitemap; footer language links. `check:seo` now validates hreflang reciprocity. |
+| International | `/es`, `/pt-br`, `/hi`, `/id`, `/tr`, `/ar` from the developer’s official store translations; `lang`/`dir` on the content; reciprocal hreflang + `x-default` on all 7 versions and in the sitemap; footer language links. `seo:check` now validates hreflang reciprocity. |
 | Entity | `alternateName` (“UnfollowX”) on Organization, WebSite and SoftwareApplication; `sameAs` → Chrome Web Store listing (and Telegram for the organization); `featureList`; `screenshot` ImageObjects; version 7.3.5. Still no ratings. |
 | Store links | Canonical listing URL updated to `/detail/unfollowx-pro-%E2%80%93-free-unli/igpjmagghnibmjkkdcgpjgpkfkpiglnl`. |
 | Titles | Homepage: “UnfollowX Pro – Free & Unlimited X (Twitter) Unfollow Tool”; description leads with “Free X (Twitter) unfollow tool for Chrome”. |
@@ -111,4 +111,4 @@ Finding: no www.unfollowx.com pages were in search results two weeks after launc
 | Verification | `GOOGLE_SITE_VERIFICATION`, `BING_SITE_VERIFICATION`, `YANDEX_VERIFICATION` env vars render the ownership meta tags. |
 | Content | New article “Mute vs Unfollow vs Block on X”. |
 
-Result: `check:seo` passes on 29 sitemap URLs, 7 hreflang pages, 24 OG images (one advisory: the Spanish store title is 74 characters).
+Result: `seo:check` passes on 29 sitemap URLs, 7 hreflang pages, 24 OG images (one advisory: the Spanish store title is 74 characters).
