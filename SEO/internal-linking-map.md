@@ -75,7 +75,7 @@ Every article also has: breadcrumbs (Home → Blog → Article), a category link
 
 ## Orphan check
 
-`npm run check:seo` crawls every sitemap URL and fails if an internal link returns a non-200 status. On 2026-11-06: 22 sitemap URLs, 22 distinct internal link targets, 0 broken.
+`npm run seo:check` crawls every sitemap URL and fails if an internal link returns a non-200 status. On 2026-11-06: 22 sitemap URLs, 22 distinct internal link targets, 0 broken.
 
 ## Added 2026-11-18
 

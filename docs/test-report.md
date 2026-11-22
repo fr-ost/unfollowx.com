@@ -9,7 +9,7 @@ _Run on 2026-11-06 against a local production build (`next build` + `next start`
 | `npm run build` | ✅ Compiled successfully; 52 static routes generated (pages, 13 SSG articles, 22 OG images, icons, manifest, sitemap, robots) |
 | Build warnings | None |
 
-## Technical SEO — `npm run check:seo`
+## Technical SEO — `npm run seo:check`
 
 ✅ **All checks passed, 0 warnings.** 22 sitemap URLs, 22 internal link targets, 22 OG images.
 
@@ -125,8 +125,19 @@ Google reported “Your Google tag wasn’t detected” because the tag only loa
 ## Round 5 — privacy v7.3.5 + SEO expansion (2026-11-18)
 
 - Build: 62 static routes (adds 6 language pages, `/feed.xml`, `/llms.txt`, a new article and its OG image).
-- `npm run check:seo`: ✅ 29 sitemap URLs, 29 internal links, 24 OG images, hreflang reciprocal on 7 pages (advisory: Spanish title 74 chars).
+- `npm run seo:check`: ✅ 29 sitemap URLs, 29 internal links, 24 OG images, hreflang reciprocal on 7 pages (advisory: Spanish title 74 chars).
 - Accessibility + functional (axe on 17 routes incl. `/es`, `/ar` and the new article, both themes): **66/66**.
 - Consent-mode analytics: **27/27**. Horizontal overflow incl. `/es`, `/ar`, `/hi` at 6 widths: ✅.
 - Visual: Spanish (desktop) and Arabic (390 px, right-to-left) pages; privacy “two switches” section.
 - Not verifiable here: whether Google has indexed the site (live domain unreachable from this environment); see `SEO/indexing-action-plan.md`.
+
+## Round 6 — on-page SEO overhaul (2026-11-22)
+
+- `npm run lint` (ESLint 9 + eslint-config-next, newly added): ✅ 0 problems.
+- `npm run build` (clean `.next`): ✅ compiled; 70 static routes (adds `/mass-unfollow-twitter`, `/blog/how-to-unfollow-on-twitter`, `/alternatives/circleboom`, `/about` and their OG images).
+- `npm run seo:check -- --build` (new script, builds + serves itself): ✅ 33 sitemap URLs, 33 internal link targets, 28 OG images, hreflang on 33 pages, 0 failures. 12 warnings, all deliberate: four titles fixed by the brief run 62–70 chars (home, `/mass-unfollow-twitter`, unfollow-everyone, best-tools) plus the how-to-unfollow title; the Spanish title is 62 chars; the six localized descriptions (117–129 chars) are the official store translations.
+- JSON-LD shapes validated per page: FAQPage questions visible on the page, HowTo steps, SoftwareApplication (+ aggregateRating only where the rating is visibly shown), BreadcrumbList on every non-home English page, BlogPosting, Organization, WebSite, Person.
+- Accessibility + functional (axe on 22 routes incl. the 4 new pages, both themes): **76/76**.
+- Consent-mode analytics: **27/27** (hero secondary CTA selector updated).
+- Horizontal overflow (20 routes × 6 widths): ✅.
+- Visual: homepage hero (1440 light, 390 dark), keyword section, `/mass-unfollow-twitter` and `/alternatives/circleboom` full pages.

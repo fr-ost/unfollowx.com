@@ -5,7 +5,7 @@
 ## Before deploying
 
 - [ ] `npm ci && npm run build` succeeds (no errors).
-- [ ] `npm run start` and, in another terminal, `npm run check:seo` → “All technical SEO checks passed.”
+- [ ] `npm run start` and, in another terminal, `npm run seo:check` → “All technical SEO checks passed.”
 - [ ] Spot-check `/`, `/features`, `/blog`, one article, `/faq`, `/privacy` in light and dark mode, desktop and phone.
 - [ ] Privacy policy “Last updated” date and extension version (`lib/site.js` → `EXTENSION.version`) are current.
 

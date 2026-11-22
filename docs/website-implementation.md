@@ -49,7 +49,7 @@ lib/
   analytics.js          consent-gated GA4 + GTM
   og.jsx og-fonts/      OG image renderer
 public/images/screenshots/  real extension screenshots, 2× captures (WebP)
-scripts/check-seo.mjs   technical SEO checker
+scripts/seo-check.mjs   technical SEO checker
 ```
 
 - **No new runtime dependencies.** Fonts, icons, Markdown rendering, OG images and analytics use the platform, Next.js built-ins or small local modules.
@@ -112,7 +112,7 @@ See `docs/google-analytics-setup.md`. GA4 (G-DEEP3H3Q83) and GTM (GTM-M4QHPXQV) 
 npm ci
 npm run build
 npm run start            # local production server on :3000
-npm run check:seo        # in a second terminal
+npm run seo:check        # in a second terminal
 ```
 
 On Vercel: import the repository, framework preset Next.js, root directory = repo root, default build command. Add `www.unfollowx.com` as the primary domain. Then follow `SEO/launch-checklist.md`.

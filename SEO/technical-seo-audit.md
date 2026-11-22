@@ -35,7 +35,7 @@ The live site (www.unfollowx.com) could not be fetched from the build environmen
 | 17 | HTTP status codes | Unknown URLs → 404; unknown blog slugs → 404 (`dynamicParams = false`) | `check:seo` |
 | 18 | Redirects | `/features.html`, `/faq.html`, `/privacy.html`, `/setup.html`, `/index.html`, `/blog/index.html`, `/blog/:slug.html` → clean URLs (308); `unfollowx.com/*` and `unfollowx-com.vercel.app/*` → `https://www.unfollowx.com/*` (308; preview `*.vercel.app` hosts unaffected) | `check:seo` (legacy redirects) |
 | 19–20 | Trailing slash, duplicates | Next default: no trailing slash; `/features/` → 308 → `/features` | `check:seo` |
-| 21 | Broken links | `npm run check:seo` | 0 |
+| 21 | Broken links | `npm run seo:check` | 0 |
 | 22 | Crawlable navigation | Plain `<a href>` links (Next `<Link>`), no JS-only navigation; FAQ answers always in HTML (`<details>`) | No-JS test |
 | 23 | Indexable blog | All articles statically generated, full text in HTML | Build output (SSG) |
 | 24 | Pagination | 13 articles on one `/blog` page grouped by category — no pagination needed. Revisit beyond ~40 articles. | — |

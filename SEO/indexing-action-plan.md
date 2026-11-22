@@ -10,7 +10,7 @@ Searches run on 2026-11-18 returned **no pages from www.unfollowx.com**. What ra
 - the website’s own GitHub repository, `github.com/fr-ost/unfollowx.com`;
 - unrelated projects with similar names (`nirholas/UnfollowX`, `ZXD44/UnfollowX`, “UnfollowX AI”, an Instagram “UnfollowX”, `unfollow-x.com`).
 
-The site itself is technically clean (`npm run check:seo` passes: sitemap, robots, canonicals, structured data, hreflang, no `noindex`). The problem is **discovery and trust**, not markup:
+The site itself is technically clean (`npm run seo:check` passes: sitemap, robots, canonicals, structured data, hreflang, no `noindex`). The problem is **discovery and trust**, not markup:
 
 1. **The domain is new and almost nothing links to it.** Google finds pages through links and submitted sitemaps. The Chrome Web Store listing and the extension point to `shahriarahmed.net`, not `unfollowx.com`.
 2. **Search Console has (probably) never been set up**, so Google has no sitemap and no request to crawl.

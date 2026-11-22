@@ -26,7 +26,7 @@ npm run start
 Technical SEO checks (with the production server running):
 
 ```bash
-npm run check:seo
+npm run seo:check
 ```
 
 After deploying new or changed pages, notify Bing/Yandex/Naver/Seznam via IndexNow:
