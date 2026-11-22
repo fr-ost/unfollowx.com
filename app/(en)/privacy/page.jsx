@@ -33,7 +33,7 @@ export default function PrivacyPage() {
           <Breadcrumbs items={[{ name: 'Privacy policy', path: '/privacy' }]} />
           <div className="eyebrow" style={{ marginTop: 28 }}>Last updated · November 18, 2026</div>
           <h1>Your data, <span className="gradient-text">clearly explained.</span></h1>
-          <p className="lead">This policy covers the UnfollowX Pro Chrome extension (version {EXTENSION.version} and later) and this website, www.unfollowx.com.</p>
+          <p className="lead">This policy covers the UnfollowX Pro Chrome extension (version {EXTENSION.privacyPolicyFrom} and later) and this website, www.unfollowx.com.</p>
         </div>
       </section>
 
