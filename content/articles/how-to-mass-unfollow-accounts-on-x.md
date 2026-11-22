@@ -1,6 +1,8 @@
-X has no bulk-unfollow button. Mass unfollowing means removing many accounts in one session, either by hand or with a tool that works through a list for you. The method that causes the fewest regrets — and the fewest problems with X — is always the same: **decide which group to remove, protect the accounts you value, review the selection, then unfollow at a measured pace.**
+Twitter (X) has no bulk-unfollow button. Mass unfollowing means removing many accounts in one session, either by hand or with a tool that works through a list for you. The method that causes the fewest regrets — and the fewest problems with X — is always the same: **decide which group to remove, protect the accounts you value, review the selection, then unfollow at a measured pace.**
 
-This guide walks through that process with [UnfollowX Pro](/features), a free Chrome extension, but the principles apply whatever tool you use.
+> [!TIP] **Looking for the tool rather than the guide?** [UnfollowX Pro’s mass unfollow tool for Twitter (X)](/mass-unfollow-twitter) is a free Chrome extension that does every step below: scan, filter, whitelist and a paced bulk unfollow run.
+
+This guide walks through the process with [UnfollowX Pro](/), but the principles apply whatever tool you use.
 
 ## Before you start: what X allows
 

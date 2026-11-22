@@ -1,5 +1,7 @@
 A following list grows quietly. You follow people back to be polite, follow a conference hashtag’s speakers for a week, follow brands for a giveaway — and a few years later your feed is full of accounts you don’t recognise. Cleaning it up isn’t about hitting a ratio. It’s about making the list match what you actually want to read.
 
+Most of the steps below work by hand. For bigger lists, a free tool such as [UnfollowX Pro](/) does the reading for you: a [non-followers checker](/twitter-non-followers-checker) to see who doesn’t follow back, and [paced bulk unfollowing](/mass-unfollow-twitter) once you’ve decided.
+
 Here’s a process that works for lists of a few hundred or many thousands, and that you can repeat every few months without starting from scratch.
 
 ## Step 1: Decide what your feed is for

@@ -2,6 +2,8 @@ Muting, unfollowing and blocking all reduce what you see from an account on X, b
 
 > [!TIP] **Quick answer:** want less of someone without them noticing? **Mute.** Don't want their posts in your feed at all? **Unfollow.** Want them to stop interacting with you? **Block.** Want them out of your followers without a block? Use **Remove this follower** on the web.
 
+If you decide unfollowing is right for a lot of accounts, [UnfollowX Pro](/) can [unfollow them in bulk](/mass-unfollow-twitter) at a measured pace; for a single account, see [how to unfollow someone on Twitter (X)](/blog/how-to-unfollow-on-twitter).
+
 ## The differences at a glance
 
 | | Unfollow | Mute | Block |

@@ -9,8 +9,8 @@ import { buildMetadata } from '@/lib/seo';
 import { absoluteUrl } from '@/lib/site';
 
 export const metadata = buildMetadata({
-  title: 'How-to Guides for Managing Your X (Twitter) Following',
-  description: 'Short answers and step-by-step guides for every common X following task: find non-followers, see who unfollowed you, mass unfollow, protect accounts and export lists.',
+  title: 'How-to Guides for Your Twitter (X) Following',
+  description: 'Step-by-step guides for common Twitter (X) following tasks: find non-followers, see who unfollowed you, mass unfollow, protect accounts and export lists.',
   path: '/guides'
 });
 
@@ -32,7 +32,8 @@ const tasks = [
   {
     icon: 'users', tone: '', title: 'Unfollow many accounts at once',
     answer: 'Pick a specific group (non-followers, inactive, a filtered slice), whitelist the accounts you value, review the selection, then unfollow at a measured pace with delays, breaks and a daily limit. X applies its own limits to every account.',
-    guides: ['how-to-mass-unfollow-accounts-on-x', 'how-to-unfollow-everyone-on-x']
+    guides: ['how-to-mass-unfollow-accounts-on-x', 'how-to-unfollow-everyone-on-x', 'how-to-unfollow-on-twitter', 'best-free-x-unfollow-tools-what-to-look-for'],
+    tool: { label: 'Mass unfollow tool', href: '/mass-unfollow-twitter' }
   },
   {
     icon: 'shield', tone: 'green', title: 'Protect accounts before a cleanup',

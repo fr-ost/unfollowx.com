@@ -11,10 +11,13 @@ import ArticleCard from '@/components/ArticleCard';
 import { TrackEvent } from '@/components/Analytics';
 import { getArticle } from '@/lib/blog';
 import { buildMetadata, softwareSchema } from '@/lib/seo';
+import { faqPageSchema } from '@/lib/faq';
+import { absoluteUrl } from '@/lib/site';
 
 export const metadata = buildMetadata({
-  title: 'Free Twitter Non-Followers Checker for X',
-  description: 'Check who doesn’t follow you back on X (Twitter) with a free, read-only Chrome extension. No password, no sign-up, no limits — review, filter and decide what to do.',
+  title: 'Unfollow Non-Followers on Twitter (X) – Free Checker',
+  absoluteTitle: true,
+  description: 'Find and unfollow non-followers on Twitter (X) with a free Chrome extension: a read-only check of who doesn’t follow you back, then a paced bulk unfollow.',
   path: '/twitter-non-followers-checker'
 });
 
@@ -31,15 +34,15 @@ export default function NonFollowersCheckerPage() {
 
   return (
     <>
-      <JsonLd data={softwareSchema} />
+      <JsonLd data={[softwareSchema, faqPageSchema(faqs, absoluteUrl('/twitter-non-followers-checker'))]} />
       <TrackEvent name="feature_page_view" params={{ feature_name: 'non_followers_checker' }} withPath />
 
       <section className="container lp-hero">
         <div className="page-hero">
           <Breadcrumbs items={[{ name: 'Features', path: '/features' }, { name: 'Non-followers checker', path: '/twitter-non-followers-checker' }]} />
           <div className="eyebrow" style={{ marginTop: 28 }}>Twitter / X non-followers checker</div>
-          <h1>See who doesn’t follow you back on X. <span className="gradient-text">Free.</span></h1>
-          <p className="lead">One read-only scan marks every account you follow as mutual or non-follower. Then search, filter, protect and decide — with no password, no sign-up and no limits set by us.</p>
+          <h1>Unfollow Non-Followers on Twitter (X) – <span className="gradient-text">Free Checker</span></h1>
+          <p className="lead">Find who doesn’t follow you back on Twitter (X), then unfollow non-followers in bulk. One read-only scan marks every account you follow as mutual or non-follower; you search, filter, protect and decide — with no password and no sign-up.</p>
           <div className="cta-row"><InstallLink location="checker_hero" size="lg" /></div>
           <ul className="lp-points" role="list">
             <li><Icon name="check" />Uses X’s own “follows you” flag for every account</li>
@@ -47,7 +50,7 @@ export default function NonFollowersCheckerPage() {
             <li><Icon name="check" />Results stay in Chrome extension storage on your computer</li>
           </ul>
         </div>
-        <Screenshot shot="popup" preload caption="The popup right after a scan (real interface, sample account)" sizes="(max-width: 960px) 360px, 420px" className="lp-shot" />
+        <Screenshot shot="popup" preload alt="Twitter non-followers checker: the UnfollowX Pro popup after a scan, showing 432 accounts that don’t follow back and an Unfollow non-followers button" caption="The popup right after a scan (real interface, sample account)" sizes="(max-width: 960px) 360px, 420px" className="lp-shot" />
       </section>
 
       <section className="container lp-section" aria-labelledby="how-checker">
@@ -96,10 +99,21 @@ export default function NonFollowersCheckerPage() {
         </div>
       </section>
 
-      <section className="container lp-section" aria-labelledby="after">
-        <div className="callout warn" data-reveal="">
+      <section className="container lp-section" aria-labelledby="bulk">
+        <div className="lp-split">
+          <div data-reveal="">
+            <div className="eyebrow">Next step</div>
+            <h2 id="bulk">Unfollow them in bulk</h2>
+            <div className="prose">
+              <p>Once the list looks right, press <strong>Unfollow N non-followers</strong> in the popup, or select specific accounts in the dashboard and unfollow just those. Whitelisted accounts and anything covered by a Keep rule are skipped automatically.</p>
+              <p>The run works in the background with random delays, breaks and a daily limit (400 by default). It rests if X asks it to slow down and stops if X asks you to verify, and you can pause or stop at any time. See how it works on the <Link href="/mass-unfollow-twitter">mass unfollow on Twitter page</Link>, or read the <Link href="/blog/how-to-mass-unfollow-accounts-on-x">step-by-step bulk unfollow guide</Link> before a large run.</p>
+            </div>
+          </div>
+          <Screenshot shot="run" alt="Unfollow non-followers on Twitter (X) in bulk: the UnfollowX Pro popup during a paced run, 127 of 408 unfollowed, with Pause and Stop" caption="A paced run unfollowing non-followers (real interface, sample account)" sizes="(max-width: 960px) 360px, 420px" className="shot-narrow" />
+        </div>
+        <div className="callout warn" data-reveal="" style={{ marginTop: 'var(--space-8)' }}>
           <Icon name="alert" />
-          <p id="after"><strong>If you decide to unfollow non-followers:</strong> UnfollowX Pro paces runs with random delays, breaks and a daily limit (400 by default), rests if X asks it to slow down and stops if X asks you to verify. X applies its own limits and rules to every account, so no tool can guarantee every action will be allowed. Read the <Link href="/blog/how-to-mass-unfollow-accounts-on-x">mass unfollow guide</Link> before a large run.</p>
+          <p>X applies its own limits and rules to every account, so no tool can guarantee X will never limit an account. Start with the Safe or Balanced preset and stop if X shows a warning.</p>
         </div>
       </section>
 

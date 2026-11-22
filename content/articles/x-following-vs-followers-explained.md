@@ -1,5 +1,7 @@
 On X, **following** is the list of accounts you’ve chosen to see posts from. **Followers** are the accounts that have chosen to see posts from you. The two lists are independent: following someone doesn’t make them follow you, and someone can follow you without you following them. Most confusion about X — feeds, reach, ratios and limits — comes back to that simple difference.
 
+If your following list has grown far beyond your followers, you can [see who doesn’t follow you back](/twitter-non-followers-checker) and [mass unfollow on Twitter](/mass-unfollow-twitter) in one sitting.
+
 ## Following: who you see
 
 When you follow an account, its posts become eligible for your **Following** timeline, which shows posts from accounts you follow. (The **For you** timeline mixes in recommendations from accounts you don’t follow.) Your following list is therefore the main control you have over what you read on X.

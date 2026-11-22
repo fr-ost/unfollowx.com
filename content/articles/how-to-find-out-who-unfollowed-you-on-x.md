@@ -2,6 +2,8 @@ X tells you when someone follows you, but not when someone leaves. There is no u
 
 > [!TIP] **Quick answer:** with [UnfollowX Pro](/x-follower-tracker), run a scan to save your first followers snapshot. Next time you scan (or press **Check now** on the Followers page), it compares the new complete list with the previous one and shows **Unfollowed you**, **New followers** and **You don’t follow back**.
 
+The same scan also shows the other side — [who you follow that doesn’t follow you back](/twitter-non-followers-checker) — and, if you want to tidy up, lets you [unfollow them in bulk](/mass-unfollow-twitter) at a measured pace.
+
 ## Why X doesn’t show unfollowers
 
 Your follower count is the only native hint. If it drops from 1,438 to 1,427, you know you’re down eleven — but not who left, and the number also moves when accounts are suspended, deactivated or locked. X doesn’t provide a list of former followers, so every unfollower tracker works the same way underneath: it compares saved lists.

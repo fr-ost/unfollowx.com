@@ -1,5 +1,7 @@
 Plenty of people run more than one X account: a personal account and a work one, a brand and its founder, or a few client accounts. Chrome gives you two good ways to handle this — X’s built-in account switcher and separate Chrome profiles — and the right choice depends on how often you switch and how strictly you want to keep accounts apart.
 
+Whichever option you choose, [UnfollowX Pro](/) keeps each account’s scan, whitelist and history separate — so a [non-follower check](/twitter-non-followers-checker) or a [bulk unfollow](/mass-unfollow-twitter) on one account never touches another.
+
 ## Option 1: X’s account switcher
 
 X lets you [add and switch between several accounts](https://help.x.com/en/managing-your-account/managing-multiple-x-accounts) in the same browser. On x.com, open the account menu at the bottom of the left sidebar and choose **Add an existing account**, then sign in. Afterwards, the same menu switches between accounts in a click.

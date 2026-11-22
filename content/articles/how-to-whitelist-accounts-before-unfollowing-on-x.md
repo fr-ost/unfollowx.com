@@ -1,6 +1,6 @@
 A whitelist is a list of accounts a tool must never unfollow. It’s the single most useful safeguard before any bulk cleanup on X, because filters are blunt: “doesn’t follow back” catches your favourite journalist, and “inactive for 90 days” catches the friend who only posts on holiday. Whitelisting first means the cleanup can’t touch the people who matter.
 
-This guide uses [UnfollowX Pro](/features), where the whitelist and Keep rules work together.
+This guide uses [UnfollowX Pro](/), a free Chrome extension where the whitelist and Keep rules work together — and are checked before every unfollow in its [bulk unfollow runs](/mass-unfollow-twitter).
 
 ## Whitelist vs Keep rules
 

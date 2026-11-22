@@ -2,6 +2,8 @@ X doesn’t have a “not following you back” list. To see who doesn’t follo
 
 > [!TIP] **Quick answer:** install a non-follower checker such as [UnfollowX Pro](/twitter-non-followers-checker) (free), open x.com in Chrome, click the extension and press **Scan my following**. In about a minute you get a count and a reviewable list of every account you follow that doesn’t follow you back. The scan only reads — it doesn’t unfollow anyone.
 
+Already know who you want to remove? Jump to the [mass unfollow tool for Twitter (X)](/mass-unfollow-twitter).
+
 ## Method 1: Check the “Follows you” label by hand
 
 When someone follows you, X shows a small **Follows you** label next to their name on their profile. No label means they don’t follow you (or X couldn’t show the relationship, which is rare).

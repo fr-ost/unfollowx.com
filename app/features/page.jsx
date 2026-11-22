@@ -13,7 +13,7 @@ import { buildMetadata, softwareSchema } from '@/lib/seo';
 import { absoluteUrl } from '@/lib/site';
 
 export const metadata = buildMetadata({
-  title: 'Features — Non-Follower Finder & Unfollower Tracker',
+  title: 'Features – Twitter (X) Unfollow Tools',
   description: 'Every UnfollowX Pro feature, all free: find non-followers, track lost followers, filter inactive accounts, whitelist, Keep rules, CSV, history and paced runs.',
   path: '/features'
 });

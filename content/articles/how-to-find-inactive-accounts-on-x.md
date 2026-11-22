@@ -1,5 +1,7 @@
 An inactive account is one that has stopped posting. Following a lot of them doesn’t hurt you, but it does make your following list a poor picture of who you actually read — and it inflates the number of accounts X counts against your follow limits. X has no built-in filter for inactive accounts, so finding them means checking when each account last posted.
 
+Once you’ve found them, you can remove quiet accounts in one paced run with a [Twitter bulk unfollow tool](/mass-unfollow-twitter), or narrow the list further to [accounts that also don’t follow you back](/twitter-non-followers-checker).
+
 ## What “inactive” can — and can’t — mean on X
 
 X doesn’t show when someone last logged in, scrolled or liked something. The only public signal is **activity you can see**: the date of an account’s most recent post, reply or repost. That’s what any honest inactivity check is based on.

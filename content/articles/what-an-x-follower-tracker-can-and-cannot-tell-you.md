@@ -1,5 +1,7 @@
 An X follower tracker shows how your followers change over time: who’s new, who left, and who follows you without being followed back. Every tracker — free or paid, app or extension — works by saving your followers list and comparing it with a later one. Understanding that one idea tells you what a tracker can measure, what it can’t, and how to read its results without jumping to conclusions.
 
+Trackers usually come with the reverse view too: [UnfollowX Pro](/) pairs its follower tracker with a [non-followers checker](/twitter-non-followers-checker) and a [paced bulk unfollow](/mass-unfollow-twitter), all free.
+
 ## How a follower tracker works
 
 1. **Read** your complete followers list.

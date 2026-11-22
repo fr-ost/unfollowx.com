@@ -11,10 +11,12 @@ import ArticleCard from '@/components/ArticleCard';
 import { TrackEvent } from '@/components/Analytics';
 import { getArticle } from '@/lib/blog';
 import { buildMetadata, softwareSchema } from '@/lib/seo';
+import { faqPageSchema } from '@/lib/faq';
+import { absoluteUrl } from '@/lib/site';
 
 export const metadata = buildMetadata({
-  title: 'Free X Follower Tracker — See Who Unfollowed You',
-  description: 'Track new and lost followers on X (Twitter) with a free Chrome extension. Snapshot comparison without false alarms, bulk follow-back, data kept on your device.',
+  title: 'See Who Unfollowed You on Twitter (X)',
+  description: 'See who unfollowed you on Twitter (X) with a free follower tracker for Chrome. Snapshot comparison without false alarms, follow-back, data on your device.',
   path: '/x-follower-tracker'
 });
 
@@ -31,15 +33,15 @@ export default function FollowerTrackerPage() {
 
   return (
     <>
-      <JsonLd data={softwareSchema} />
+      <JsonLd data={[softwareSchema, faqPageSchema(faqs, absoluteUrl('/x-follower-tracker'))]} />
       <TrackEvent name="feature_page_view" params={{ feature_name: 'follower_tracker' }} withPath />
 
       <section className="container lp-hero">
         <div className="page-hero">
           <Breadcrumbs items={[{ name: 'Features', path: '/features' }, { name: 'Follower tracker', path: '/x-follower-tracker' }]} />
           <div className="eyebrow" style={{ marginTop: 28 }}>X / Twitter follower tracker</div>
-          <h1>See who unfollowed you on X — <span className="gradient-text">and who’s new.</span></h1>
-          <p className="lead">X doesn’t tell you when someone leaves. UnfollowX Pro compares your followers with your last complete check and lists every change, free and on your own device.</p>
+          <h1>See Who Unfollowed You on <span className="gradient-text">Twitter (X)</span></h1>
+          <p className="lead">Twitter (X) doesn’t tell you when someone leaves. UnfollowX Pro compares your followers with your last complete check and lists every change, free and on your own device.</p>
           <div className="cta-row"><InstallLink location="tracker_hero" size="lg" /></div>
           <ul className="lp-points" role="list">
             <li><Icon name="check" />Unfollowed you, New followers and You don’t follow back</li>

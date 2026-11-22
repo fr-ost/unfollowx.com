@@ -7,7 +7,7 @@ import { buildMetadata } from '@/lib/seo';
 import { CONTACT_EMAIL, DEVELOPER, EXTENSION, PUBLISHER, TELEGRAM_URL } from '@/lib/site';
 
 export const metadata = buildMetadata({
-  title: 'Privacy Policy — Extension Data & Website Analytics',
+  title: 'Privacy Policy – Extension & Website Data',
   description: 'How UnfollowX Pro handles data: X lists stay in Chrome storage, two anonymous statistics switches, permissions, and Google Analytics on this site.',
   path: '/privacy'
 });

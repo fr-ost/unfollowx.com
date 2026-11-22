@@ -1,6 +1,6 @@
-Sometimes trimming isn’t enough and you want a clean slate: a new direction for an account, a feed that no longer reflects you, or a brand account inherited with thousands of random follows. X has no “unfollow all” button, so unfollowing everyone means working through your whole list — by hand or with a tool — within the limits X applies to every account.
+Sometimes trimming isn’t enough and you want a clean slate: a new direction for an account, a feed that no longer reflects you, or a brand account inherited with thousands of random follows. Twitter (X) has no “unfollow all” button, so unfollowing everyone at once means working through your whole list — by hand or with a tool — within the limits X applies to every account.
 
-This guide covers whether a full reset is the right move, what to save before you start, and how to do it in stages.
+This guide covers whether a full reset is the right move, what to save before you start, and how to do it in stages. If you’d rather keep part of your list, a selective [mass unfollow on Twitter](/mass-unfollow-twitter) — non-followers or inactive accounts only — is often the better choice; you can [check who doesn’t follow you back](/twitter-non-followers-checker) first.
 
 ## Is a full reset the right call?
 

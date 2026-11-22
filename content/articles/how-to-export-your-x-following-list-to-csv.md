@@ -1,5 +1,7 @@
 X doesn’t have an “export to CSV” button for your following list. There are two practical routes: **X’s own data archive**, which is official but slow and not spreadsheet-friendly, and **a CSV export from a tool** that reads your list, which is instant and comes with useful columns. Here’s how each works and when to use which.
 
+A CSV is also a good backup before any cleanup — for example before you [mass unfollow on Twitter (X)](/mass-unfollow-twitter) or remove the accounts a [non-follower check](/twitter-non-followers-checker) turns up.
+
 ## Why export your following list?
 
 - **A backup before a big cleanup** — especially before [unfollowing everyone](/blog/how-to-unfollow-everyone-on-x).

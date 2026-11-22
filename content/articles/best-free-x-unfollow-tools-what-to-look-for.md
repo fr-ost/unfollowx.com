@@ -1,6 +1,32 @@
-Search for a free X unfollow tool and you’ll find dozens of extensions, apps and web services with similar names and similar promises. They differ a lot once you look closely: what “free” covers, how they reach your account, whether they protect accounts you value, and what they do with your data. This guide is a checklist you can apply to any of them — including ours.
+Search for a mass unfollow tool for Twitter (X) and you’ll find dozens of extensions, apps and web services with similar names and similar promises. They differ a lot once you look closely: what “free” covers, how they reach your account, whether they protect accounts you value, and what they do with your data. This guide compares the main types of tool side by side, then gives you a checklist you can apply to any of them — including ours.
 
-> [!NOTE] We make UnfollowX Pro, so we’re not neutral. That’s why this guide doesn’t rank competitors or quote their prices, which change often. Apply the checklist yourself and read each tool’s current listing and privacy policy.
+> [!NOTE] We make [UnfollowX Pro](/), so we’re not neutral. We don’t quote competitors’ prices, which change often, and we mark anything we couldn’t verify. Read each tool’s current pricing page, listing and privacy policy before you decide.
+
+## Mass unfollow tools for Twitter (X) compared
+
+There are four realistic ways to bulk unfollow on X in 2026: a browser extension, a web app that connects to your account, a script pasted into the browser console, or doing it by hand.
+
+<!-- TODO(owner): re-verify every Circleboom cell on circleboom.com before each update.
+     Sources checked 2026-11-22 (search results only): Circleboom pricing page (free plan +
+     paid plans; prices not quoted here on purpose), Circleboom help center "What are the
+     limitations of your app" (freemium excludes some modules incl. Whitelist/Blacklist;
+     advises max 1,500 unfollows/day). Sign-in method assumed to be X's official OAuth — confirm. -->
+
+| | UnfollowX Pro | Circleboom (web app) | Console scripts | By hand on X |
+| --- | --- | --- | --- | --- |
+| Type | Chrome extension (desktop) | Web-based social media management tool | Code pasted into the browser console | X’s own website or app |
+| Price model | Free forever, no paid tier | Free plan with limits, paid plans for more | Free | Free |
+| Account access | Your existing X session in Chrome, no password | Connects to your X account (check the permissions it asks for) | Runs in your signed-in X tab | — |
+| Review before unfollowing | Yes: tabs, filters, search, selection | Yes (see its current feature list) | Usually no — it unfollows whatever is on screen | Yes, one profile at a time |
+| Whitelist | Included, respected in every mode | Not in the free plan, per its help center | No | — |
+| Pacing | Random delays, breaks, daily limit (400 by default) | Advises up to 1,500 unfollows a day, per its help center | Whatever the script does | Your own clicking speed |
+| Where your lists live | Chrome storage on your computer | Processed by Circleboom’s service | Nowhere — no record | — |
+| Undo | History with Follow again | Check its current features | No | Remember who you unfollowed |
+| Other features | Following management only | Also posting, scheduling and analytics | — | — |
+
+Which is best depends on the job. If you only want to clean up who you follow — non-followers, inactive accounts, a full reset — a focused, free extension like [UnfollowX Pro’s mass unfollow tool](/mass-unfollow-twitter) covers it without an account or a subscription. If you also want post scheduling and analytics in one place, an all-in-one web app may suit you better; we compare the two in more detail on our [Circleboom alternative](/alternatives/circleboom) page. Console scripts are free but unpaced and have no whitelist, so one mistake can remove accounts you meant to keep. And for fewer than a few dozen accounts, unfollowing by hand is perfectly fine.
+
+The rest of this guide is the checklist we used for the table — apply it to any tool you’re considering.
 
 ## 1. What does “free” actually include?
 
@@ -85,4 +111,4 @@ X changes its website regularly, and unmaintained tools break. Check the listing
 
 ## The bottom line
 
-The best free X unfollow tool for you is one that is genuinely free for what you need, doesn’t ask for your password, protects the accounts you care about, paces actions honestly and keeps your data close. Run any tool through the checklist above before you give it access to your account. To see the process in practice, read [how to mass unfollow on X](/blog/how-to-mass-unfollow-accounts-on-x).
+The best mass unfollow tool for Twitter (X) for you is one that is genuinely free for what you need, doesn’t ask for your password, protects the accounts you care about, paces actions honestly and keeps your data close. Run any tool through the checklist above before you give it access to your account. To see the process in practice, read [how to mass unfollow on X](/blog/how-to-mass-unfollow-accounts-on-x), or start by checking [who doesn’t follow you back](/twitter-non-followers-checker).

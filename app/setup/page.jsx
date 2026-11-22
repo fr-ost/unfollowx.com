@@ -12,8 +12,8 @@ import { buildMetadata } from '@/lib/seo';
 import { STORE_URL, absoluteUrl } from '@/lib/site';
 
 export const metadata = buildMetadata({
-  title: 'How to Set Up UnfollowX Pro in Chrome (Step-by-Step)',
-  description: 'Install UnfollowX Pro, run your first read-only scan of your X following list, protect accounts with a whitelist and Keep rules, choose a pace and start safely.',
+  title: 'How to Set Up UnfollowX Pro in Chrome',
+  description: 'Install UnfollowX Pro, run a read-only scan of your Twitter (X) following list, protect accounts with a whitelist and Keep rules, then pick a safe pace.',
   path: '/setup'
 });
 

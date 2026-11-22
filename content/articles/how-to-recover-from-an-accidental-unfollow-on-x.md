@@ -1,5 +1,7 @@
 It happens to everyone: a mis-tap on the **Following** button, or a bulk cleanup that caught someone you meant to keep. The fix is usually simple — follow the account again — but how you find them, and what happens next, depends on how the unfollow happened.
 
+If the mistake happened during a bulk cleanup, the History page in a [mass unfollow tool](/mass-unfollow-twitter) is the fastest way back; if you unfollowed by hand, see [how to unfollow and re-follow on Twitter (X)](/blog/how-to-unfollow-on-twitter) and the steps below. [UnfollowX Pro](/) keeps that history for free.
+
 ## If you unfollowed someone by hand
 
 1. Go to their profile. If you don’t remember the handle, search their name or find one of their recent posts.

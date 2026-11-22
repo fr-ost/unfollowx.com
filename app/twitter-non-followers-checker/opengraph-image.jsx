@@ -5,5 +5,5 @@ export const size = ogSize;
 export const contentType = ogContentType;
 
 export default function Image() {
-  return renderOg({ eyebrow: 'Non-followers checker · Free', title: 'See who doesn’t follow you back on X.', subtitle: 'A free, read-only scan of your following list. No password, no sign-up, no limits.' });
+  return renderOg({ eyebrow: 'Non-followers checker · Free', title: 'Unfollow non-followers on Twitter (X).', subtitle: 'A free, read-only scan of your following list. No password, no sign-up, no limits.' });
 }

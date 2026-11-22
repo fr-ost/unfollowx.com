@@ -5,5 +5,5 @@ export const size = ogSize;
 export const contentType = ogContentType;
 
 export default function Image() {
-  return renderOg({ eyebrow: 'Follower tracker · Free', title: 'See who unfollowed you on X — and who’s new.', subtitle: 'Snapshot comparison that never compares partial reads. Free, and your data stays on your device.' });
+  return renderOg({ eyebrow: 'Follower tracker · Free', title: 'See who unfollowed you on Twitter (X).', subtitle: 'Snapshot comparison that never compares partial reads. Free, and your data stays on your device.' });
 }
