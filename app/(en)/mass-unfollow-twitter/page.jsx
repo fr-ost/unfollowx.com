@@ -16,7 +16,7 @@ import { SOFTWARE_ID, buildMetadata, softwareSchemaWithRating } from '@/lib/seo'
 import { EXTENSION, absoluteUrl } from '@/lib/site';
 
 const PATH = '/mass-unfollow-twitter';
-const TITLE = 'Mass Unfollow on Twitter (X) – Free Bulk Unfollow Tool | UnfollowX Pro';
+const TITLE = 'Mass Unfollow on Twitter (X) – Free Bulk Unfollow | UnfollowX Pro';
 
 export const metadata = buildMetadata({
   title: TITLE,
